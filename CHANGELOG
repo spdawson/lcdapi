@@ -1,0 +1,14 @@
+0.2
+----
+
+ * More documentation
+ * Added getters for widgets
+ * Keys handling with a user defined callback
+ * Better thread synchronization
+ * Main message loop that read every message from server
+
+
+0.1
+----
+
+ * First version
