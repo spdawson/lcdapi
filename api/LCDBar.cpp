@@ -1,4 +1,5 @@
 #include "LCDBar.h"
+#include <cstdlib>
 #include <sstream>
 #include <stdlib.h>
 

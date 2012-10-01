@@ -1,4 +1,5 @@
 #include "LCDBigNumber.h"
+#include <cstdlib>
 #include <sstream>
 #include <string>
 
