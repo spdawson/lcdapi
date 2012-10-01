@@ -87,7 +87,9 @@ void LCDConnection::send(const string &toSend)
 {
   string s = toSend + "\r\n";
 
+#ifdef DEBUG
   cerr << "Sending : " << s << endl;
+#endif // DEBUG
 
   if (!_isConnected)
   {
@@ -138,7 +140,9 @@ string LCDConnection::recv()
 
   string result(buf);
 
+#ifdef DEBUG
   cerr << "Receiving : " << result << endl;
+#endif // DEBUG
 
   return result;
 }
