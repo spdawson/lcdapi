@@ -77,7 +77,7 @@ class LCDCallback
 
 typedef std::map<KeyEvent, LCDCallback *> CallbackMap;
 
-std::string toString(KeyEvent t)
+static std::string toString(KeyEvent t)
 {
   std::string s(1, (char)t);
   return s;
