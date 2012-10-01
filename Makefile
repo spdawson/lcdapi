@@ -9,7 +9,9 @@ CLEAN_BACKUPS = find . -type f -name '*~' -delete
 INCFLAGS = -I$(INCLUDE_DIR) -I$(SRC_DIR) -I$(KEYS_SRC_DIR)
 CFLAGS = -fPIC -g
 DEPEND= makedepend -Y $(INCFLAGS)
+INSTALL = install
 
+DESTDIR = /
 INCLUDE_DIR = $(PROJECT_ROOT)/include
 SRC_DIR = $(PROJECT_ROOT)/api
 SENSOR_SRC_DIR = $(PROJECT_ROOT)/sensors
@@ -43,7 +45,7 @@ LIB_SRCS = \
 	$(wildcard $(KEYS_SRC_DIR)/*.cpp)
 LIB_OBJS = $(LIB_SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean depend docs doc_clean deliver
+.PHONY: all clean depend docs doc_clean deliver install uninstall
 all: $(LIB_TARGET)
 
 clean:
@@ -76,6 +78,20 @@ $(LIB_TARGET): $(LIB_OBJS)
 $(OBJ_DIR)/%.o: %.cpp
 	@$(MKDIR) $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
 	$(CXX) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
+
+install:
+	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/lib
+	$(INSTALL) -m 0755 -t $(DESTDIR)/usr/lib $(LIB_DIR)/$(LIB_NAME)
+	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/lcdapi
+	for i in api include keys sensors; do \
+		$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/lcdapi/$$i && \
+		$(INSTALL) -m 0644 -t $(DESTDIR)/usr/include/lcdapi/$$i \
+			$(PROJECT_ROOT)/$$i/*.h; \
+	done
+
+uninstall:
+	$(RM) $(DESTDIR)/usr/lib/$(LIB_NAME)
+	$(RM) -r $(DESTDIR)/usr/include/lcdapi
 
 
 # DO NOT DELETE
