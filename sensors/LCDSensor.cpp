@@ -2,6 +2,7 @@
 #include "LCDUtils.h"
 #include "LCDSensor.h"
 
+#include <cstring>
 #include <string>
 #include <stdio.h>
 #include <unistd.h>
