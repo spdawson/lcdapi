@@ -2,19 +2,12 @@ PROJECT_ROOT = .
 
 PROJECT_VERSION = 0.2
 
-AR = ar
-CC = g++
-LD = g++
 MAKE_DOC = doxygen
 MKDIR = mkdir -p
-RM = rm -rf
-MV = mv
-CP = cp -R
-MK_TAR = tar zcf $(TAR_FILE)
-CLEAN_BACKUPS = find . -type f | grep "~$\" | xargs rm -f
+MK_TAR = tar caf $(TAR_FILE)
+CLEAN_BACKUPS = find . -type f -name '*~' -delete
 INCFLAGS = -I$(INCLUDE_DIR) -I$(SRC_DIR) -I$(KEYS_SRC_DIR)
-CFLAGS = -fPIC $(INCFLAGS) -g
-LDFLAGS = -shared
+CFLAGS = -fPIC -g
 DEPEND= makedepend -Y $(INCFLAGS)
 
 INCLUDE_DIR = $(PROJECT_ROOT)/include
@@ -28,20 +21,33 @@ DOC_DIR = $(PROJECT_ROOT)/doc
 LIB_NAME = liblcdapi.so
 
 DELIVERY_DIR = lcdapi-$(PROJECT_VERSION)
-DELIVERED = $(SRC_DIR) $(SENSOR_SRC_DIR) $(KEYS_SRC_DIR) $(EXAMPLE_DIR) $(DOC_DIR) $(INCLUDE_DIR) COPYING CHANGELOG Makefile
+DELIVERED = \
+	$(SRC_DIR) \
+	$(SENSOR_SRC_DIR) \
+	$(KEYS_SRC_DIR) \
+	$(EXAMPLE_DIR) \
+	$(DOC_DIR) \
+	$(INCLUDE_DIR) \
+	COPYING \
+	CHANGELOG \
+	Makefile
 
 TAR_FILE = $(DELIVERY_DIR).tar.gz
 DOC_CONFIG = Doxyfile
 
 LIB_TARGET = $(LIB_DIR)/$(LIB_NAME)
 
-LIB_SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SENSOR_SRC_DIR)/*.cpp) $(wildcard $(KEYS_SRC_DIR)/*.cpp)
+LIB_SRCS = \
+	$(wildcard $(SRC_DIR)/*.cpp) \
+	$(wildcard $(SENSOR_SRC_DIR)/*.cpp) \
+	$(wildcard $(KEYS_SRC_DIR)/*.cpp)
 LIB_OBJS = $(LIB_SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
-all: $(LIB_TARGET) doc
+.PHONY: all clean depend docs doc_clean deliver
+all: $(LIB_TARGET)
 
 clean:
-	$(RM) $(OBJ_DIR) $(LIB_DIR) core
+	$(RM) -r $(OBJ_DIR) $(LIB_DIR) core
 
 depend: $(LIB_SRCS)
 	$(DEPEND) $(LIB_SRCS) 2>/dev/null
@@ -52,24 +58,24 @@ docs: doc_clean
 
 doc_clean:
 	cd $(DOC_DIR); \
-	$(RM) html
+	$(RM) -r html
 
 deliver: clean doc_clean
 	$(CLEAN_BACKUPS)
 	$(RM) $(TAR_FILE)
 	$(MKDIR) $(DELIVERY_DIR)
-	$(CP) $(DELIVERED) $(DELIVERY_DIR)
+	cp -R $(DELIVERED) $(DELIVERY_DIR)
 	$(MK_TAR) $(DELIVERY_DIR)
-	$(RM) $(DELIVERY_DIR)
+	$(RM) -r $(DELIVERY_DIR)
 
 $(LIB_TARGET): $(LIB_OBJS)
 	@$(MKDIR) $(LIB_DIR)
-	$(LD) $(LDFLAGS) -o $(LIB_TARGET) $(LIB_OBJS) -lstdc++ -lpthread
+	$(CXX) $(LDFLAGS) -shared -o $(LIB_TARGET) $(LIB_OBJS) -lstdc++ -lpthread
 
 
 $(OBJ_DIR)/%.o: %.cpp
 	@$(MKDIR) $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
-	$(CC) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
+	$(CXX) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
 
 
 # DO NOT DELETE
