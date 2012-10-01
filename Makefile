@@ -64,12 +64,12 @@ deliver: clean doc_clean
 
 $(LIB_TARGET): $(LIB_OBJS)
 	@$(MKDIR) $(LIB_DIR)
-	$(LD) $(LDFLAGS) -o $(LIB_TARGET) $(LIB_OBJS)
+	$(LD) $(LDFLAGS) -o $(LIB_TARGET) $(LIB_OBJS) -lstdc++ -lpthread
 
 
 $(OBJ_DIR)/%.o: %.cpp
 	@$(MKDIR) $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
-	$(CC) $(CFLAGS) $(INC_FLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
 
 
 # DO NOT DELETE
