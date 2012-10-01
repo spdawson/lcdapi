@@ -1,6 +1,6 @@
 PROJECT_ROOT = .
 
-PROJECT_VERSION = 0.2
+PROJECT_VERSION = 0.3
 
 MAKE_DOC = doxygen
 MKDIR = mkdir -p
