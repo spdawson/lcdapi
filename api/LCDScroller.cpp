@@ -3,14 +3,16 @@
 
 using namespace std;
 
-LCDScroller::LCDScroller(LCDElement *parent, const string &id) : LCDWidget(id, parent, "scroller")
+LCDScroller::LCDScroller(LCDElement *parent, const string &id) : LCDWidget(id, parent, "scroller"),
+                                                                 _text(),
+                                                                 _right(10),
+                                                                 _bottom(1),
+                                                                 _speed(8),
+                                                                 _direction(Horizontal)
+
 {
   _x = 1;
-  _bottom = 1;
   _y = 1;
-  _right = 10;
-  _speed = 8;
-  _direction = Horizontal;
 }
 
 void LCDScroller::notifyChanged()
@@ -25,7 +27,7 @@ void LCDScroller::notifyChanged()
          << " "
          << _bottom
          << " "
-         << (char)_direction
+         << static_cast<char>(_direction)
          << " "
          << _speed
          << " \""

@@ -4,15 +4,12 @@
 
 using namespace std;
 
-LCDWidget::LCDWidget(const string &id, LCDElement *parent, const string &widgetType) : LCDElement(id, "widget_add", widgetType, parent)
+LCDWidget::LCDWidget(const string &id, LCDElement *parent, const string &widgetType) : LCDElement(id, "widget_add", widgetType, parent), _x(1), _y(1), _widgetType(widgetType)
 {
-  _x = 1;
-  _y = 1;
-  _widgetType = widgetType;
   _elementDel = "widget_del";
 }
 
-LCDWidget::LCDWidget(const string &widgetType) : LCDElement("", 0)
+LCDWidget::LCDWidget(const string &widgetType) : LCDElement("", 0), _x(1), _y(1), _widgetType(widgetType)
 {
   _x = 1;
   _y = 1;

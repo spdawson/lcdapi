@@ -6,15 +6,12 @@ using namespace std;
 
 const int LCDBigNumber::LCD_COLON = 10;
 
-LCDBigNumber::LCDBigNumber(LCDElement *parent, const string &id) : LCDWidget(id, parent, "num")
+LCDBigNumber::LCDBigNumber(LCDElement *parent, const string &id) : LCDWidget(id, parent, "num"), _number(0), _position(1)
 {
-  _position = 1;
-  _number = 0;
 }
 
-LCDBigNumber::LCDBigNumber(int number, int x, LCDElement *parent, const string &id) : LCDWidget(id, parent, "num")
+LCDBigNumber::LCDBigNumber(int number, int x, LCDElement *parent, const string &id) : LCDWidget(id, parent, "num"), _number(number), _position(1)
 {
-  _position = 1;
   set(number, x);
 }
 

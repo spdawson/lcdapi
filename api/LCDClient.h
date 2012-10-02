@@ -8,9 +8,6 @@
 #include <pthread.h>
 #include <string>
 
-extern "C" void *mainRepliesLoop(void *);
-extern "C" void *handleKeyEvent(void *);
-
 struct KeyEventInfo
 {
   KeyEvent kev;

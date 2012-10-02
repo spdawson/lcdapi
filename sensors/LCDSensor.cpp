@@ -7,12 +7,18 @@
 
 using namespace std;
 
+void *updateWhenChanged(void *);
+void *updateEach(void *);
+
 const int LCDSensor::MAX_CMD_RESULT_LINE_SIZE = 255;
 
 LCDSensor::LCDSensor()
+  : _exist(true),
+    _onChangeThreadStarted(false),
+    _onChangeThread(static_cast<pthread_t>(-1)),
+    _onChangeList(),
+    _onTimeOutList()
 {
-  _exist = true;
-  _onChangeThreadStarted = false;
 }
 
 LCDSensor::~LCDSensor()
@@ -107,7 +113,7 @@ void LCDSensor::addOnChangeWidget(LCDWidget *widget)
 {
   if (!_onChangeThreadStarted)
   {
-    ::pthread_create(&_onChangeThread, 0, (ThreadFunction)updateWhenChanged, (void *)this);
+    ::pthread_create(&_onChangeThread, 0, &updateWhenChanged, this);
     _onChangeThreadStarted = true;
   }
 
@@ -119,7 +125,7 @@ void LCDSensor::removeOnChangeWidget(LCDWidget *widget)
   removeOnChangeWidget(widget->getId());
 }
 
-void LCDSensor::removeOnChangeWidget(string id)
+void LCDSensor::removeOnChangeWidget(const string& id)
 {
   _onChangeList.erase(id);
   if (_onChangeList.empty() && _onChangeThreadStarted)
@@ -142,7 +148,7 @@ void LCDSensor::addOnTimeOutWidget(LCDWidget *widget, int timeout)
 
   _onTimeOutList[widget->getId()] = tmpWidget;
 
-  ::pthread_create(&(_onTimeOutList[widget->getId()]._thread), 0, (ThreadFunction)updateEach, (void *)this);
+  ::pthread_create(&(_onTimeOutList[widget->getId()]._thread), 0, &updateEach, this);
 }
 
 void LCDSensor::removeOnTimeOutWidget(LCDWidget *widget)
@@ -150,7 +156,7 @@ void LCDSensor::removeOnTimeOutWidget(LCDWidget *widget)
   removeOnTimeOutWidget(widget->getId());
 }
 
-void LCDSensor::removeOnTimeOutWidget(string id)
+void LCDSensor::removeOnTimeOutWidget(const string& id)
 {
   if (::pthread_cancel(_onTimeOutList[id]._thread) == 0)
   {
@@ -163,20 +169,22 @@ void *updateWhenChanged(void *param)
 {
   ::pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, 0);
 
-  LCDSensor *daddy = (LCDSensor *)param;
+  LCDSensor *daddy = static_cast<LCDSensor*>(param);
 
   while (daddy->exists())
   {
     daddy->waitForChange();
     daddy->fireChanged();
   }
+
+  return NULL;
 }
 
 void *updateEach(void *param)
 {
   ::pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, 0);
 
-  LCDSensor *daddy = (LCDSensor *)param;
+  LCDSensor *daddy = static_cast<LCDSensor*>(param);
 
   LCDWidgetTimeOut widgetInfo;
 
@@ -199,4 +207,6 @@ void *updateEach(void *param)
       daddy->removeOnTimeOutWidget(widgetInfo._widgetId);
     }
   }
+
+  return NULL;
 }

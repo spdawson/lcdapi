@@ -5,7 +5,24 @@
 
 using namespace std;
 
-LCDClient::LCDClient(const string &server, int port) : LCDElement("", "")
+void *mainRepliesLoop(void *);
+void *handleKeyEvent(void *);
+
+LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
+                                                       _sendMutex(),
+                                                       _gotAnswer(),
+                                                       _mainThread(),
+                                                       _serverConnection(),
+                                                       _answer(""),
+                                                       _currentScreen(""),
+                                                       _connectionString(),
+                                                       _serverVersion(),
+                                                       _protocolVersion(),
+                                                       _width(0),
+                                                       _height(0),
+                                                       _charWidth(0),
+                                                       _charHeight(0),
+                                                       _callbacks()
 {
   ::pthread_mutex_init(&_sendMutex, 0);
   ::pthread_cond_init(&_gotAnswer, 0);
@@ -47,7 +64,7 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", "")
     }
   }
 
-  ::pthread_create(&_mainThread, 0, mainRepliesLoop, (void *)this);
+  ::pthread_create(&_mainThread, 0, mainRepliesLoop, this);
 }
 
 LCDClient::~LCDClient()
@@ -66,7 +83,6 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
     LCDLock l(&_sendMutex);
 
     string command = cmd + " " + parameters;
-    bool end = false;
 
     _serverConnection << command;
 
@@ -162,15 +178,19 @@ void LCDClient::mainLoop()
 
 void *mainRepliesLoop(void *param)
 {
-  LCDClient *client = (LCDClient *)param;
+  LCDClient *client = static_cast<LCDClient*>(param);
   client->mainLoop();
+
+  return NULL;
 }
 
 void *handleKeyEvent(void *param)
 {
-  KeyEventInfo *kevI = (KeyEventInfo *)param;
+  KeyEventInfo *kevI = static_cast<KeyEventInfo*>(param);
 
   (*(kevI->callback))(kevI->kev);
 
   delete kevI;
+
+  return NULL;
 }

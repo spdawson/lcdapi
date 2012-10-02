@@ -3,12 +3,11 @@
 
 using namespace std;
 
-LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string")
+LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text("")
 {
-  _text = "";
 }
 
-LCDText::LCDText(const string &text, int x, int y, LCDElement *parent, const string &id) : LCDWidget(id, parent, "string")
+LCDText::LCDText(const string &text, int x, int y, LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text(text)
 {
   set(text, x, y);
 }

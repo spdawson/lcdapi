@@ -5,8 +5,12 @@
 using namespace std;
 
 LCDTimeSensor::LCDTimeSensor(const string &format)
+  : LCDSensor(), _format(format)
 {
-  _format = format;
+}
+
+LCDTimeSensor::~LCDTimeSensor()
+{
 }
 
 void LCDTimeSensor::waitForChange()

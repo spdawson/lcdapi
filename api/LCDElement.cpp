@@ -10,6 +10,14 @@ LCDMutex LCDElement::_elementMutex;
 unsigned int LCDElement::_elementCounter = 0;
 
 LCDElement::LCDElement(const string &id, const string &addCommand, const string &addParam, LCDElement *parent)
+  : _iAmDead(false),
+    _id(),
+    _elementDel(),
+    _elementAddCmd(addCommand),
+    _elementAddParam(addParam),
+    _parent(parent),
+    _childrenList(),
+    _commandBuffer()
 {
   if (id.size() == 0)
   {
@@ -27,9 +35,6 @@ LCDElement::LCDElement(const string &id, const string &addCommand, const string 
   {
     _id = id;
   }
-  _elementAddCmd = addCommand;
-  _elementAddParam = addParam;
-  _parent = parent;
   if (_parent)
   {
     _parent->addToList(this);

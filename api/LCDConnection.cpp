@@ -8,10 +8,9 @@
 using namespace std;
 
 LCDConnection::LCDConnection()
+  : _isConnected(false), _sock(socket (AF_INET, SOCK_STREAM, 0 )), _addr()
 {
-  _isConnected = false;
   memset(&_addr, 0, sizeof (_addr));
-  _sock = socket (AF_INET, SOCK_STREAM, 0 );
 
   if (!isValid())
   {
@@ -19,22 +18,22 @@ LCDConnection::LCDConnection()
   }
 
   int on = 1;
-  if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, (const char*) &on, sizeof (on)) == -1)
+  if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&on), sizeof (on)) == -1)
   {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);   
   }
 }
 
 LCDConnection::LCDConnection(const string &host, const int port)
+  : _isConnected(false), _sock(), _addr()
 {
   LCDConnection();
   connect(host, port);
 }
 
 LCDConnection::LCDConnection(const LCDConnection &source)
+  : _isConnected(source._isConnected), _sock(source._sock), _addr()
 {
-  _sock = source._sock;
-  _isConnected = source._isConnected;
 }
 
 LCDConnection::~LCDConnection()
@@ -64,7 +63,7 @@ void LCDConnection::connect(const string &host, const int port)
     throw LCDException(LCD_SOCKET_NOT_SUPPORTED);
   }
 
-  status = ::connect(_sock, (sockaddr *)&_addr, sizeof(_addr) );
+  status = ::connect(_sock, reinterpret_cast<struct sockaddr*>(&_addr), sizeof(_addr) );
 
   if (status != 0)
   {
@@ -152,6 +151,8 @@ LCDConnection & LCDConnection::operator = (const LCDConnection &copy)
 
   _sock = copy._sock;
   _isConnected = copy._isConnected;
+
+  return *this;
 }
 
 const LCDConnection& LCDConnection::operator << (const string &s)

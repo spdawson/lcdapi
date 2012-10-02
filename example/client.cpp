@@ -15,14 +15,16 @@ LCD_CALLBACK_FUNCTION_END(forA)
 class TitleSwitcher: public LCDCallback
 {
  private:
+  const TitleSwitcher& operator=(const TitleSwitcher& rhs);
+  TitleSwitcher(const TitleSwitcher& original);
+  // Memberwise copying is prohibited.
+
   LCDTitle *_title;
   string _firstText, _secondText;
  public:
   TitleSwitcher(LCDTitle *title, string secondText)
+    : LCDCallback(), _title(title), _firstText(_title->get()), _secondText(secondText)
   {
-    _title = title;
-    _firstText = _title->get();
-    _secondText = secondText;
   }
   void operator()(KeyEvent key)
   {

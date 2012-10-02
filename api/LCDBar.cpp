@@ -4,13 +4,11 @@
 
 using namespace std;
 
-LCDBar::LCDBar(const string &widgetType, const string &id, LCDElement *parent) : LCDWidget(id, parent, widgetType)
+LCDBar::LCDBar(const string &widgetType, const string &id, LCDElement *parent) : LCDWidget(id, parent, widgetType), _length(0), _max(100)
 {
-  _length = 0;  
-  _max = 100;
 }
 
-LCDBar::LCDBar(const string &widgetType, int length, int x, int y, const string &id, LCDElement *parent) : LCDWidget(id, parent, widgetType)
+LCDBar::LCDBar(const string &widgetType, int length, int x, int y, const string &id, LCDElement *parent) : LCDWidget(id, parent, widgetType), _length(length), _max(100)
 {
   set(length, x, y);
 }

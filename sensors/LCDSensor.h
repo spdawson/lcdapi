@@ -32,17 +32,29 @@ class LCDWidgetTimeOut
   LCDWidget *_widget;
   ::pthread_t _thread;
   LCDWidgetTimeOut()
+    : _widgetId(), _timeOut(0), _widget(NULL), _thread(static_cast<pthread_t>(-1))
   {
-    _thread = (::pthread_t)-1;
   }
   bool isValid()
   {
-    return (_thread != (::pthread_t)-1);
+    return (_thread != static_cast<pthread_t>(-1));
+  }
+  const LCDWidgetTimeOut& operator=(const LCDWidgetTimeOut& rhs)
+  {
+    if (&rhs != this) {
+      _widgetId = rhs._widgetId;
+      _timeOut = rhs._timeOut;
+      _widget = rhs._widget;
+      _thread = rhs._thread;
+    }
+
+    return *this;
+  }
+  LCDWidgetTimeOut(const LCDWidgetTimeOut& original)
+    : _widgetId(original._widgetId), _timeOut(original._timeOut), _widget(original._widget), _thread(original._thread)
+  {
   }
 };
-
-extern "C" void *updateWhenChanged(void *);
-extern "C" void *updateEach(void *);
 
 /** \class LCDSensor LCDSensor.h "api/LCDSensor.h"
  *  \brief Main class for all sensors of the API.
@@ -71,7 +83,7 @@ class LCDSensor
  public:
   static const int MAX_CMD_RESULT_LINE_SIZE;
   LCDSensor();
-  ~LCDSensor();
+  virtual ~LCDSensor();
   bool exists();
   const LCDWidgetTimeOut &getThreadWidgetInfo(const ::pthread_t &thread);
   /**
@@ -140,7 +152,7 @@ class LCDSensor
    * This method is used to delete the association between a wiget and a sensor.
    * @param id The identifier of the widget to remove from sensor configuration.
    */
-  void removeOnChangeWidget(std::string id);
+  void removeOnChangeWidget(const std::string& id);
   /**
    * \brief Remove a widget that was added with \ref addOnTimeOutWidget.
    *
@@ -154,7 +166,7 @@ class LCDSensor
    * This method is used to delete the association between a wiget and a sensor.
    * @param id The identifier of the widget to remove from sensor configuration.
    */
-  void removeOnTimeOutWidget(std::string id);
+  void removeOnTimeOutWidget(const std::string& id);
 };
 
 #endif

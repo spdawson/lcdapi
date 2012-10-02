@@ -13,7 +13,7 @@ class LCDScroller : public LCDWidget
 {
  private:
   std::string _text;
-  int _left, _top, _right, _bottom, _speed;
+  int _right, _bottom, _speed;
   Direction _direction;
  public:
   /**

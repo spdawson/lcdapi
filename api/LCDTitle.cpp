@@ -3,11 +3,11 @@
 
 using namespace std;
 
-LCDTitle::LCDTitle(LCDElement *parent, const string &id) : LCDWidget(id, parent, "title")
+LCDTitle::LCDTitle(LCDElement *parent, const string &id) : LCDWidget(id, parent, "title"), _text()
 {
 }
 
-LCDTitle::LCDTitle(const string &text, LCDElement *parent, const string &id) : LCDWidget(id, parent, "title")
+LCDTitle::LCDTitle(const string &text, LCDElement *parent, const string &id) : LCDWidget(id, parent, "title"), _text(text)
 {
   set(text);
 }

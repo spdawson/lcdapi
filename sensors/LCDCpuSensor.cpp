@@ -5,13 +5,19 @@
 
 using namespace std;
 
-LCDCpuSensor::LCDCpuSensor(string cpuName)
+LCDCpuSensor::LCDCpuSensor(const string& cpuName)
+  : LCDSensor(),
+    _cpuName("cpu"),
+    _userTicks(0),
+    _sysTicks(0),
+    _niceTicks(0),
+    _idleTicks(0),
+    _load(0)
 {
-  _cpuName = "cpu";
-  _userTicks = 0;
-  _sysTicks = 0;
-  _niceTicks = 0;
-  _idleTicks = 0;
+}
+
+LCDCpuSensor::~LCDCpuSensor()
+{
 }
 
 void LCDCpuSensor::waitForChange()
@@ -30,7 +36,7 @@ string LCDCpuSensor::getCurrentValue()
                            (nTicks - _niceTicks) +
                            (iTicks - _idleTicks));
 
-  int load  = (totalTicks == 0) ? 0 : (int) ( 100.0 * ( (uTicks+sTicks+nTicks) - (_userTicks+_sysTicks+_niceTicks))/( totalTicks+0.001) + 0.5 );
+  int load  = (totalTicks == 0) ? 0 : int( 100.0 * ( (uTicks+sTicks+nTicks) - (_userTicks+_sysTicks+_niceTicks))/( totalTicks+0.001) + 0.5 );
 
   _userTicks = uTicks;
   _sysTicks = sTicks;

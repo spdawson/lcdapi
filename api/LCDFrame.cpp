@@ -3,7 +3,8 @@
 
 using namespace std;
 
-LCDFrame::LCDFrame(LCDElement *parent, const string &id) : LCDWidget(id, parent, "frame")
+LCDFrame::LCDFrame(LCDElement *parent, const string &id) : LCDWidget(id, parent, "frame"),
+                                                           _left(0), _top(0), _right(0), _bottom(0), _width(0), _height(0), _speed(0), _direction(Horizontal)
 {
 }
 
@@ -36,7 +37,7 @@ void LCDFrame::notifyChanged()
          << " "
          << _height
          << " "
-         << (char)_direction
+         << static_cast<char>(_direction)
          << " "
          << _speed;
 

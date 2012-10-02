@@ -5,8 +5,12 @@
 using namespace std;
 
 LCDSystemSensor::LCDSystemSensor(const string &command)
+  : LCDSensor(), _command(command)
 {
-  _command = command;
+}
+
+LCDSystemSensor::~LCDSystemSensor()
+{
 }
 
 void LCDSystemSensor::waitForChange()

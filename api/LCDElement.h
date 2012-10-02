@@ -34,6 +34,11 @@
 
 class LCDElement
 {
+ private:
+  const LCDElement& operator=(const LCDElement& rhs);
+  LCDElement(const LCDElement& original);
+  // Memberwise copying is prohibited.
+
  protected:
   static std::set<std::string> _elementsList;
   bool _iAmDead;
@@ -71,7 +76,7 @@ class LCDElement
    *  so the element is removed.
   */
 
-  ~LCDElement();
+  virtual ~LCDElement();
 
   /**
    * \brief Add a child to the component.

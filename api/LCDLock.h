@@ -14,6 +14,10 @@
 class LCDLock
 {
  private:
+  const LCDLock& operator=(const LCDLock& rhs);
+  LCDLock(const LCDLock& original);
+  // Memberwise copying is prohibited.
+
   LCDMutex *_lcdMutex;
   ::pthread_mutex_t *_posixMutex;
   bool _useLCD;
@@ -25,11 +29,10 @@ class LCDLock
    * This constructor locks the LCD mutex and stores it.
   */
   LCDLock(LCDMutex *mutex)
+    : _lcdMutex(mutex), _posixMutex(NULL), _useLCD(true)
   {
-    _lcdMutex = mutex;
     ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
     _lcdMutex->lock();
-    _useLCD = true;
   }
   /**
    * \brief Constructor locking a Posix mutex.
@@ -37,11 +40,10 @@ class LCDLock
    * This constructor locks the Posix mutex and stores it.
   */
   LCDLock(::pthread_mutex_t *mutex)
+    : _lcdMutex(NULL), _posixMutex(mutex), _useLCD(false)
   {
-    _posixMutex = mutex;
     ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
     ::pthread_mutex_lock(_posixMutex);
-    _useLCD = false;
   }
 
   /**

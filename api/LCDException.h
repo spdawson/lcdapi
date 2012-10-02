@@ -17,8 +17,8 @@ class LCDException
  public:
 
   LCDException(std::string desc)
+    : _desc(desc)
   {
-    _desc = desc;
   }
 
   ~LCDException()

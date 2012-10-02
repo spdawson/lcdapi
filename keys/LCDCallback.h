@@ -63,6 +63,9 @@ class LCDCallback
   LCDCallback()
   {
   }
+  virtual ~LCDCallback()
+  {
+  }
 
   /**
    * \brief Called when key event occurs.
@@ -79,7 +82,7 @@ typedef std::map<KeyEvent, LCDCallback *> CallbackMap;
 
 static std::string toString(KeyEvent t)
 {
-  std::string s(1, (char)t);
+  std::string s(1, static_cast<char>(t));
   return s;
 }
 

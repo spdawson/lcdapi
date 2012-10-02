@@ -3,11 +3,11 @@
 
 using namespace std;
 
-LCDIcon::LCDIcon(LCDElement *parent, const string &id) : LCDWidget(id, parent, "icon")
+LCDIcon::LCDIcon(LCDElement *parent, const string &id) : LCDWidget(id, parent, "icon"), _type()
 {
 }
 
-LCDIcon::LCDIcon(const string &type, int x, int y, LCDElement *parent, const string &id) : LCDWidget(id, parent, "string")
+LCDIcon::LCDIcon(const string &type, int x, int y, LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _type(type)
 {
   set(type, x, y);
 }

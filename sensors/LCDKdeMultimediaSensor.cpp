@@ -4,10 +4,15 @@
 
 using namespace std;
 
-LCDKdeMultimediaSensor::LCDKdeMultimediaSensor(std::string defaultValue)
+LCDKdeMultimediaSensor::LCDKdeMultimediaSensor(const std::string& defaultValue)
+  : LCDSensor(),
+    _previousValue("NO"),
+    _defaultValue(defaultValue)
 {
-  _previousValue = "NO";
-  _defaultValue = defaultValue;
+}
+
+LCDKdeMultimediaSensor::~LCDKdeMultimediaSensor()
+{
 }
 
 void LCDKdeMultimediaSensor::waitForChange()
@@ -23,7 +28,7 @@ string LCDKdeMultimediaSensor::getCurrentValue()
 {
   string value;
 
-  string noatunId = executeCommand("dcop | grep noatun");
+  const string noatunId = executeCommand("dcop | grep noatun");
 
   if (noatunId != "")
   {
@@ -31,7 +36,8 @@ string LCDKdeMultimediaSensor::getCurrentValue()
   }
   else
   {
-    string kscdTitle = executeCommand("dcop kscd CDPlayer currentTrackTitle");
+    const string kscdTitle =
+      executeCommand("dcop kscd CDPlayer currentTrackTitle");
     if (kscdTitle != "")
     {
       value = kscdTitle;

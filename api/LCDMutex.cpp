@@ -3,9 +3,9 @@
 using namespace std;
 
 LCDMutex::LCDMutex()
+  : _mutex(), _owner(static_cast<pthread_t>(-1))
 {
   ::pthread_mutex_init(&_mutex, 0);
-  _owner = (::pthread_t)-1;
 }
 
 LCDMutex::~LCDMutex()
@@ -24,6 +24,6 @@ void LCDMutex::lock()
 
 void LCDMutex::unlock()
 {
-  _owner = (::pthread_t)-1;
+  _owner = static_cast<pthread_t>(-1);
   ::pthread_mutex_unlock(&_mutex);
 }
