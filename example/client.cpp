@@ -42,7 +42,7 @@ void intHandler(int sig)
   thisIsTheEnd = true;
 }
 
-int main(char **argv, int argc)
+int main(int argc, char **argv)
 {
   try
   {
