@@ -81,8 +81,7 @@ class LCDCallback
 
   static std::string toString(KeyEvent t)
   {
-    std::string s(1, static_cast<char>(t));
-    return s;
+    return std::string(1, static_cast<char>(t));
   }
 };
 
