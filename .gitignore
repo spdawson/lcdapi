@@ -1,5 +1,6 @@
 /depend
 /example/client
+/example/client.o
 /doc/html
 /lib
 /obj
