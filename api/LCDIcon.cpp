@@ -21,6 +21,11 @@ void LCDIcon::set(const string &type, int x, int y)
   _y = y;
   notifyChanged();
 }
+
+void LCDIcon::valueCallback(const std::string& value)
+{
+}
+
 void LCDIcon::notifyChanged()
 {
   ostringstream params;

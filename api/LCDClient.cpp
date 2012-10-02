@@ -105,6 +105,14 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
   }
 }
 
+void LCDClient::notifyCreated()
+{
+}
+
+void LCDClient::notifyDestroyed()
+{
+}
+
 void LCDClient::setClientOption(const string& optName, const string& value)
 {
   sendCommand("client_set", string("-") + optName + " " + value);

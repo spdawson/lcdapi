@@ -65,8 +65,8 @@ class LCDClient : public LCDElement
    */
   void sendCommand(const std::string &cmd, const std::string &parameters = "");
 
-  virtual void notifyCreated() {};
-  virtual void notifyDestroyed() {};
+  virtual void notifyCreated();
+  virtual void notifyDestroyed();
 
   /**
    * \brief Returns connected server version.
