@@ -1,11 +1,11 @@
 #ifndef _LCD_LOCK_H_
 #define _LCD_LOCK_H_
 
-#include "LCDMutex.h"
-
 #include <pthread.h>
 
 namespace lcdapi {
+
+class LCDMutex;
 
 /** \class LCDLock LCDLock.h "api/LCDLock.h"
  *  \brief A class to lock mutexes.
@@ -30,41 +30,21 @@ class LCDLock
    *
    * This constructor locks the LCD mutex and stores it.
   */
-  explicit LCDLock(LCDMutex *mutex)
-    : _lcdMutex(mutex), _posixMutex(NULL), _useLCD(true)
-  {
-    ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
-    _lcdMutex->lock();
-  }
+  explicit LCDLock(LCDMutex *mutex);
+
   /**
    * \brief Constructor locking a Posix mutex.
    *
    * This constructor locks the Posix mutex and stores it.
   */
-  explicit LCDLock(::pthread_mutex_t *mutex)
-    : _lcdMutex(NULL), _posixMutex(mutex), _useLCD(false)
-  {
-    ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
-    ::pthread_mutex_lock(_posixMutex);
-  }
+  explicit LCDLock(::pthread_mutex_t *mutex);
 
   /**
    * \brief Destructor unlocking the mutex.
    *
    * This destructor unlocks the mutex.
   */
-  ~LCDLock()
-  {
-    if (_useLCD)
-    {
-      _lcdMutex->unlock();
-    }
-    else
-    {
-      ::pthread_mutex_unlock(_posixMutex);
-    }
-    ::pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, 0);
-  }
+  ~LCDLock();
 };
 
 } // end of lcdapi namespace
