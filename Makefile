@@ -6,6 +6,7 @@ INCFLAGS = -I$(INCLUDE_DIR) -I$(SRC_DIR) -I$(KEYS_SRC_DIR)
 CFLAGS = -g \
 	-Wall -Wextra -Weffc++ -Wold-style-cast -Werror -Wno-error=unused-parameter -Wno-error=unused-function
 INSTALL = install
+STRIP = strip
 
 DESTDIR = /
 INCLUDE_DIR = $(PROJECT_ROOT)/include
@@ -19,6 +20,7 @@ DOC_DIR = $(PROJECT_ROOT)/doc
 DEPEND_DIR = $(PROJECT_ROOT)/depend
 PROJECT_NAME = lcdapi
 LIB_NAME = lib$(PROJECT_NAME).so
+LIBS = stdc++ pthread
 
 DELIVERY_DIR = $(PROJECT_NAME)-$(PROJECT_VERSION)
 DELIVERED = \
@@ -69,7 +71,8 @@ deliver: clean doc_clean
 
 $(LIB_TARGET): depend $(LIB_OBJS)
 	mkdir -p $(LIB_DIR)
-	$(CXX) $(LDFLAGS) -shared -o $(LIB_TARGET) $(LIB_OBJS) -lstdc++ -lpthread
+	$(CXX) $(LDFLAGS) -shared -o $(LIB_TARGET) $(LIB_OBJS) $(foreach i,$(LIBS),-l$(i))
+	$(STRIP) --strip-unneeded $(LIB_TARGET)
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
