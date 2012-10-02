@@ -66,7 +66,7 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
     }
   }
 
-  ::pthread_create(&_mainThread, 0, mainRepliesLoop, this);
+  ::pthread_create(&_mainThread, 0, &mainRepliesLoop, this);
 }
 
 LCDClient::~LCDClient()
@@ -159,7 +159,7 @@ void LCDClient::mainLoop()
           kevI->callback = _callbacks[key];
 
           ::pthread_t tid;
-          ::pthread_create(&tid, 0, handleKeyEvent, kevI);
+          ::pthread_create(&tid, 0, &handleKeyEvent, kevI);
         }
 
       }
