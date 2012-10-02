@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace lcdapi {
+
 const int LCD_MAXRECV = 200;
 
 /**
@@ -189,5 +191,7 @@ const std::string LCD_SOCKET_NOT_CONNECTED = "Socket not connected";
 
 
 const int LCD_BIG_NUMBER_SEPARATOR = 10;
+
+} // end of lcdapi namespace
 
 #endif
