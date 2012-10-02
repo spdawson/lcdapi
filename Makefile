@@ -2,12 +2,8 @@ PROJECT_ROOT = .
 
 PROJECT_VERSION = 0.3
 
-MAKE_DOC = doxygen
-MKDIR = mkdir -p
-MK_TAR = tar caf $(TAR_FILE)
-CLEAN_BACKUPS = find . -type f -name '*~' -delete
 INCFLAGS = -I$(INCLUDE_DIR) -I$(SRC_DIR) -I$(KEYS_SRC_DIR)
-CFLAGS = -fPIC -g
+CFLAGS = -g
 INSTALL = install
 
 DESTDIR = /
@@ -20,9 +16,10 @@ OBJ_DIR = $(PROJECT_ROOT)/obj
 LIB_DIR = $(PROJECT_ROOT)/lib
 DOC_DIR = $(PROJECT_ROOT)/doc
 DEPEND_DIR = $(PROJECT_ROOT)/depend
-LIB_NAME = liblcdapi.so
+PROJECT_NAME = lcdapi
+LIB_NAME = lib$(PROJECT_NAME).so
 
-DELIVERY_DIR = lcdapi-$(PROJECT_VERSION)
+DELIVERY_DIR = $(PROJECT_NAME)-$(PROJECT_VERSION)
 DELIVERED = \
 	$(SRC_DIR) \
 	$(SENSOR_SRC_DIR) \
@@ -56,46 +53,44 @@ depend: $(LIB_DEPENDS)
 
 docs: doc_clean
 	cd $(DOC_DIR); \
-	$(MAKE_DOC) $(DOC_CONFIG)
+	doxygen $(DOC_CONFIG)
 
 doc_clean:
-	cd $(DOC_DIR); \
-	$(RM) -r html
+	$(RM) -r $(DOC_DIR)/html
 
 deliver: clean doc_clean
-	$(CLEAN_BACKUPS)
+	find . -type f -name '*~' -delete
 	$(RM) $(TAR_FILE)
-	$(MKDIR) $(DELIVERY_DIR)
+	mkdir -p $(DELIVERY_DIR)
 	cp -R $(DELIVERED) $(DELIVERY_DIR)
-	$(MK_TAR) $(DELIVERY_DIR)
+	tar caf $(TAR_FILE) $(DELIVERY_DIR)
 	$(RM) -r $(DELIVERY_DIR)
 
 $(LIB_TARGET): depend $(LIB_OBJS)
-	@$(MKDIR) $(LIB_DIR)
+	mkdir -p $(LIB_DIR)
 	$(CXX) $(LDFLAGS) -shared -o $(LIB_TARGET) $(LIB_OBJS) -lstdc++ -lpthread
 
-
 $(OBJ_DIR)/%.o: %.cpp
-	@$(MKDIR) $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
+	@mkdir -p $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
 	$(CXX) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
 
 $(DEPEND_DIR)/%.d: %.cpp
-	@$(MKDIR) $(DEPEND_DIR)/api $(DEPEND_DIR)/sensors $(DEPEND_DIR)/keys
+	@mkdir -p $(DEPEND_DIR)/api $(DEPEND_DIR)/sensors $(DEPEND_DIR)/keys
 	$(CXX) $(CFLAGS) $(INCFLAGS) -MM -MP $< > $@
 
 install:
 	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/lib
 	$(INSTALL) -m 0755 -t $(DESTDIR)/usr/lib $(LIB_DIR)/$(LIB_NAME)
-	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/lcdapi
+	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/$(PROJECT_NAME)
 	for i in api include keys sensors; do \
-		$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/lcdapi/$$i && \
-		$(INSTALL) -m 0644 -t $(DESTDIR)/usr/include/lcdapi/$$i \
+		$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/$(PROJECT_NAME)/$$i && \
+		$(INSTALL) -m 0644 -t $(DESTDIR)/usr/include/$(PROJECT_NAME)/$$i \
 			$(PROJECT_ROOT)/$$i/*.h; \
 	done
 
 uninstall:
 	$(RM) $(DESTDIR)/usr/lib/$(LIB_NAME)
-	$(RM) -r $(DESTDIR)/usr/include/lcdapi
+	$(RM) -r $(DESTDIR)/usr/include/$(PROJECT_NAME)
 
 ifdef LIB_DEPENDS
 
