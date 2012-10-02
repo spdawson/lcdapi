@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 const int LCDBigNumber::LCD_COLON = 10;
@@ -63,3 +65,5 @@ void LCDBigNumber::valueCallback(const string& value)
   }
   notifyChanged();
 }
+
+} // end of lcdapi namespace

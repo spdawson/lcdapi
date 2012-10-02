@@ -13,6 +13,8 @@
 #include <list>
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDWidget LCDWidget.h "api/LCDWidget.h"
  *  \brief Main class for all widgets of the API.
  *  \ingroup widgets
@@ -64,5 +66,7 @@ class LCDWidget : public LCDElement
   void set(const ParameterList &pList);
   virtual void valueCallback(const std::string& value) = 0;
 };
+
+} // end of lcdapi namespace
 
 #endif

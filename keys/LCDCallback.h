@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+namespace lcdapi {
+
 /**
  * \defgroup keys Keys handling
  *
@@ -85,5 +87,7 @@ static std::string toString(KeyEvent t)
   std::string s(1, static_cast<char>(t));
   return s;
 }
+
+} // end of lcdapi namespace
 
 #endif

@@ -4,6 +4,8 @@
 #include "LCDSensor.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDSystemSensor LCDSystemSensor.h "api/LCDSystemSensor.h"
  *  \brief A sensor that executes a shell command.
  *  \ingroup sensors
@@ -27,5 +29,7 @@ class LCDSystemSensor : public LCDSensor
   explicit LCDSystemSensor(const std::string &command);
   virtual ~LCDSystemSensor();
 };
+
+} // end of lcdapi namespace
 
 #endif

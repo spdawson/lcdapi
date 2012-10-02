@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDBar::LCDBar(const string &widgetType, const string &id, LCDElement *parent) : LCDWidget(id, parent, widgetType), _length(0), _max(100)
@@ -55,3 +57,5 @@ void LCDBar::valueCallback(const string& value)
 {
   setPercentage(atoi(value.c_str()));
 }
+
+} // end of lcdapi namespace

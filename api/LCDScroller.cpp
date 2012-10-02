@@ -1,6 +1,8 @@
 #include "LCDScroller.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDScroller::LCDScroller(LCDElement *parent, const string &id) : LCDWidget(id, parent, "scroller"),
@@ -78,3 +80,5 @@ void LCDScroller::valueCallback(const std::string& value)
 {
   setText(value);
 }
+
+} // end of lcdapi namespace

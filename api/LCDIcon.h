@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDIcon LCDIcon.h "api/LCDIcon.h"
  *  \brief A widget to display a predefined icon.
  *  \ingroup widgets
@@ -66,5 +68,7 @@ class LCDIcon : public LCDWidget
 
   virtual void notifyChanged();
 };
+
+} // end of lcdapi namespace
 
 #endif

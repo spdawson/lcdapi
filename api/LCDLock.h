@@ -5,6 +5,8 @@
 
 #include <pthread.h>
 
+namespace lcdapi {
+
 /** \class LCDLock LCDLock.h "api/LCDLock.h"
  *  \brief A class to lock mutexes.
  *  \ingroup main
@@ -64,5 +66,7 @@ class LCDLock
     ::pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, 0);
   }
 };
+
+} // end of lcdapi namespace
 
 #endif

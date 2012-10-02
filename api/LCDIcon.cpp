@@ -1,6 +1,8 @@
 #include "LCDIcon.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDIcon::LCDIcon(LCDElement *parent, const string &id) : LCDWidget(id, parent, "icon"), _type()
@@ -42,3 +44,5 @@ const string& LCDIcon::getIcon() const
 {
   return _type;
 }
+
+} // end of lcdapi namespace

@@ -3,6 +3,8 @@
 
 #include <pthread.h>
 
+namespace lcdapi {
+
 /** \class LCDMutex LCDMutex.h "api/LCDMutex.h"
  *  \brief A class implementing mutexes.
  *  \ingroup main
@@ -43,5 +45,7 @@ class LCDMutex
   void unlock();
 
 };
+
+} // end of lcdapi namespace
 
 #endif

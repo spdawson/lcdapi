@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDWidget::LCDWidget(const string &id, LCDElement *parent, const string &widgetType) : LCDElement(id, "widget_add", widgetType, parent), _x(1), _y(1), _widgetType(widgetType)
@@ -40,3 +42,4 @@ void LCDWidget::set(const ParameterList &pList)
   setWidgetParameters(params.str());
 }
 
+} // end of lcdapi namespace

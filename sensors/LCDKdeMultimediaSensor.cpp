@@ -2,6 +2,8 @@
 
 #include <unistd.h>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDKdeMultimediaSensor::LCDKdeMultimediaSensor(const std::string& defaultValue)
@@ -51,3 +53,5 @@ string LCDKdeMultimediaSensor::getCurrentValue()
 
   return value;
 }
+
+} // end of lcdapi namespace

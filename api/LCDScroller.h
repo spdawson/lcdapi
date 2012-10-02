@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDScroller LCDScroller.h "api/LCDScroller.h"
  *  \brief A widget to display scrolling text.
  *  \ingroup widgets
@@ -84,5 +86,7 @@ class LCDScroller : public LCDWidget
   void setSpeed(int speed);
 
 };
+
+} // end of lcdapi namespace
 
 #endif

@@ -4,6 +4,8 @@
 #include "LCDSensor.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDKdeMultimediaSensor LCDKdeMultimediaSensor.h "api/LCDKdeMultimediaSensor.h"
  *  \brief A sensor for KDE multimedia stuff.
  *  \ingroup sensors
@@ -28,5 +30,7 @@ class LCDKdeMultimediaSensor : public LCDSensor
   explicit LCDKdeMultimediaSensor(const std::string& defaultValue = "");
   virtual ~LCDKdeMultimediaSensor();
 };
+
+} // end of lcdapi namespace
 
 #endif

@@ -5,6 +5,8 @@
 #include <cstring>
 #include <unistd.h>
 
+namespace lcdapi {
+
 using namespace std;
 
 void *updateWhenChanged(void *);
@@ -210,3 +212,5 @@ void *updateEach(void *param)
 
   return NULL;
 }
+
+} // end of lcdapi namespace

@@ -2,6 +2,8 @@
 
 #include <unistd.h>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDSystemSensor::LCDSystemSensor(const string &command)
@@ -22,3 +24,5 @@ string LCDSystemSensor::getCurrentValue()
 {
   return executeCommand(_command);
 }
+
+} // end of lcdapi namespace

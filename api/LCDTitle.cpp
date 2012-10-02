@@ -1,6 +1,8 @@
 #include "LCDTitle.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDTitle::LCDTitle(LCDElement *parent, const string &id) : LCDWidget(id, parent, "title"), _text()
@@ -38,3 +40,5 @@ void LCDTitle::valueCallback(const std::string& value)
 {
   set(value);
 }
+
+} // end of lcdapi namespace

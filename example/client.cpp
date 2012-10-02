@@ -4,7 +4,7 @@
 #include <signal.h>
 
 using namespace std;
-
+using namespace lcdapi;
 
 LCD_CALLBACK_FUNCTION_BEGIN(forA)
 {

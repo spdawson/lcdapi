@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDBar LCDBar.h "api/LCDBar.h"
  *  \brief A widget to display a bar.
  *  \ingroup widgets
@@ -58,5 +60,7 @@ class LCDBar : public LCDWidget
 
   virtual void valueCallback(const std::string& value);
 };
+
+} // end of lcdapi namespace
 
 #endif

@@ -1,6 +1,8 @@
 #include "LCDText.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text("")
@@ -49,3 +51,5 @@ void LCDText::valueCallback(const string& value)
 {
   setText(value);
 }
+
+} // end of lcdapi namespace

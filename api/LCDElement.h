@@ -25,6 +25,8 @@
 #include <map>
 #include <set>
 
+namespace lcdapi {
+
 /** \class LCDElement LCDElement.h "api/LCDElement.h"
  *  \brief Main class for all elements of the API.
  *  \ingroup main
@@ -105,5 +107,7 @@ class LCDElement
   static bool exists(const std::string& id);
 
 };
+
+} // end of lcdapi namespace
 
 #endif

@@ -1,5 +1,7 @@
 #include "LCDMutex.h"
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDMutex::LCDMutex()
@@ -27,3 +29,5 @@ void LCDMutex::unlock()
   _owner = static_cast<pthread_t>(-1);
   ::pthread_mutex_unlock(&_mutex);
 }
+
+} // end of lcdapi namespace

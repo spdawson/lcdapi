@@ -22,6 +22,8 @@
 #include <string>
 #include <pthread.h>
 
+namespace lcdapi {
+
 class LCDWidget;
 
 class LCDWidgetTimeOut
@@ -168,5 +170,7 @@ class LCDSensor
    */
   void removeOnTimeOutWidget(const std::string& id);
 };
+
+} // end of lcdapi namespace
 
 #endif

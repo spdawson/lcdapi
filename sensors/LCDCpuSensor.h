@@ -4,6 +4,8 @@
 #include "LCDSensor.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDCpuSensor LCDCpuSensor.h "api/LCDCpuSensor.h"
  *  \brief A sensor for CPU usage.
  *  \ingroup sensors
@@ -35,5 +37,7 @@ class LCDCpuSensor : public LCDSensor
   explicit LCDCpuSensor(const std::string& cpuName = "cpu");
   virtual ~LCDCpuSensor();
 };
+
+} // end of lcdapi namespace
 
 #endif

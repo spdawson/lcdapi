@@ -1,6 +1,8 @@
 #include "LCDScreen.h"
 #include "LCDUtils.h"
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDScreen::LCDScreen(LCDElement *parent, const string& name, const string& id) : LCDElement(id, "screen_add", "", parent)
@@ -87,3 +89,5 @@ void LCDScreen::setCursorPosition(int x, int y)
   setCursorX(x);
   setCursorY(y);
 }
+
+} // end of lcdapi namespace

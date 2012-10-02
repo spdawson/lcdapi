@@ -5,6 +5,8 @@
 #include <fcntl.h>
 #include <iostream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDConnection::LCDConnection()
@@ -167,3 +169,4 @@ const LCDConnection& LCDConnection::operator >> (string &s)
   return *this;
 }
 
+} // end of lcdapi namespace

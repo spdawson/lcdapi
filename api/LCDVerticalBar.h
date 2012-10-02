@@ -4,6 +4,8 @@
 #include "LCDBar.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDVerticalBar LCDVerticalBar.h "api/LCDVerticalBar.h"
  *  \brief A widget to display a vertical bar.
  *  \ingroup widgets
@@ -34,5 +36,7 @@ class LCDVerticalBar : public LCDBar
    */
   explicit LCDVerticalBar(int length, int x=1, int y=1, LCDElement *parent = 0, const std::string &id = "");
 };
+
+} // end of lcdapi namespace
 
 #endif

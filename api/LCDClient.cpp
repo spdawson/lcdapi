@@ -3,6 +3,8 @@
 #include "LCDException.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 void *mainRepliesLoop(void *);
@@ -194,3 +196,5 @@ void *handleKeyEvent(void *param)
 
   return NULL;
 }
+
+} // end of lcdapi namespace

@@ -1,6 +1,8 @@
 #include "LCDFrame.h"
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDFrame::LCDFrame(LCDElement *parent, const string &id) : LCDWidget(id, parent, "frame"),
@@ -71,3 +73,5 @@ void LCDFrame::sendCommand(const std::string &cmd, const std::string &parameters
     _commandBuffer.push_back(Command(cmd, parameters));
   }
 }
+
+} // end of lcdapi namespace

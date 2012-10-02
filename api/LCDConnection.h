@@ -9,6 +9,7 @@
 #include <string>
 #include <arpa/inet.h>
 
+namespace lcdapi {
 
 class LCDConnection
 {
@@ -37,6 +38,7 @@ class LCDConnection
 
 };
 
+} // end of lcdapi namespace
 
 #endif
 

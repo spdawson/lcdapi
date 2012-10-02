@@ -4,6 +4,8 @@
 #include "LCDConstants.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDException LCDException.h "api/LCDException.h"
  *  \brief The exceptions thrown by this API.
  *  \ingroup main
@@ -36,5 +38,7 @@ class LCDException
     return std::string("LCD Error : ") + _desc;
   }
 };
+
+} // end of lcdapi namespace
 
 #endif

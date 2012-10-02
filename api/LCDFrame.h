@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDFrame LCDFrame.h "api/LCDFrame.h"
  *  \brief A widget to create a frame.
  *  \ingroup widgets
@@ -47,5 +49,7 @@ class LCDFrame : public LCDWidget
    */
   void set(int left, int top, int right, int bottom, int width, int height, Direction direction, int speed);
 };
+
+} // end of lcdapi namespace
 
 #endif

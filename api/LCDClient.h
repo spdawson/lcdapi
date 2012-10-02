@@ -8,6 +8,8 @@
 #include <pthread.h>
 #include <string>
 
+namespace lcdapi {
+
 struct KeyEventInfo
 {
   KeyEvent kev;
@@ -154,5 +156,7 @@ class LCDClient : public LCDElement
    */
   void assignKey(KeyEvent key, LCDCallback *callback);
 };
+
+} // end of lcdapi namespace
 
 #endif

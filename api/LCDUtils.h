@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <string>
 
+namespace lcdapi {
+
 namespace LCDUtils {
   static std::string toString(int value)
   {
@@ -12,5 +14,7 @@ namespace LCDUtils {
     return buf;
   }
 }
+
+} // end of lcdapi namespace
 
 #endif

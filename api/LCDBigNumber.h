@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDBigNumber LCDBigNumber.h "api/LCDBigNumber.h"
  *  \brief A widget to display a big number.
  *  \ingroup widgets
@@ -80,5 +82,7 @@ class LCDBigNumber : public LCDWidget
 
   virtual void valueCallback(const std::string& value);
 };
+
+} // end of lcdapi namespace
 
 #endif

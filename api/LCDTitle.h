@@ -4,6 +4,8 @@
 #include "LCDWidget.h"
 #include <string>
 
+namespace lcdapi {
+
 /** \class LCDTitle LCDTitle.h "api/LCDTitle.h"
  *  \brief A widget to display a title.
  *  \ingroup widgets
@@ -52,5 +54,7 @@ class LCDTitle : public LCDWidget
    */
   const std::string& get() const;
 };
+
+} // end of lcdapi namespace
 
 #endif

@@ -4,6 +4,8 @@
 #include "LCDSensor.h"
 #include <string>
 
+namespace lcdapi {
+
 const std::string LCD_TIME_HOUR_MINUTE = "+%H:%M";
 const std::string LCD_TIME_HOUR_MINUTE_SECOND = "+%H:%M:%S";
 
@@ -31,5 +33,7 @@ class LCDTimeSensor : public LCDSensor
   explicit LCDTimeSensor(const std::string &format = LCD_TIME_HOUR_MINUTE);
   virtual ~LCDTimeSensor();
 };
+
+} // end of lcdapi namespace
 
 #endif

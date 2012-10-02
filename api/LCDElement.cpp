@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <sstream>
 
+namespace lcdapi {
+
 using namespace std;
 
 set<std::string> LCDElement::_elementsList;
@@ -135,3 +137,5 @@ void LCDElement::notifyAdded()
     sendCommand(it->_cmd, it->_params);
   }
 }
+
+} // end of lcdapi namespace

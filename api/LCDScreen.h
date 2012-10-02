@@ -4,6 +4,8 @@
 #include "LCDConstants.h"
 #include "LCDElement.h"
 
+namespace lcdapi {
+
 /** \class LCDScreen LCDScreen.h "api/LCDScreen.h"
  *  \brief This is the class that creates a new screen on the display.
  *  \ingroup main
@@ -129,5 +131,7 @@ class LCDScreen : public LCDElement
    */
   void setCursorY(int y);
 };
+
+} // end of lcdapi namespace
 
 #endif

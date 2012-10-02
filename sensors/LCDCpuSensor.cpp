@@ -3,6 +3,8 @@
 #include <fstream>
 #include <unistd.h>
 
+namespace lcdapi {
+
 using namespace std;
 
 LCDCpuSensor::LCDCpuSensor(const string& cpuName)
@@ -72,3 +74,5 @@ void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i) const
     }
 
 }
+
+} // end of lcdapi namespace
