@@ -80,7 +80,7 @@ const LCDWidgetTimeOut &LCDSensor::getThreadWidgetInfo(const ::pthread_t &thread
   }
 
   static LCDWidgetTimeOut dummy;
-  dummy._timeOut=0;
+  dummy._timeOut = 0;
   dummy._widget = 0;
 
   return dummy;

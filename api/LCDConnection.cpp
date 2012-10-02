@@ -1,4 +1,5 @@
 #include "LCDConnection.h"
+#include "LCDConstants.h"
 #include "LCDException.h"
 #include <cstring>
 #include <cerrno>
@@ -19,7 +20,7 @@ LCDConnection::LCDConnection()
     throw LCDException(LCD_SOCKET_CREATION_ERROR);   
   }
 
-  int on = 1;
+  const int on = 1;
   if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&on), sizeof (on)) == -1)
   {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);   
@@ -29,6 +30,7 @@ LCDConnection::LCDConnection()
 LCDConnection::LCDConnection(const string &host, const int port)
   : _isConnected(false), _sock(), _addr()
 {
+  // FIXME: This looks wrong...
   LCDConnection();
   connect(host, port);
 }
@@ -96,13 +98,12 @@ void LCDConnection::send(const string &toSend)
     throw LCDException(LCD_SOCKET_NOT_CONNECTED);
   }
 
-  int total = s.size();
+  const int total = s.size();
   int offset = 0;
-  int sent;
 
   while (offset != total)
   {
-    sent = ::send(_sock, s.c_str() + offset, s.size() - offset, 0);
+    const int sent = ::send(_sock, s.c_str() + offset, s.size() - offset, 0);
     if ( ((sent == -1) && (errno != EAGAIN)) || (sent == 0) )
     {
       throw LCDException(LCD_SOCKET_SEND_ERROR);
@@ -124,12 +125,11 @@ string LCDConnection::recv()
   char buf[LCD_MAXRECV + 1];
   memset (buf, 0, LCD_MAXRECV + 1);
   char *current = buf - 1;
-  int status;
 
   do
   {
     current++;
-    status = ::recv(_sock, current, 1, 0);
+    const int status = ::recv(_sock, current, 1, 0);
     if (status == -1)
     {
       throw LCDException(LCD_SOCKET_RECV_ERROR);
@@ -138,7 +138,7 @@ string LCDConnection::recv()
 
   *current = '\0';
 
-  string result(buf);
+  const string result(buf);
 
 #ifdef DEBUG
   cerr << "Receiving : " << result << endl;

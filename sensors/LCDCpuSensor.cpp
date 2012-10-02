@@ -38,7 +38,7 @@ string LCDCpuSensor::getCurrentValue()
                            (nTicks - _niceTicks) +
                            (iTicks - _idleTicks));
 
-  int load  = (totalTicks == 0) ? 0 : int( 100.0 * ( (uTicks+sTicks+nTicks) - (_userTicks+_sysTicks+_niceTicks))/( totalTicks+0.001) + 0.5 );
+  const int load  = (totalTicks == 0) ? 0 : int( 100.0 * ( (uTicks+sTicks+nTicks) - (_userTicks+_sysTicks+_niceTicks))/( totalTicks+0.001) + 0.5 );
 
   _userTicks = uTicks;
   _sysTicks = sTicks;
@@ -51,7 +51,7 @@ string LCDCpuSensor::getCurrentValue()
 void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i) const
 {
     fstream file;
-    string item = "";
+    string item;
 
     file.open("/proc/stat", ios::in);
 

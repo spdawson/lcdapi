@@ -56,6 +56,15 @@ class LCDElement
     std::string _cmd;
     std::string _params;
     Command(const std::string& cmd, const std::string& params) : _cmd(cmd), _params(params) {}
+    ~Command() {}
+  Command(const Command& original) : _cmd(original._cmd), _params(original._params) {}
+    const Command& operator=(const Command& rhs) {
+      if (&rhs != this) {
+        _cmd = rhs._cmd;
+        _params = rhs._params;
+      }
+      return *this;
+    }
   };
   typedef std::list<Command> CommandList;
   typedef std::map<std::string, LCDElement *> ElementMap;
@@ -69,7 +78,7 @@ class LCDElement
   void notifyAdded();
 
  public:
-  LCDElement(const std::string &id, const std::string &addCommand, const std::string &addParam = "", LCDElement *parent=0);
+  LCDElement(const std::string &id, const std::string &addCommand, const std::string &addParam = "", LCDElement *parent = 0);
 
   /**
    * \brief Destructor of the element.

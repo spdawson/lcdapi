@@ -5,7 +5,7 @@ namespace lcdapi {
 
 using namespace std;
 
-LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text("")
+LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text()
 {
 }
 

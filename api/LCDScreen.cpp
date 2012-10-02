@@ -7,7 +7,7 @@ using namespace std;
 
 LCDScreen::LCDScreen(LCDElement *parent, const string& name, const string& id) : LCDElement(id, "screen_add", "", parent)
 {
-  if (name != "")
+  if (!name.empty())
   {
     setName(name);
   }

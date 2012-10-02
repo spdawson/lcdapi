@@ -34,7 +34,7 @@ class LCDScreen : public LCDElement
    * @param name A string containing the name for this screen.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  explicit LCDScreen(LCDElement *parent=0, const std::string& name="", const std::string& id = "");
+  explicit LCDScreen(LCDElement *parent = 0, const std::string& name = "", const std::string& id = "");
 
   /**
    * \brief Change the name of the screen.

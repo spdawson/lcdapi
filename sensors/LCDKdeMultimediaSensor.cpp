@@ -32,7 +32,7 @@ string LCDKdeMultimediaSensor::getCurrentValue()
 
   const string noatunId = executeCommand("dcop | grep noatun");
 
-  if (noatunId != "")
+  if (!noatunId.empty())
   {
     value = executeCommand("dcop " + noatunId + " Noatun title");
   }
@@ -40,13 +40,13 @@ string LCDKdeMultimediaSensor::getCurrentValue()
   {
     const string kscdTitle =
       executeCommand("dcop kscd CDPlayer currentTrackTitle");
-    if (kscdTitle != "")
+    if (!kscdTitle.empty())
     {
       value = kscdTitle;
     }
   }
 
-  if (value == "")
+  if (value.empty())
   {
     value = _defaultValue;
   }

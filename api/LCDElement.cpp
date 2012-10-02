@@ -23,7 +23,7 @@ LCDElement::LCDElement(const string &id, const string &addCommand, const string 
 {
   if (id.size() == 0)
   {
-    LCDLock l(&LCDElement::_elementMutex);
+    const LCDLock l(&LCDElement::_elementMutex);
     ostringstream idBuffer;
     idBuffer << "LCDAPI_"
              << getpid()
@@ -51,7 +51,7 @@ LCDElement::~LCDElement()
 
 void LCDElement::notifyCreated()
 {
-  LCDLock l(&LCDElement::_elementMutex);
+  const LCDLock l(&LCDElement::_elementMutex);
   sendCommand(_elementAddCmd, _elementAddParam);
   _iAmDead = false;
   LCDElement::_elementsList.insert(_id);
@@ -59,7 +59,7 @@ void LCDElement::notifyCreated()
 
 void LCDElement::notifyDestroyed()
 {
-  LCDLock l(&LCDElement::_elementMutex);
+  const LCDLock l(&LCDElement::_elementMutex);
   if (!_iAmDead)
   {
     LCDElement::_elementsList.erase(_id);
@@ -80,7 +80,7 @@ void LCDElement::notifyDestroyed()
 
 bool LCDElement::exists(const string& id)
 {
-  LCDLock l(&LCDElement::_elementMutex);
+  const LCDLock l(&LCDElement::_elementMutex);
   return ( (LCDElement::_elementsList.find(id)) != (LCDElement::_elementsList.end()) );
 }
 
@@ -91,12 +91,12 @@ const string &LCDElement::getId() const
 
 void LCDElement::sendCommand(const std::string &cmd, const std::string &parameters)
 {
-  LCDLock l(&LCDElement::_elementMutex);
+  const LCDLock l(&LCDElement::_elementMutex);
   if (cmd.size() > 0)
   {
     if (_parent)
     {
-      string realParams = _id + " " + parameters;
+      const string realParams = _id + " " + parameters;
       _parent->sendCommand(cmd, realParams);
     }
     else
