@@ -78,15 +78,15 @@ class LCDCallback
   */
 
   virtual void operator()(KeyEvent lcdKey) = 0;
+
+  static std::string toString(KeyEvent t)
+  {
+    std::string s(1, static_cast<char>(t));
+    return s;
+  }
 };
 
 typedef std::map<KeyEvent, LCDCallback *> CallbackMap;
-
-static std::string toString(KeyEvent t)
-{
-  std::string s(1, static_cast<char>(t));
-  return s;
-}
 
 } // end of lcdapi namespace
 
