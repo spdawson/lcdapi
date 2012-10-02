@@ -4,15 +4,13 @@
 #include <cstdio>
 #include <string>
 
-class LCDUtils
-{
- public:
+namespace LCDUtils {
   static std::string toString(int value)
   {
     char buf[64];
     sprintf(buf, "%d", value );
     return buf;
   }
-};
+}
 
 #endif

@@ -22,7 +22,7 @@ class LCDTitle : public LCDWidget
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDTitle(LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDTitle(LCDElement *parent = 0, const std::string &id = "");
   /**
    * \brief Constructor with widget values specified.
    *
@@ -31,7 +31,7 @@ class LCDTitle : public LCDWidget
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDTitle(const std::string &text, LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDTitle(const std::string &text, LCDElement *parent = 0, const std::string &id = "");
 
   virtual void notifyChanged();
   virtual void valueCallback(const std::string& value);

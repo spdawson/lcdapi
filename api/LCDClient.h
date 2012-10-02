@@ -52,7 +52,7 @@ class LCDClient : public LCDElement
    * @param server Name or IP of the machine where the server runs. If it is on the same machine, you can use "localhost".
    * @param port Port number to connect to. For a classic LCDproc configuration, it should be 13666 (default value).
    */
-  LCDClient(const std::string &server, int port = 13666);
+  explicit LCDClient(const std::string &server, int port = 13666);
 
   /**
    * \brief Destructor.
@@ -135,7 +135,7 @@ class LCDClient : public LCDElement
    * This value will override the ones from screens.
    * @param heartbeat A string with the value to set. Constants \ref LCD_HEARTBEAT_ON, \ref LCD_HEARTBEAT_OFF and \ref LCD_HEARTBEAT_OPEN can be used.
    */
-  // void setHeartBeat(std::string heartbeat);
+  // void setHeartBeat(const std::string& heartbeat);
 
   /**
    * \brief Enable or disable backlight.

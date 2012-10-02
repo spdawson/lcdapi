@@ -16,7 +16,7 @@ class LCDException
 
  public:
 
-  LCDException(const std::string& desc)
+  explicit LCDException(const std::string& desc)
     : _desc(desc)
   {
   }

@@ -32,7 +32,7 @@ class LCDCpuSensor : public LCDSensor
    * Used to build such a sensor.
    * @param cpuName The CPU this sensor should monitor. Use "cpu" for total CPU usage. "cpu0" for first CPU on an SMP machine, "cpu1" for second one,...
    */
-  LCDCpuSensor(const std::string& cpuName = "cpu");
+  explicit LCDCpuSensor(const std::string& cpuName = "cpu");
   virtual ~LCDCpuSensor();
 };
 

@@ -20,7 +20,7 @@ class LCDConnection
  public:
   LCDConnection();
   LCDConnection(const std::string &host, const int port);
-  LCDConnection(const LCDConnection &source);
+  explicit LCDConnection(const LCDConnection &source);
   virtual ~LCDConnection();
 
   bool isValid() const;

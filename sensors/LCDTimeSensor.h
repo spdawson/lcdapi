@@ -28,7 +28,7 @@ class LCDTimeSensor : public LCDSensor
    * Used to build such a sensor.
    * @param format A string containing the format to use, as defined by date(1). The default value makes this sensor return current hour and minute seperated by a colon.
    */
-  LCDTimeSensor(const std::string &format = LCD_TIME_HOUR_MINUTE);
+  explicit LCDTimeSensor(const std::string &format = LCD_TIME_HOUR_MINUTE);
   virtual ~LCDTimeSensor();
 };
 

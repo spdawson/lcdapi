@@ -29,7 +29,7 @@ class LCDBigNumber : public LCDWidget
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDBigNumber(LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDBigNumber(LCDElement *parent = 0, const std::string &id = "");
   /**
    * \brief Constructor with widget values specified.
    *
@@ -39,7 +39,7 @@ class LCDBigNumber : public LCDWidget
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDBigNumber(int number, int x=1, LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDBigNumber(int number, int x=1, LCDElement *parent = 0, const std::string &id = "");
 
   /**
    * \brief Set which number should be used for the widget.

@@ -24,7 +24,7 @@ class LCDSystemSensor : public LCDSensor
    * Used to build such a sensor.
    * @param command A string containing the shell command to execute.
    */
-  LCDSystemSensor(const std::string &command);
+  explicit LCDSystemSensor(const std::string &command);
   virtual ~LCDSystemSensor();
 };
 

@@ -20,7 +20,8 @@ class LCDVerticalBar : public LCDBar
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDVerticalBar(LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDVerticalBar(LCDElement *parent = 0, const std::string &id = "");
+
   /**
    * \brief Constructor with widget values specified.
    *
@@ -31,7 +32,7 @@ class LCDVerticalBar : public LCDBar
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDVerticalBar(int length, int x=1, int y=1, LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDVerticalBar(int length, int x=1, int y=1, LCDElement *parent = 0, const std::string &id = "");
 };
 
 #endif

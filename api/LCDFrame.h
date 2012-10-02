@@ -25,7 +25,7 @@ class LCDFrame : public LCDWidget
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDFrame(LCDElement *parent = 0, const std::string &id = "");
+  explicit LCDFrame(LCDElement *parent = 0, const std::string &id = "");
 
   void sendCommand(const std::string &cmd, const std::string &parameters);
 

@@ -28,7 +28,7 @@ class LCDLock
    *
    * This constructor locks the LCD mutex and stores it.
   */
-  LCDLock(LCDMutex *mutex)
+  explicit LCDLock(LCDMutex *mutex)
     : _lcdMutex(mutex), _posixMutex(NULL), _useLCD(true)
   {
     ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
@@ -39,7 +39,7 @@ class LCDLock
    *
    * This constructor locks the Posix mutex and stores it.
   */
-  LCDLock(::pthread_mutex_t *mutex)
+  explicit LCDLock(::pthread_mutex_t *mutex)
     : _lcdMutex(NULL), _posixMutex(mutex), _useLCD(false)
   {
     ::pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);

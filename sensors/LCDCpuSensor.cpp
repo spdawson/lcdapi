@@ -7,7 +7,7 @@ using namespace std;
 
 LCDCpuSensor::LCDCpuSensor(const string& cpuName)
   : LCDSensor(),
-    _cpuName("cpu"),
+    _cpuName(cpuName),
     _userTicks(0),
     _sysTicks(0),
     _niceTicks(0),

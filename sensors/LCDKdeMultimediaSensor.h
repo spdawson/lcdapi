@@ -25,7 +25,7 @@ class LCDKdeMultimediaSensor : public LCDSensor
    * Used to build such a sensor.
    * @param defaultValue A string containing the value that will be used if both noatun and kscd return nothing.
    */
-  LCDKdeMultimediaSensor(const std::string& defaultValue = "");
+  explicit LCDKdeMultimediaSensor(const std::string& defaultValue = "");
   virtual ~LCDKdeMultimediaSensor();
 };
 
