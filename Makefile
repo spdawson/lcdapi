@@ -3,7 +3,8 @@ PROJECT_ROOT = .
 PROJECT_VERSION = 0.3
 
 INCFLAGS = -I$(INCLUDE_DIR) -I$(SRC_DIR) -I$(KEYS_SRC_DIR)
-CFLAGS = -g
+CFLAGS = -g \
+	-Wall -Wextra -Weffc++ -Wold-style-cast -Werror -Wno-error=unused-parameter -Wno-error=unused-function
 INSTALL = install
 
 DESTDIR = /

@@ -2,7 +2,9 @@ BIN = client
 INCLUDEDIRS = ../include
 LIBDIR = ../lib
 CXXFLAGS = \
-	$(foreach i,$(INCLUDEDIRS),-I$(i))
+	$(foreach i,$(INCLUDEDIRS),-I$(i)) \
+	-Wall -Wextra -Weffc++ -Wold-style-cast \
+	-Werror -Wno-error=unused-parameter -Wno-error=unused-function
 LDFLAGS = \
 	-L$(LIBDIR) -lstdc++ -lpthread -llcdapi
 
