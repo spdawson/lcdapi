@@ -1,10 +1,7 @@
 #include "LCDClient.h"
-#include "LCDConnection.h"
 #include "LCDLock.h"
 #include "LCDException.h"
-#include <string>
 #include <sstream>
-#include <iostream>
 
 using namespace std;
 

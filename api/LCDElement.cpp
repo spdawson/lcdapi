@@ -1,9 +1,7 @@
 #include "LCDElement.h"
 #include "LCDLock.h"
 #include <unistd.h>
-#include <pthread.h>
 #include <sstream>
-#include <iostream>
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef _LCD_UTILS_H_
 #define _LCD_UTILS_H_
 
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 
 class LCDUtils

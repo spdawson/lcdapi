@@ -1,5 +1,4 @@
 #include "LCDHorizontalBar.h"
-#include <sstream>
 
 using namespace std;
 

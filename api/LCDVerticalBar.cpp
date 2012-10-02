@@ -1,5 +1,4 @@
 #include "LCDVerticalBar.h"
-#include <sstream>
 
 using namespace std;
 

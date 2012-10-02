@@ -2,7 +2,6 @@
 #define _LCD_EXCEPTION_H_
 
 #include "LCDConstants.h"
-#include <exception>
 #include <string>
 
 /** \class LCDException LCDException.h "api/LCDException.h"

@@ -1,7 +1,5 @@
 #include "LCDKdeMultimediaSensor.h"
-#include "LCDUtils.h"
 
-#include <string>
 #include <unistd.h>
 
 using namespace std;

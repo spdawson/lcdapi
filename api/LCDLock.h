@@ -3,7 +3,6 @@
 
 #include "LCDMutex.h"
 
-#include <unistd.h>
 #include <pthread.h>
 
 /** \class LCDLock LCDLock.h "api/LCDLock.h"

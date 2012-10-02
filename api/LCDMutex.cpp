@@ -1,7 +1,5 @@
 #include "LCDMutex.h"
 
-#include <pthread.h>
-
 using namespace std;
 
 LCDMutex::LCDMutex()

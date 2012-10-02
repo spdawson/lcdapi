@@ -18,10 +18,11 @@
  *   and \ref LCDSensor::addOnTimeOutWidget "addOnTimeOutWidget".
  */
 
-#include "../api/LCDWidget.h"
 #include <map>
-#include <vector>
+#include <string>
 #include <pthread.h>
+
+class LCDWidget;
 
 class LCDWidgetTimeOut
 {

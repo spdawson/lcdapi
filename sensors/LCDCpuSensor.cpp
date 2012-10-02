@@ -1,11 +1,7 @@
 #include "LCDCpuSensor.h"
-#include "LCDUtils.h"
 
 #include <fstream>
-#include <sys/types.h>
-#include <time.h>
 #include <unistd.h>
-#include <string>
 
 using namespace std;
 

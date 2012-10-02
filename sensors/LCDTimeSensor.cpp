@@ -1,9 +1,6 @@
 #include "LCDTimeSensor.h"
 
-#include <sys/types.h>
-#include <time.h>
 #include <unistd.h>
-#include <string>
 
 using namespace std;
 
