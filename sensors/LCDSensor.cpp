@@ -2,6 +2,7 @@
 #include "LCDWidget.h"
 #include "LCDUtils.h"
 
+#include <cstdio>
 #include <cstring>
 #include <unistd.h>
 
@@ -35,8 +36,8 @@ LCDSensor::~LCDSensor()
     _onChangeThreadStarted = false;
   }
 
-  WidgetTimeOutList::iterator it;
-  for (it = _onTimeOutList.begin(); it != _onTimeOutList.end(); it++)
+  for (WidgetTimeOutList::const_iterator it = _onTimeOutList.begin();
+       it != _onTimeOutList.end(); ++it)
   {
     if (::pthread_cancel(it->second._thread) == 0)
     {
@@ -53,8 +54,8 @@ bool LCDSensor::exists()
 void LCDSensor::fireChanged()
 {
   string value = getCurrentValue();
-  WidgetList::iterator it;
-  for (it = _onChangeList.begin(); it != _onChangeList.end(); it++)
+  for (WidgetList::const_iterator it = _onChangeList.begin();
+       it != _onChangeList.end(); ++it)
   {
     if (LCDElement::exists(it->first))
     {
@@ -69,9 +70,8 @@ void LCDSensor::fireChanged()
 
 const LCDWidgetTimeOut &LCDSensor::getThreadWidgetInfo(const ::pthread_t &thread)
 {
-  WidgetTimeOutList::iterator it;
-
-  for (it = _onTimeOutList.begin(); it != _onTimeOutList.end(); it++)
+  for (WidgetTimeOutList::const_iterator it = _onTimeOutList.begin();
+       it != _onTimeOutList.end(); ++it)
   {
     if (::pthread_equal(thread, it->second._thread))
     {
@@ -104,9 +104,9 @@ string LCDSensor::executeCommand(const string &cmd)
     pclose(ptr);
   }
 
-  int len = strlen(buf);
-
-  string result(buf, (len > 0) ? (len - 1) : 0);
+  // N.B. The length of the string is determined by the first occurrence
+  // of a null character in the character array.
+  const string result(buf);
 
   return result;
 }
