@@ -10,13 +10,19 @@ using namespace std;
 void *mainRepliesLoop(void *);
 void *handleKeyEvent(void *);
 
+struct KeyEventInfo
+{
+  KeyEvent kev;
+  LCDCallback *callback;
+};
+
 LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
                                                        _sendMutex(),
                                                        _gotAnswer(),
                                                        _mainThread(),
                                                        _serverConnection(),
-                                                       _answer(""),
-                                                       _currentScreen(""),
+                                                       _answer(),
+                                                       _currentScreen(),
                                                        _connectionString(),
                                                        _serverVersion(),
                                                        _protocolVersion(),
@@ -28,8 +34,6 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
 {
   ::pthread_mutex_init(&_sendMutex, 0);
   ::pthread_cond_init(&_gotAnswer, 0);
-  _answer = "";
-  _currentScreen = "";
 
   _serverConnection.connect(server, port);
   _serverConnection << "hello";
@@ -82,13 +86,13 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
 {
   if (cmd.size() > 0)
   {
-    LCDLock l(&_sendMutex);
+    const LCDLock l(&_sendMutex);
 
-    string command = cmd + " " + parameters;
+    const string command = cmd + " " + parameters;
 
     _serverConnection << command;
 
-    while (_answer == "")
+    while (_answer.empty())
     {
       ::pthread_cond_wait(&_gotAnswer, &_sendMutex);
     }
@@ -97,7 +101,7 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
     {
       throw LCDException(_answer.substr(5));
     }
-    _answer = "";
+    _answer.clear();
   }
 }
 
@@ -137,7 +141,7 @@ void LCDClient::mainLoop()
 
     if ( (reply.substr(0, 4) == "huh?") || (reply == "success") )
     {
-      LCDLock l(&_sendMutex);
+      const LCDLock l(&_sendMutex);
       _answer = reply;
       ::pthread_cond_signal(&_gotAnswer);
     }
@@ -145,12 +149,10 @@ void LCDClient::mainLoop()
     {
       if (reply.substr(0, 3) == "key")
       {
-        KeyEvent key = reply[4];
+        const KeyEvent key = reply[4];
         if (_callbacks.end() != _callbacks.find(key))
         {
-          KeyEventInfo *kevI;
-
-          kevI = new KeyEventInfo;
+          KeyEventInfo *kevI = new KeyEventInfo;
           kevI->kev = key;
           kevI->callback = _callbacks[key];
 
@@ -167,7 +169,7 @@ void LCDClient::mainLoop()
       {
 	if (_currentScreen == reply.substr(7))
 	{
-	  _currentScreen = "";
+	  _currentScreen.clear();
 	}
       }
     }

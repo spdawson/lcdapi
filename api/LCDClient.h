@@ -10,12 +10,6 @@
 
 namespace lcdapi {
 
-struct KeyEventInfo
-{
-  KeyEvent kev;
-  LCDCallback *callback;
-};
-
 /** \class LCDClient LCDClient.h "api/LCDClient.h"
  *  \brief This is the class used to connect to LCDproc server.
  *  \ingroup main
