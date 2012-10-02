@@ -55,7 +55,9 @@ void LCDBar::setPercentageMax(int max)
 
 void LCDBar::valueCallback(const string& value)
 {
-  setPercentage(atoi(value.c_str()));
+  // FIXME: Use strtol(), and handle parse errors
+  const int parsed_value = atoi(value.c_str());
+  setPercentage(parsed_value);
 }
 
 } // end of lcdapi namespace
