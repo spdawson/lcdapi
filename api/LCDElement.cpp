@@ -63,8 +63,8 @@ void LCDElement::notifyDestroyed()
   if (!_iAmDead)
   {
     LCDElement::_elementsList.erase(_id);
-    ElementMap::iterator it;
-    for (it = _childrenList.begin(); it != _childrenList.end(); it++)
+    for (ElementMap::const_iterator it = _childrenList.begin();
+         it != _childrenList.end(); ++it)
     {
       it->second->notifyDestroyed();
     }
@@ -130,9 +130,8 @@ void LCDElement::removeFromList(LCDElement *elt)
 
 void LCDElement::notifyAdded()
 {
-  CommandList::iterator it;
-
-  for (it = _commandBuffer.begin(); it != _commandBuffer.end(); it++)
+  for (CommandList::const_iterator it = _commandBuffer.begin();
+       it != _commandBuffer.end(); ++it)
   {
     sendCommand(it->_cmd, it->_params);
   }

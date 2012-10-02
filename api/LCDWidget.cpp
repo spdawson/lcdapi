@@ -32,9 +32,9 @@ void LCDWidget::setWidgetParameters(const std::string &properties)
 
 void LCDWidget::set(const ParameterList &pList)
 {
-  ParameterList::const_iterator it;
   ostringstream params;
-  for (it = pList.begin(); it != pList.end(); it++)
+  for (ParameterList::const_iterator it = pList.begin();
+       it != pList.end(); ++it)
   {
     params << *it << " ";
   }

@@ -124,7 +124,7 @@ void LCDClient::setBackLight(const string& backlight)
 void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
 {
   _callbacks[key] = callback;
-  sendCommand("client_add_key", toString(key));
+  sendCommand("client_add_key", LCDCallback::toString(key));
 }
 
 void LCDClient::mainLoop()
@@ -146,11 +146,7 @@ void LCDClient::mainLoop()
       if (reply.substr(0, 3) == "key")
       {
         KeyEvent key = reply[4];
-        CallbackMap::iterator it;
-
-        it = _callbacks.find(key);
-
-        if (it != _callbacks.end())
+        if (_callbacks.end() != _callbacks.find(key))
         {
           KeyEventInfo *kevI;
 
