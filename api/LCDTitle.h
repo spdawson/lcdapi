@@ -34,7 +34,7 @@ class LCDTitle : public LCDWidget
   LCDTitle(const std::string &text, LCDElement *parent = 0, const std::string &id = "");
 
   virtual void notifyChanged();
-  virtual void valueCallback(std::string value);
+  virtual void valueCallback(const std::string& value);
 
   /**
    * \brief Set the text for the widget.
@@ -43,7 +43,7 @@ class LCDTitle : public LCDWidget
    * @param text A string containing the title that will be displayed.
    */
 
-  void set(std::string text);
+  void set(const std::string& text);
   /**
    * \brief Get the text for the widget.
    *

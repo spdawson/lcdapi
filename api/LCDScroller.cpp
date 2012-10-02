@@ -74,7 +74,7 @@ void LCDScroller::setSpeed(int speed)
   notifyChanged();
 }
 
-void LCDScroller::valueCallback(std::string value)
+void LCDScroller::valueCallback(const std::string& value)
 {
   setText(value);
 }

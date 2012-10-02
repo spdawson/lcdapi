@@ -63,7 +63,7 @@ class LCDText : public LCDWidget
    */
   std::string getText() const;
 
-  virtual void valueCallback(std::string value);
+  virtual void valueCallback(const std::string& value);
 };
 
 #endif

@@ -53,7 +53,7 @@ class LCDElement
    public:
     std::string _cmd;
     std::string _params;
-    Command(std::string cmd, std::string params) : _cmd(cmd), _params(params) {}
+    Command(const std::string& cmd, const std::string& params) : _cmd(cmd), _params(params) {}
   };
   typedef std::list<Command> CommandList;
   typedef std::map<std::string, LCDElement *> ElementMap;
@@ -102,7 +102,7 @@ class LCDElement
    * This static method is used to test the existence of a widget.
    * @param id The identifier of the widget to test.
   */
-  static bool exists(std::string id);
+  static bool exists(const std::string& id);
 
 };
 

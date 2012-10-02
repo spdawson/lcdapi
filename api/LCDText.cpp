@@ -45,7 +45,7 @@ string LCDText::getText() const
   return _text;
 }
 
-void LCDText::valueCallback(string value)
+void LCDText::valueCallback(const string& value)
 {
   setText(value);
 }

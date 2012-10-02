@@ -56,7 +56,7 @@ class LCDBar : public LCDWidget
    */
   void setPercentageMax(int max);
 
-  virtual void valueCallback(std::string value);
+  virtual void valueCallback(const std::string& value);
 };
 
 #endif

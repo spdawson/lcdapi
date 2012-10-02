@@ -23,7 +23,7 @@ void LCDTitle::notifyChanged()
   setWidgetParameters(params.str());
 }
 
-void LCDTitle::set(string text)
+void LCDTitle::set(const string& text)
 {
   _text = text;
   notifyChanged();
@@ -34,7 +34,7 @@ string LCDTitle::get() const
   return _text;
 }
 
-void LCDTitle::valueCallback(std::string value)
+void LCDTitle::valueCallback(const std::string& value)
 {
   set(value);
 }

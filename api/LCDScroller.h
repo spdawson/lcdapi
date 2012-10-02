@@ -27,7 +27,7 @@ class LCDScroller : public LCDWidget
   LCDScroller(LCDElement *parent = 0, const std::string &id = "");
 
   virtual void notifyChanged();
-  virtual void valueCallback(std::string value);
+  virtual void valueCallback(const std::string& value);
 
   /**
    * \brief Set the values for the widget.

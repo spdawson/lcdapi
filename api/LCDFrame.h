@@ -30,7 +30,7 @@ class LCDFrame : public LCDWidget
   void sendCommand(const std::string &cmd, const std::string &parameters);
 
   virtual void notifyChanged();
-  virtual void valueCallback(std::string value) {};
+  virtual void valueCallback(const std::string& value) {};
 
   /**
    * \brief Set the values for the widget.

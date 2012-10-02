@@ -78,7 +78,7 @@ class LCDBigNumber : public LCDWidget
    */
   int getNumber() const;
 
-  virtual void valueCallback(std::string value);
+  virtual void valueCallback(const std::string& value);
 };
 
 #endif

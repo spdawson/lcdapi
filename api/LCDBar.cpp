@@ -51,7 +51,7 @@ void LCDBar::setPercentageMax(int max)
   _max = max;
 }
 
-void LCDBar::valueCallback(string value)
+void LCDBar::valueCallback(const string& value)
 {
   setPercentage(atoi(value.c_str()));
 }

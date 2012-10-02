@@ -49,10 +49,10 @@ int LCDBigNumber::getNumber() const
   return _number;
 }
 
-void LCDBigNumber::valueCallback(string value)
+void LCDBigNumber::valueCallback(const string& value)
 {
-  int max = value.size();
-  int position = max - _position;
+  const int max = value.size();
+  const int position = max - _position;
   if (position < 0)
   {
     _number = 0;

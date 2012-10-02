@@ -76,7 +76,7 @@ void LCDElement::notifyDestroyed()
   }
 }
 
-bool LCDElement::exists(string id)
+bool LCDElement::exists(const string& id)
 {
   LCDLock l(&LCDElement::_elementMutex);
   return ( (LCDElement::_elementsList.find(id)) != (LCDElement::_elementsList.end()) );

@@ -99,22 +99,22 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
   }
 }
 
-void LCDClient::setClientOption(string optName, string value)
+void LCDClient::setClientOption(const string& optName, const string& value)
 {
   sendCommand("client_set", string("-") + optName + " " + value);
 }
 
-void LCDClient::setName(string name)
+void LCDClient::setName(const string& name)
 {
   setClientOption("name", name);
 }
 /*
-void LCDClient::setHeartBeat(string heartbeat)
+void LCDClient::setHeartBeat(const string& heartbeat)
 {
   setClientOption("heartbeat", heartbeat);
 }
 */
-void LCDClient::setBackLight(string backlight)
+void LCDClient::setBackLight(const string& backlight)
 {
   sendCommand("backlight", backlight);
 }

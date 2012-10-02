@@ -17,10 +17,10 @@ class LCDScreen : public LCDElement
 {
  protected:
 
-  template <typename T> void setScreenOption(std::string optName, T value);
+  template <typename T> void setScreenOption(const std::string& optName, T value);
 
  public:
-  static std::string valueToString(std::string value);
+  static std::string valueToString(const std::string& value);
   static std::string valueToString(int value);
 
   /**
@@ -32,7 +32,7 @@ class LCDScreen : public LCDElement
    * @param name A string containing the name for this screen.
    * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
    */
-  LCDScreen(LCDElement *parent=0, std::string name="", std::string id = "");
+  LCDScreen(LCDElement *parent=0, const std::string& name="", const std::string& id = "");
 
   /**
    * \brief Change the name of the screen.
@@ -40,7 +40,7 @@ class LCDScreen : public LCDElement
    * Sets the screen's name as visible to a user. 
    * @param name A string containing the new name.
    */
-  void setName(std::string name);
+  void setName(const std::string& name);
 
   /**
    * \brief Change the width of the screen.
@@ -64,7 +64,7 @@ class LCDScreen : public LCDElement
    * Sets priority of the screen. Only screens with highest priority at a moment will be shown.
    * @param priority A string containing the priority class. These constants can be used: \ref LCD_PRIORITY_HIDDEN, \ref LCD_PRIORITY_BACKGROUND, \ref LCD_PRIORITY_INFO, \ref LCD_PRIORITY_FOREGROUND, \ref LCD_PRIORITY_ALERT, \ref LCD_PRIORITY_INPUT.
    */
-  void setPriority(std::string priority);
+  void setPriority(const std::string& priority);
 
   /**
    * \brief Enable or disable heart beat.
@@ -72,7 +72,7 @@ class LCDScreen : public LCDElement
    * Enable or disable the heart beat used by LCDproc to show data transmission.
    * @param heartbeat A string with the value to set. Constants \ref LCD_HEARTBEAT_ON, \ref LCD_HEARTBEAT_OFF and \ref LCD_HEARTBEAT_OPEN can be used.
    */
-  void setHeartBeat(std::string heartbeat);
+  void setHeartBeat(const std::string& heartbeat);
 
   /**
    * \brief Enable or disable screen backlight.
@@ -80,7 +80,7 @@ class LCDScreen : public LCDElement
    * Enable or disable the backlight for the current screen.
    * @param backlight A string with the value to set. Constants \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN, \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and \ref LCD_BACKLIGHT_FLASH can be used.
    */
-  void setBackLight(std::string backlight);
+  void setBackLight(const std::string& backlight);
 
   /**
    * \brief Set the time the screen is displayed during each rotation.
@@ -104,7 +104,7 @@ class LCDScreen : public LCDElement
    * Change the way the cursor is displayed.
    * @param cursor A string with the value to set. Constants \ref LCD_CURSOR_ON, \ref LCD_CURSOR_OFF,\ref  LCD_CURSOR_UNDER and \ref LCD_CURSOR_BLOCK can be used.
    */
-  void setCursor(std::string cursor);
+  void setCursor(const std::string& cursor);
 
   /**
    * \brief Set the cursor position on screen.

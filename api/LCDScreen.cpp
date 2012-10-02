@@ -3,7 +3,7 @@
 
 using namespace std;
 
-LCDScreen::LCDScreen(LCDElement *parent, string name, string id) : LCDElement(id, "screen_add", "", parent)
+LCDScreen::LCDScreen(LCDElement *parent, const string& name, const string& id) : LCDElement(id, "screen_add", "", parent)
 {
   if (name != "")
   {
@@ -12,7 +12,7 @@ LCDScreen::LCDScreen(LCDElement *parent, string name, string id) : LCDElement(id
   _elementDel = "screen_del";
 }
 
-string LCDScreen::valueToString(string value)
+string LCDScreen::valueToString(const string& value)
 {
   return value;
 }
@@ -22,12 +22,12 @@ string LCDScreen::valueToString(int value)
   return LCDUtils::toString(value);
 }
 
-template <typename T> void LCDScreen::setScreenOption(string optName, T value)
+template <typename T> void LCDScreen::setScreenOption(const string& optName, T value)
 {
   sendCommand("screen_set", string("-") + optName + " " + LCDScreen::valueToString(value));
 }
 
-void LCDScreen::setName(string name)
+void LCDScreen::setName(const string& name)
 {
   setScreenOption("name", name);
 }
@@ -42,17 +42,17 @@ void LCDScreen::setHeight(int height)
   setScreenOption("hgt", height);
 }
 
-void LCDScreen::setPriority(string priority)
+void LCDScreen::setPriority(const string& priority)
 {
   setScreenOption("priority", priority);
 }
 
-void LCDScreen::setHeartBeat(string heartbeat)
+void LCDScreen::setHeartBeat(const string& heartbeat)
 {
   setScreenOption("heartbeat", heartbeat);
 }
 
-void LCDScreen::setBackLight(string backlight)
+void LCDScreen::setBackLight(const string& backlight)
 {
   setScreenOption("backlight", backlight);
 }
@@ -67,7 +67,7 @@ void LCDScreen::setTimeOut(int secondEights)
   setScreenOption("timeout", secondEights);
 }
 
-void LCDScreen::setCursor(string cursor)
+void LCDScreen::setCursor(const string& cursor)
 {
   setScreenOption("cursor", cursor);
 }

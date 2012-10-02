@@ -41,7 +41,7 @@ class LCDClient : public LCDElement
   void mainLoop();
 
  protected:
-  void setClientOption(std::string optName, std::string value);
+  void setClientOption(const std::string& optName, const std::string& value);
 
  public:
   friend void *mainRepliesLoop(void *param);
@@ -126,7 +126,7 @@ class LCDClient : public LCDElement
    * Sets the client's name as visible to a user. 
    * @param name A string containing the new name.
    */
-  void setName(std::string name);
+  void setName(const std::string& name);
 
   /*
    * \brief Enable or disable heart beat.
@@ -143,7 +143,7 @@ class LCDClient : public LCDElement
    * Enable or disable the backlight for all the screens.
    * @param backlight A string with the value to set. Constants \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN, \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and \ref LCD_BACKLIGHT_FLASH can be used.
    */
-  void setBackLight(std::string backlight);
+  void setBackLight(const std::string& backlight);
 
   /**
    * \brief Assign a callback to a key.

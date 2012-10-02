@@ -62,7 +62,7 @@ class LCDIcon : public LCDWidget
    */
   std::string getIcon();
 
-  virtual void valueCallback(std::string value) {};
+  virtual void valueCallback(const std::string& value) {};
 
   virtual void notifyChanged();
 };

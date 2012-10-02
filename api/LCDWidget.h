@@ -62,7 +62,7 @@ class LCDWidget : public LCDElement
    * @param pList A list of all the parameters values.
    */
   void set(const ParameterList &pList);
-  virtual void valueCallback(std::string value) = 0;
+  virtual void valueCallback(const std::string& value) = 0;
 };
 
 #endif
