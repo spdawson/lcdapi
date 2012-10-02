@@ -57,7 +57,7 @@ class LCDScroller : public LCDWidget
    * Get the text displayed on the LCD by this widget.
    * @return A string containing the text that is displayed.
    */
-  std::string getText();
+  const std::string& getText() const;
 
   /**
    * \brief Set the width of the scroller.

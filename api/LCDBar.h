@@ -45,7 +45,7 @@ class LCDBar : public LCDWidget
    * Get the percentage value (0-100).
    * @return The percentage value.
    */
-  int getPercentage();
+  int getPercentage() const;
 
   /**
    * \brief Set the maximum percentage value.

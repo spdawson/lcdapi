@@ -46,7 +46,7 @@ string LCDCpuSensor::getCurrentValue()
   return intToString(load);
 }
 
-void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i)
+void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i) const
 {
     fstream file;
     string item = "";

@@ -20,7 +20,7 @@ class LCDCpuSensor : public LCDSensor
   long _idleTicks;
   int _load;
   
-  void getTicks(long &u,long &s,long &n,long &i);
+  void getTicks(long &u,long &s,long &n,long &i) const;
 
  public:
   virtual void waitForChange();

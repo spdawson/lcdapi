@@ -61,7 +61,7 @@ class LCDText : public LCDWidget
    * Get the text displayed on the LCD by this widget.
    * @return A string containing the text that is displayed.
    */
-  std::string getText() const;
+  const std::string& getText() const;
 
   virtual void valueCallback(const std::string& value);
 };

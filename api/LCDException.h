@@ -31,7 +31,7 @@ class LCDException
    * When an exception is caught, this method can be called to have a description of the problem.
    * \return A string containing the error description.
    */
-  std::string what()
+  std::string what() const
   {
     return std::string("LCD Error : ") + _desc;
   }

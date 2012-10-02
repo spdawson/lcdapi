@@ -38,7 +38,7 @@ void LCDIcon::setIcon(const string &type)
   notifyChanged();
 }
 
-string LCDIcon::getIcon()
+const string& LCDIcon::getIcon() const
 {
   return _type;
 }

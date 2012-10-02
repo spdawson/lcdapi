@@ -82,7 +82,7 @@ bool LCDElement::exists(const string& id)
   return ( (LCDElement::_elementsList.find(id)) != (LCDElement::_elementsList.end()) );
 }
 
-const string &LCDElement::getId()
+const string &LCDElement::getId() const
 {
   return _id;
 }

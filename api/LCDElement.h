@@ -94,7 +94,7 @@ class LCDElement
    * With this method one can have read access to the element identifier.
    * @return A string.
   */
-  const std::string &getId();
+  const std::string &getId() const;
 
   /**
    * \brief Test if a widget with given Id exists.

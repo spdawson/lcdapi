@@ -54,7 +54,7 @@ void LCDScroller::setText(const string &text)
   _text = text;
   notifyChanged();
 }
-string LCDScroller::getText()
+const string& LCDScroller::getText() const
 {
   return _text;
 }

@@ -40,7 +40,7 @@ void LCDText::setText(const string &text)
   notifyChanged();
 }
 
-string LCDText::getText() const
+const string& LCDText::getText() const
 {
   return _text;
 }

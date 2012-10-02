@@ -29,7 +29,7 @@ void LCDTitle::set(const string& text)
   notifyChanged();
 }
 
-string LCDTitle::get() const
+const string& LCDTitle::get() const
 {
   return _text;
 }

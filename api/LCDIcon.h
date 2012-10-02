@@ -60,7 +60,7 @@ class LCDIcon : public LCDWidget
    * Get the icon displayed on the LCD by this widget.
    * @return A string containing the icon name.
    */
-  std::string getIcon();
+  const std::string& getIcon() const;
 
   virtual void valueCallback(const std::string& value) {};
 

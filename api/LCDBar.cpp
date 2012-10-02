@@ -40,7 +40,7 @@ void LCDBar::setPercentage(int value)
   notifyChanged();
 }
 
-int LCDBar::getPercentage()
+int LCDBar::getPercentage() const
 {
   return ((_length * 100) / _max);
 

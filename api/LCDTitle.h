@@ -50,7 +50,7 @@ class LCDTitle : public LCDWidget
    * G the text used for the title.
    * @return A string containing the title that is displayed.
    */
-  std::string get() const;
+  const std::string& get() const;
 };
 
 #endif
