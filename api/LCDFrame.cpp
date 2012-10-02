@@ -46,6 +46,10 @@ void LCDFrame::notifyChanged()
   setWidgetParameters(params.str());
 }
 
+void LCDFrame::valueCallback(const std::string& value)
+{
+}
+
 void LCDFrame::sendCommand(const std::string &cmd, const std::string &parameters)
 {
   if (_parent)
