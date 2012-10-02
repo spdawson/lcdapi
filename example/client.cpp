@@ -1,4 +1,5 @@
 #include "LCDHeaders.h"
+#include <cstdlib>
 #include <iostream>
 #include <signal.h>
 
@@ -144,5 +145,9 @@ int main(int argc, char **argv)
   catch (LCDException e)
   {
     cerr << e.what() << endl;
+
+    return EXIT_FAILURE;
   }
+
+  return EXIT_SUCCESS;
 }
