@@ -11,11 +11,9 @@ INSTALL = install
 STRIP = strip
 
 DESTDIR = /
+COMPONENTS = api keys sensors
 INCLUDE_DIR = $(PROJECT_ROOT)/include
-API_SRC_DIR = $(PROJECT_ROOT)/api
-KEYS_SRC_DIR = $(PROJECT_ROOT)/keys
-SENSORS_SRC_DIR = $(PROJECT_ROOT)/sensors
-SRC_DIRS = $(API_SRC_DIR) $(KEYS_SRC_DIR) $(SENSORS_SRC_DIR)
+SRC_DIRS = $(foreach i,$(COMPONENTS),$(PROJECT_ROOT)/$(i))
 EXAMPLE_DIR = $(PROJECT_ROOT)/example
 OBJ_DIR = $(PROJECT_ROOT)/obj
 LIB_DIR = $(PROJECT_ROOT)/lib
@@ -72,11 +70,11 @@ $(LIB_TARGET): $(LIB_DEPENDS) $(LIB_OBJS)
 	$(STRIP) --strip-unneeded $@
 
 $(OBJ_DIR)/%.o: %.cpp
-	@mkdir -p $(OBJ_DIR)/api $(OBJ_DIR)/sensors $(OBJ_DIR)/keys
+	@mkdir -p $(foreach i,$(COMPONENTS),$(OBJ_DIR)/$(i))
 	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -c -o $@ $<
 
 $(DEPEND_DIR)/%.d: %.cpp
-	@mkdir -p $(DEPEND_DIR)/api $(DEPEND_DIR)/sensors $(DEPEND_DIR)/keys
+	@mkdir -p $(foreach i,$(COMPONENTS),$(DEPEND_DIR)/(i))
 	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -MM -MP $< | \
 		sed -r -e "s,^(\w+\.o:),$(OBJ_DIR)/\1," > $@
 
@@ -84,7 +82,7 @@ install:
 	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/lib
 	$(INSTALL) -m 0755 -t $(DESTDIR)/usr/lib $(LIB_DIR)/$(LIB_NAME)
 	$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/$(PROJECT_NAME)
-	for i in api include keys sensors; do \
+	for i in include $(COMPONENTS); do \
 		$(INSTALL) -m 0755 -d $(DESTDIR)/usr/include/$(PROJECT_NAME)/$$i && \
 		$(INSTALL) -m 0644 -t $(DESTDIR)/usr/include/$(PROJECT_NAME)/$$i \
 			$(PROJECT_ROOT)/$$i/*.h; \
