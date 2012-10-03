@@ -75,6 +75,12 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
 
 LCDClient::~LCDClient()
 {
+  // It is polite to let the server know that we are disconnecting
+  {
+    const LCDLock l(&_sendMutex);
+    _serverConnection << "bye";
+  }
+
   if (::pthread_cancel(_mainThread) == 0)
   {
     ::pthread_join(_mainThread, 0);
