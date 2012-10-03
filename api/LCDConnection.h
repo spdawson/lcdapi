@@ -14,6 +14,12 @@ namespace lcdapi {
 class LCDConnection
 {
  private:
+  LCDConnection(const LCDConnection &source);
+  const LCDConnection& operator=(const LCDConnection &copy);
+  // Memberwise copying is prohibited.
+
+  void initialize();
+
   bool _isConnected;
   int _sock;
   sockaddr_in _addr;
@@ -21,7 +27,6 @@ class LCDConnection
  public:
   LCDConnection();
   LCDConnection(const std::string &host, const int port);
-  explicit LCDConnection(const LCDConnection &source);
   virtual ~LCDConnection();
 
   bool isValid() const;
@@ -32,7 +37,6 @@ class LCDConnection
   void send(const std::string &toSend);
   std::string recv();
 
-  LCDConnection & operator = (const LCDConnection &copy);
   const LCDConnection & operator << (const std::string &s);
   const LCDConnection & operator >> (std::string &s);
 

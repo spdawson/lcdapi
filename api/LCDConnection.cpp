@@ -11,7 +11,24 @@ namespace lcdapi {
 using namespace std;
 
 LCDConnection::LCDConnection()
-  : _isConnected(false), _sock(socket (AF_INET, SOCK_STREAM, 0 )), _addr()
+  : _isConnected(false), _sock(socket (AF_INET, SOCK_STREAM, 0)), _addr()
+{
+  initialize();
+}
+
+LCDConnection::LCDConnection(const string &host, const int port)
+  : _isConnected(false), _sock(socket (AF_INET, SOCK_STREAM, 0)), _addr()
+{
+  initialize();
+  connect(host, port);
+}
+
+LCDConnection::~LCDConnection()
+{
+  disconnect();
+}
+
+void LCDConnection::initialize()
 {
   memset(&_addr, 0, sizeof (_addr));
 
@@ -25,24 +42,6 @@ LCDConnection::LCDConnection()
   {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);   
   }
-}
-
-LCDConnection::LCDConnection(const string &host, const int port)
-  : _isConnected(false), _sock(), _addr()
-{
-  // FIXME: This looks wrong...
-  LCDConnection();
-  connect(host, port);
-}
-
-LCDConnection::LCDConnection(const LCDConnection &source)
-  : _isConnected(source._isConnected), _sock(source._sock), _addr()
-{
-}
-
-LCDConnection::~LCDConnection()
-{
-  disconnect();
 }
 
 bool LCDConnection::isValid() const
@@ -145,16 +144,6 @@ string LCDConnection::recv()
 #endif // DEBUG
 
   return result;
-}
-
-LCDConnection & LCDConnection::operator = (const LCDConnection &copy)
-{
-  disconnect();
-
-  _sock = copy._sock;
-  _isConnected = copy._isConnected;
-
-  return *this;
 }
 
 const LCDConnection& LCDConnection::operator << (const string &s)
