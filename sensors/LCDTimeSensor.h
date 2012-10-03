@@ -1,7 +1,7 @@
 #ifndef _LCD_TIME_SENSOR_H_
 #define _LCD_TIME_SENSOR_H_
 
-#include "LCDSensor.h"
+#include "LCDSystemSensor.h"
 #include <string>
 
 namespace lcdapi {
@@ -15,14 +15,9 @@ const std::string LCD_TIME_HOUR_MINUTE_SECOND = "+%H:%M:%S";
  *  This sensor will return the current time in specified format.
  *  The format is the one used by date(1)
  */
-class LCDTimeSensor : public LCDSensor
+class LCDTimeSensor : public LCDSystemSensor
 {
- private:
-    std::string _format;
-
  public:
-  virtual void waitForChange();
-  virtual std::string getCurrentValue();
 
   /**
    * \brief Default constructor.

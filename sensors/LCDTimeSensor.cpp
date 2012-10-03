@@ -1,28 +1,16 @@
 #include "LCDTimeSensor.h"
 
-#include <unistd.h>
-
 namespace lcdapi {
 
 using namespace std;
 
 LCDTimeSensor::LCDTimeSensor(const string &format)
-  : LCDSensor(), _format(format)
+  : LCDSystemSensor(string("date ") + format)
 {
 }
 
 LCDTimeSensor::~LCDTimeSensor()
 {
-}
-
-void LCDTimeSensor::waitForChange()
-{
-  sleep(1);
-}
-
-string LCDTimeSensor::getCurrentValue()
-{
-  return executeCommand("date " + _format);
 }
 
 } // end of lcdapi namespace
