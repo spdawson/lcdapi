@@ -80,6 +80,7 @@ LCDClient::~LCDClient()
     ::pthread_join(_mainThread, 0);
   }
   ::pthread_mutex_destroy(&_sendMutex);
+  ::pthread_cond_destroy(&_gotAnswer);
 }
 
 void LCDClient::sendCommand(const std::string &cmd, const std::string &parameters)
