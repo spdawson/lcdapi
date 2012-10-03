@@ -140,6 +140,12 @@ void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
   sendCommand("client_add_key", LCDCallback::toString(key));
 }
 
+void LCDClient::deleteKey(KeyEvent key)
+{
+  _callbacks.erase(key);
+  sendCommand("client_del_key", LCDCallback::toString(key));
+}
+
 void LCDClient::mainLoop()
 {
   ::pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, 0);

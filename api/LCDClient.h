@@ -147,8 +147,19 @@ class LCDClient : public LCDElement
    * Used to call a user function when a key is pressed.
    * @param key The key to assign to the function.
    * @param callback The function to call. It has to be a class inherited from LCDCallback defining the operator(). You can also use the LCD_CALLBACK_FUNCTION_BEGIN and LCD_CALLBACK_FUNCTION_END macros to define only a function.
+   * \see LCDClient::deleteKey
    */
   void assignKey(KeyEvent key, LCDCallback *callback);
+
+  /**
+   * \brief Delete the callback for a key.
+   *
+   * Used to unregister a callback function previously registered by
+   * assignKey().
+   * @param key The key for which to unregister the callback function.
+   * \see LCDClient::assignKey
+   */
+  void deleteKey(KeyEvent key);
 };
 
 } // end of lcdapi namespace
