@@ -102,7 +102,7 @@ void LCDConnection::send(const string &toSend)
 
   while (offset != total)
   {
-    const int sent = ::send(_sock, s.c_str() + offset, s.size() - offset, 0);
+    const int sent = ::send(_sock, s.c_str() + offset, total - offset, 0);
     if ( ((sent == -1) && (errno != EAGAIN)) || (sent == 0) )
     {
       throw LCDException(LCD_SOCKET_SEND_ERROR);
