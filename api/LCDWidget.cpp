@@ -13,9 +13,6 @@ LCDWidget::LCDWidget(const string &id, LCDElement *parent, const string &widgetT
 
 LCDWidget::LCDWidget(const string &widgetType) : LCDElement("", 0), _x(1), _y(1), _widgetType(widgetType)
 {
-  _x = 1;
-  _y = 1;
-  _widgetType = widgetType;
 }
 
 void LCDWidget::move(int x, int y)
