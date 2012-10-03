@@ -44,27 +44,27 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
 
   while (response >> token)
   {
-    if (token == "LCDproc")
+    if (0 == token.compare("LCDproc"))
     {
       response >> _serverVersion;
     }
-    else if (token == "protocol")
+    else if (0 == token.compare("protocol"))
     {
       response >> _protocolVersion;
     }
-    else if (token == "wid")
+    else if (0 == token.compare("wid"))
     {
       response >> _width;
     }
-    else if (token == "hgt")
+    else if (0 == token.compare("hgt"))
     {
       response >> _height;
     }
-    else if (token == "cellwid")
+    else if (0 == token.compare("cellwid"))
     {
       response >> _charWidth;
     }
-    else if (token == "cellhgt")
+    else if (0 == token.compare("cellhgt"))
     {
       response >> _charHeight;
     }
@@ -176,10 +176,39 @@ void LCDClient::mainLoop()
       }
       else if (0 == reply.find("ignore"))
       {
-	if (_currentScreen == reply.substr(7))
-	{
-	  _currentScreen.clear();
-	}
+        if (_currentScreen == reply.substr(7))
+        {
+          _currentScreen.clear();
+        }
+      }
+      else if (0 == reply.find("menuevent"))
+      {
+        istringstream response(reply.substr(10));
+        string menu_event_type;
+        string menu_event_id;
+        string menu_event_value; // N.B. Not for all event types
+        response >> menu_event_type >> menu_event_id;
+        if (0 == menu_event_type.compare("select"))
+        {
+        }
+        else if (0 == menu_event_type.compare("update"))
+        {
+          response >> menu_event_value;
+        }
+        else if (0 == menu_event_type.compare("plus"))
+        {
+          response >> menu_event_value;
+        }
+        else if (0 == menu_event_type.compare("minus"))
+        {
+          response >> menu_event_value;
+        }
+        else if (0 == menu_event_type.compare("enter"))
+        {
+        }
+        else if (0 == menu_event_type.compare("leave"))
+        {
+        }
       }
     }
   }
