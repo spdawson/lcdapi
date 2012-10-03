@@ -85,7 +85,7 @@ LCDClient::~LCDClient()
 
 void LCDClient::sendCommand(const std::string &cmd, const std::string &parameters)
 {
-  if (cmd.size() > 0)
+  if (!cmd.empty())
   {
     const LCDLock l(&_sendMutex);
 
@@ -98,7 +98,7 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
       ::pthread_cond_wait(&_gotAnswer, &_sendMutex);
     }
 
-    if (_answer.substr(0, 4) == "huh?")
+    if (0 == _answer.find("huh?"))
     {
       throw LCDException(_answer.substr(5));
     }
@@ -148,7 +148,7 @@ void LCDClient::mainLoop()
   {
     _serverConnection >> reply;
 
-    if ( (reply.substr(0, 4) == "huh?") || (reply == "success") )
+    if ( (0 == reply.find("huh?")) || (0 == reply.compare("success")) )
     {
       const LCDLock l(&_sendMutex);
       _answer = reply;
@@ -156,7 +156,7 @@ void LCDClient::mainLoop()
     }
     else
     {
-      if (reply.substr(0, 3) == "key")
+      if (0 == reply.find("key"))
       {
         const KeyEvent key = reply[4];
         if (_callbacks.end() != _callbacks.find(key))
@@ -170,11 +170,11 @@ void LCDClient::mainLoop()
         }
 
       }
-      else if (reply.substr(0, 6) == "listen")
+      else if (0 == reply.find("listen"))
       {
         _currentScreen = reply.substr(7);
       }
-      else if (reply.substr(0, 6) == "ignore")
+      else if (0 == reply.find("ignore"))
       {
 	if (_currentScreen == reply.substr(7))
 	{
