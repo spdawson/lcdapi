@@ -19,7 +19,6 @@
 
 #include "LCDMutex.h"
 
-#include <pthread.h>
 #include <string>
 #include <list>
 #include <map>
