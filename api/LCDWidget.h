@@ -42,7 +42,6 @@ class LCDWidget : public LCDElement
    * This is a list containing strings. Each string corresponds to a parameter.
    */
   typedef std::list<std::string> ParameterList;
-  LCDWidget(const std::string &widgetType);
 
   virtual void notifyChanged() = 0;
   /**
