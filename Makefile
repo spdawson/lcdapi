@@ -74,7 +74,7 @@ $(OBJ_DIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -c -o $@ $<
 
 $(DEPEND_DIR)/%.d: %.cpp
-	@mkdir -p $(foreach i,$(COMPONENTS),$(DEPEND_DIR)/(i))
+	@mkdir -p $(foreach i,$(COMPONENTS),$(DEPEND_DIR)/$(i))
 	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -MM -MP $< | \
 		sed -r -e "s,^(\w+\.o:),$(OBJ_DIR)/\1," > $@
 
