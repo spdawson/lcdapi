@@ -21,7 +21,7 @@ LCDElement::LCDElement(const string &id, const string &addCommand, const string 
     _childrenList(),
     _commandBuffer()
 {
-  if (id.size() == 0)
+  if (id.empty())
   {
     const LCDLock l(&LCDElement::_elementMutex);
     ostringstream idBuffer;
@@ -92,7 +92,7 @@ const string &LCDElement::getId() const
 void LCDElement::sendCommand(const std::string &cmd, const std::string &parameters)
 {
   const LCDLock l(&LCDElement::_elementMutex);
-  if (cmd.size() > 0)
+  if (!cmd.empty())
   {
     if (_parent)
     {
