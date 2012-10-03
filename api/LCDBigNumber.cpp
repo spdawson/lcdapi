@@ -61,7 +61,7 @@ void LCDBigNumber::valueCallback(const string& value)
   }
   else
   {
-    // FIXME: Use strtol(), and handle parse errors
+    /// \todo Use strtol(), and handle parse errors
     const int parsed_value = atoi(value.substr(position,1).c_str());
     _number = parsed_value;
   }
