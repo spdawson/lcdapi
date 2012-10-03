@@ -86,7 +86,7 @@ void LCDConnection::disconnect()
 
 void LCDConnection::send(const string &toSend)
 {
-  string s = toSend + "\r\n";
+  const string s = toSend + "\r\n";
 
 #ifdef DEBUG
   cerr << "Sending : " << s << endl;
