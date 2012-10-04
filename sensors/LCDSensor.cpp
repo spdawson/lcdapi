@@ -93,14 +93,16 @@ string LCDSensor::intToString(int value)
 
 string LCDSensor::executeCommand(const string &cmd)
 {
-  string silentCmd = cmd + " 2>/dev/null";
+  const string silentCmd = cmd + " 2>/dev/null";
   char buf[MAX_CMD_RESULT_LINE_SIZE + 1];
-  buf[0]='\0';
-  FILE *ptr;
+  buf[0] = '\0';
+  FILE *ptr = NULL;
 
   if ((ptr = popen(silentCmd.c_str(), "r")) != NULL)
   {
-    fgets(buf, MAX_CMD_RESULT_LINE_SIZE, ptr);
+    if (NULL == fgets(buf, MAX_CMD_RESULT_LINE_SIZE, ptr)) {
+      /// \todo Handle error or EOF
+    }
     pclose(ptr);
   }
 
