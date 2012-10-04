@@ -49,6 +49,7 @@ bool LCDConnection::isValid() const
   return _sock != -1;
 }
 
+#pragma GCC diagnostic ignored "-Wold-style-cast"
 void LCDConnection::connect(const string &host, const int port)
 {
   if (!isValid())
@@ -75,6 +76,7 @@ void LCDConnection::connect(const string &host, const int port)
 
   _isConnected = true;
 }
+#pragma GCC diagnostic error "-Wold-style-cast"
 
 void LCDConnection::disconnect()
 {
@@ -122,20 +124,21 @@ string LCDConnection::recv()
   }
 
   char buf[LCD_MAXRECV + 1];
-  memset (buf, 0, LCD_MAXRECV + 1);
-  char *current = buf - 1;
+  memset(buf, 0, LCD_MAXRECV + 1);
 
-  do
+  for (char* current = buf; current < (buf + LCD_MAXRECV); ++current)
   {
-    current++;
     const int status = ::recv(_sock, current, 1, 0);
-    if (status == -1)
+    if (-1 == status)
     {
       throw LCDException(LCD_SOCKET_RECV_ERROR);
     }
-  } while ( (*current != '\0' ) && (*current != '\r' ) && (*current != '\n' ) && ((current - buf) < LCD_MAXRECV) );
-
-  *current = '\0';
+    if (('\0' == *current) || ('\r' == *current) || ('\n' == *current))
+    {
+      *current = '\0'; // N.B. Delete line termination character
+      break;
+    }
+  }
 
   const string result(buf);
 
