@@ -3,7 +3,6 @@ PROJECT_ROOT = .
 PROJECT_VERSION = 0.3
 
 INCFLAGS = -I$(INCLUDE_DIR) $(foreach i,$(SRC_DIRS),-I$(i))
-CXXFLAGS = -g
 CXXWARNFLAGS = \
 	-Wall -Wextra -Weffc++ -Wold-style-cast \
 	-Werror -Wno-error=unused-parameter -Wno-error=unused-function
@@ -42,8 +41,13 @@ LIB_SRCS = $(foreach i,$(SRC_DIRS),$(wildcard $(i)/*.cpp))
 LIB_OBJS = $(LIB_SRCS:%.cpp=$(OBJ_DIR)/%.o)
 LIB_DEPENDS = $(LIB_SRCS:%.cpp=$(DEPEND_DIR)/%.d)
 
-.PHONY: all clean docs doc_clean deliver install uninstall
-all: $(LIB_TARGET)
+.PHONY: all development release clean docs doc_clean deliver install uninstall
+all: release
+
+development release: $(LIB_TARGET)
+
+development: CXXFLAGS += -g3 -DDEBUG -O0
+release: CXXFLAGS += -g0 -DNODEBUG -Os
 
 clean:
 	find . -type f -name '*~' -delete
