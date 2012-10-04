@@ -155,6 +155,55 @@ const std::string LCD_CURSOR_UNDER = "under";
  */
 const std::string LCD_CURSOR_BLOCK = "block";
 
+/**
+ *  \defgroup menu_constants Menu constants
+ *  \ingroup constants
+ *  Constants used with menus
+ */
+
+/**
+ *  \ingroup menu_constants
+ *  \brief Select menu event.
+ *
+ *  Select menu event, on an action menu item.
+ */
+const std::string LCD_MENU_EVENT_SELECT = "select";
+/**
+ *  \ingroup menu_constants
+ *  \brief Update menu event.
+ *
+ *  Update menu event, on a checkbox, ring, numeric or alpha menu item.
+ */
+const std::string LCD_MENU_EVENT_UPDATE = "update";
+/**
+ *  \ingroup menu_constants
+ *  \brief Plus menu event.
+ *
+ *  Plus menu event, on a slider menu item.
+ */
+const std::string LCD_MENU_EVENT_PLUS = "plus";
+/**
+ *  \ingroup menu_constants
+ *  \brief Minus menu event.
+ *
+ *  Minus menu event, on a slider menu item.
+ */
+const std::string LCD_MENU_EVENT_MINUS = "minus";
+/**
+ *  \ingroup menu_constants
+ *  \brief Enter menu event.
+ *
+ *  Enter menu event, on a menu item.
+ */
+const std::string LCD_MENU_EVENT_ENTER = "enter";
+/**
+ *  \ingroup menu_constants
+ *  \brief Leave menu event.
+ *
+ *  Leave menu event, on a menu item.
+ */
+const std::string LCD_MENU_EVENT_LEAVE = "leave";
+
 /* Icons values */
 
 const std::string LCD_ICON_BLOCK_FILLED = "BLOCK_FILLED";
