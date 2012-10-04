@@ -23,16 +23,4 @@ void LCDWidget::setWidgetParameters(const std::string &properties)
   sendCommand("widget_set", properties);
 }
 
-void LCDWidget::set(const ParameterList &pList)
-{
-  ostringstream params;
-  for (ParameterList::const_iterator it = pList.begin();
-       it != pList.end(); ++it)
-  {
-    params << *it << " ";
-  }
-
-  setWidgetParameters(params.str());
-}
-
 } // end of lcdapi namespace

@@ -10,7 +10,6 @@
  */
 
 #include "LCDElement.h"
-#include <list>
 #include <string>
 
 namespace lcdapi {
@@ -36,12 +35,6 @@ class LCDWidget : public LCDElement
     Horizontal = 'h',
     Vertical = 'v'
   };
-  /**
-   * \brief A list of parameters for set method.
-   *
-   * This is a list containing strings. Each string corresponds to a parameter.
-   */
-  typedef std::list<std::string> ParameterList;
 
   virtual void notifyChanged() = 0;
   /**
@@ -55,14 +48,6 @@ class LCDWidget : public LCDElement
    */
   void move(int x, int y = 1);
 
-  /**
-   * \brief Generic method to set widget parameter.
-   *
-   * This method can be used to set all parameters of a widget.
-   * You should know the ones that are used by the protocol to put all of them in correct order.
-   * @param pList A list of all the parameters values.
-   */
-  void set(const ParameterList &pList);
   virtual void valueCallback(const std::string& value) = 0;
 };
 
