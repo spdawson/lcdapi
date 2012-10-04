@@ -82,6 +82,9 @@
 #include "../api/LCDIcon.h"
 #include "../api/LCDScroller.h"
 
+/* Menus */
+#include "../menus/LCDMenuEventHandler.h"
+
 /* Sensors */
 #include "../sensors/LCDTimeSensor.h"
 #include "../sensors/LCDSystemSensor.h"

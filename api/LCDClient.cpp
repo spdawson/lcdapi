@@ -30,7 +30,8 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
                                                        _height(0),
                                                        _charWidth(0),
                                                        _charHeight(0),
-                                                       _callbacks()
+                                                       _callbacks(),
+                                                       _handlers()
 {
   ::pthread_mutex_init(&_sendMutex, 0);
   ::pthread_cond_init(&_gotAnswer, 0);
@@ -152,6 +153,35 @@ void LCDClient::deleteKey(KeyEvent key)
   sendCommand("client_del_key", LCDCallback::toString(key));
 }
 
+void LCDClient::registerMenuEventHandler(const std::string& menu_id, const std::string& menu_event, LCDMenuEventHandler* handler)
+{
+  if (NULL == handler) {
+    unregisterMenuEventHandler(menu_id, menu_event);
+  } else {
+    _handlers[menu_id][menu_event] = handler;
+  }
+}
+
+void LCDClient::unregisterMenuEventHandler(const std::string& menu_id, const std::string& menu_event)
+{
+  if (_handlers.end() != _handlers.find(menu_id)) {
+    _handlers[menu_id].erase(menu_event);
+    if (_handlers[menu_id].empty()) {
+      _handlers.erase(menu_id);
+    }
+  }
+}
+
+void LCDClient::menuGoto(const std::string& id)
+{
+  sendCommand("menu_goto", id);
+}
+
+void LCDClient::menuSetMain(const std::string& id)
+{
+  sendCommand("menu_set_main", id);
+}
+
 void LCDClient::mainLoop()
 {
   ::pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, 0);
@@ -196,30 +226,23 @@ void LCDClient::mainLoop()
       else if (0 == reply.find("menuevent"))
       {
         istringstream response(reply.substr(10));
-        string menu_event_type;
-        string menu_event_id;
-        string menu_event_value; // N.B. Not for all event types
-        response >> menu_event_type >> menu_event_id;
-        if (0 == menu_event_type.compare("select"))
-        {
-        }
-        else if (0 == menu_event_type.compare("update"))
-        {
-          response >> menu_event_value;
-        }
-        else if (0 == menu_event_type.compare("plus"))
-        {
-          response >> menu_event_value;
-        }
-        else if (0 == menu_event_type.compare("minus"))
-        {
-          response >> menu_event_value;
-        }
-        else if (0 == menu_event_type.compare("enter"))
-        {
-        }
-        else if (0 == menu_event_type.compare("leave"))
-        {
+        string menu_event;
+        string menu_id;
+        string value; // N.B. Not for all event types
+        response >> menu_event >> menu_id >> value;
+
+        // Invoke handler, if we have one.
+        const MenuEventHandlerMap::const_iterator iter =
+          _handlers.find(menu_id);
+        if (_handlers.end() != iter) {
+          const map<string, LCDMenuEventHandler*>& menu_handlers =
+            iter->second;
+          if (menu_handlers.end() != menu_handlers.find(menu_event)) {
+            LCDMenuEventHandler* handler = _handlers[menu_id][menu_event];
+            if (NULL != handler) {
+              (*_handlers[menu_id][menu_event])(menu_event, value);
+            }
+          }
         }
       }
     }

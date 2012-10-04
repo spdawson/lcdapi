@@ -10,7 +10,7 @@ INSTALL = install
 STRIP = strip
 
 DESTDIR = /
-COMPONENTS = api keys sensors
+COMPONENTS = api keys menus sensors
 INCLUDE_DIR = $(PROJECT_ROOT)/include
 SRC_DIRS = $(foreach i,$(COMPONENTS),$(PROJECT_ROOT)/$(i))
 EXAMPLE_DIR = $(PROJECT_ROOT)/example

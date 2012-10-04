@@ -4,6 +4,7 @@
 #include "LCDConnection.h"
 #include "LCDElement.h"
 #include "../keys/LCDCallback.h"
+#include "../menus/LCDMenuEventHandler.h"
 
 #include <pthread.h>
 #include <string>
@@ -34,6 +35,7 @@ class LCDClient : public LCDElement
   int _charWidth;
   int _charHeight;
   CallbackMap _callbacks;
+  MenuEventHandlerMap _handlers;
   void mainLoop();
 
  protected:
@@ -160,6 +162,46 @@ class LCDClient : public LCDElement
    * \see LCDClient::assignKey
    */
   void deleteKey(KeyEvent key);
+
+  /**
+   * \brief Register a handler for a specific event type on a specific menu.
+   *
+   * Used to call a user function when a menu event occurs.
+   * @param menu_id The menu for which to register the handler.
+   * @param menu_event The menu event type which is to be handled.
+   * @param handler The handler to call. It has to be a class inherited from LCDMenuEventHandler defining the operator(). You can also use the LCD_MENUEVENTHANDLER_FUNCTION_BEGIN and LCD_MENUEVENTHANDLER_FUNCTION_END macros to define only a function.
+   * \see LCDClient::unregisterMenuEventHandler
+   */
+  void registerMenuEventHandler(const std::string& menu_id, const std::string& menu_event, LCDMenuEventHandler* handler);
+
+  /**
+   * \brief Unregister the handler for a specific event type on a specific
+   * menu.
+   *
+   * Used to unregister a handler previously registered by
+   * registerMenuEventHandler().
+   * @param menu_id The menu for which to unregister the handler.
+   * @param menu_event The menu event type for which to unregister the handler.
+   * \see LCDClient::registerMenuEventHandler
+   */
+  void unregisterMenuEventHandler(const std::string& menu_id, const std::string& menu_event);
+
+  /**
+   * \brief Change current menu to that specified.
+   *
+   * Used to unregister a callback function previously registered by
+   * assignKey().
+   * @param id The ID of the menu to use.
+   */
+  void menuGoto(const std::string& id = "");
+
+  /**
+   * \brief Set the entry point into the menu system.
+   *
+   * Used to set the specified menu as the entry point into the menu system.
+   * @param id The ID of the menu to use.
+   */
+  void menuSetMain(const std::string& id = "");
 };
 
 } // end of lcdapi namespace
