@@ -46,7 +46,8 @@ LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
                                                        _charWidth(0),
                                                        _charHeight(0),
                                                        _callbacks(),
-                                                       _handlers()
+                                                       _handlers(),
+                                                       _sync(true)
 {
   ::pthread_mutex_init(&_sendMutex, 0);
   ::pthread_cond_init(&_gotAnswer, 0);
@@ -115,17 +116,24 @@ void LCDClient::sendCommand(const std::string &cmd, const std::string &parameter
 
     _serverConnection << command;
 
-    while (_answer.empty())
-    {
-      ::pthread_cond_wait(&_gotAnswer, &_sendMutex);
-    }
+    if (_sync) {
+      while (_answer.empty())
+      {
+        ::pthread_cond_wait(&_gotAnswer, &_sendMutex);
+      }
 
-    if (0 == _answer.find("huh?"))
-    {
-      throw LCDException(_answer.substr(5));
+      if (0 == _answer.find("huh?"))
+      {
+        throw LCDException(_answer.substr(5));
+      }
+      _answer.clear();
     }
-    _answer.clear();
   }
+}
+
+void LCDClient::disableSync()
+{
+  _sync = false;
 }
 
 void LCDClient::notifyCreated()

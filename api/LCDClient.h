@@ -36,6 +36,7 @@ class LCDClient : public LCDElement
   int _charHeight;
   CallbackMap _callbacks;
   MenuEventHandlerMap _handlers;
+  bool _sync;
   void mainLoop();
 
  protected:
@@ -66,6 +67,21 @@ class LCDClient : public LCDElement
    * @param parameters All the parameters for the command as a space separated string.
    */
   void sendCommand(const std::string &cmd, const std::string &parameters = "");
+
+  /**
+   * \brief Disable synchronous command send/response.
+   *
+   * Disable the default synchronous behaviour. By default, when a command
+   * is sent to the server, the client waits for a response. If the response
+   * indicates that the command failed, then an exception is thrown.
+   *
+   * Note that no such exceptions will be thrown once synchronisation has
+   * been disabled; consequently, it will no longer be possible to recognize
+   * that a command has failed.
+   *
+   * Use with caution.
+   */
+  void disableSync();
 
   virtual void notifyCreated();
   virtual void notifyDestroyed();
