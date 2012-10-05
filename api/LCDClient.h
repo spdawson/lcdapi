@@ -126,23 +126,6 @@ class LCDClient : public LCDElement
    */
   void setName(const std::string& name);
 
-  /*
-   * \brief Enable or disable heart beat.
-   *
-   * Enable or disable the heart beat used by LCDproc to show data transmission.
-   * This value will override the ones from screens.
-   * @param heartbeat A string with the value to set. Constants \ref LCD_HEARTBEAT_ON, \ref LCD_HEARTBEAT_OFF and \ref LCD_HEARTBEAT_OPEN can be used.
-   */
-  // void setHeartBeat(const std::string& heartbeat);
-
-  /**
-   * \brief Enable or disable backlight.
-   *
-   * Enable or disable the backlight for all the screens.
-   * @param backlight A string with the value to set. Constants \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN, \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and \ref LCD_BACKLIGHT_FLASH can be used.
-   */
-  void setBackLight(const std::string& backlight);
-
   /**
    * \brief Assign a callback to a key.
    *

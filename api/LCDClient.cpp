@@ -130,16 +130,6 @@ void LCDClient::setName(const string& name)
 {
   setClientOption("name", name);
 }
-/*
-void LCDClient::setHeartBeat(const string& heartbeat)
-{
-  setClientOption("heartbeat", heartbeat);
-}
-*/
-void LCDClient::setBackLight(const string& backlight)
-{
-  sendCommand("backlight", backlight);
-}
 
 void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
 {
