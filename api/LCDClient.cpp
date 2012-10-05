@@ -9,11 +9,26 @@ using namespace std;
 
 void *mainRepliesLoop(void *);
 void *handleKeyEvent(void *);
+void *handleMenuEvent(void *);
 
 struct KeyEventInfo
 {
   KeyEvent kev;
   LCDCallback *callback;
+};
+
+class MenuEventInfo
+{
+private:
+  MenuEventInfo(const MenuEventInfo& original);
+  const MenuEventInfo& operator=(const MenuEventInfo& rhs);
+  // Memberwise copying is prohibited.
+public:
+  MenuEventInfo() : menu_event(), value(), handler(NULL) {};
+  ~MenuEventInfo() {};
+  string menu_event;
+  string value;
+  LCDMenuEventHandler *handler;
 };
 
 LCDClient::LCDClient(const string &server, int port) : LCDElement("", ""),
@@ -230,7 +245,14 @@ void LCDClient::mainLoop()
           if (menu_handlers.end() != menu_handlers.find(menu_event)) {
             LCDMenuEventHandler* handler = _handlers[menu_id][menu_event];
             if (NULL != handler) {
-              (*_handlers[menu_id][menu_event])(menu_event, value);
+
+              MenuEventInfo *mevI = new MenuEventInfo;
+              mevI->menu_event = menu_event;
+              mevI->value = value;
+              mevI->handler = handler;
+
+              ::pthread_t tid;
+              ::pthread_create(&tid, 0, &handleMenuEvent, mevI);
             }
           }
         }
@@ -249,11 +271,32 @@ void *mainRepliesLoop(void *param)
 
 void *handleKeyEvent(void *param)
 {
-  KeyEventInfo *kevI = static_cast<KeyEventInfo*>(param);
+  if (NULL != param) {
+    KeyEventInfo *kevI = static_cast<KeyEventInfo*>(param);
 
-  (*(kevI->callback))(kevI->kev);
+    if (NULL != kevI->callback) {
+      (*(kevI->callback))(kevI->kev);
+    }
 
-  delete kevI;
+    delete kevI;
+    kevI = NULL;
+  }
+
+  return NULL;
+}
+
+void *handleMenuEvent(void *param)
+{
+  if (NULL != param) {
+    MenuEventInfo *mevI = static_cast<MenuEventInfo*>(param);
+
+    if (NULL != mevI->handler) {
+      (*(mevI->handler))(mevI->menu_event, mevI->value);
+    }
+
+    delete mevI;
+    mevI = NULL;
+  }
 
   return NULL;
 }
