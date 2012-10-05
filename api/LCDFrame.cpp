@@ -12,16 +12,25 @@ LCDFrame::LCDFrame(LCDElement *parent, const string &id) : LCDWidget(id, parent,
 
 void LCDFrame::set(int left, int top, int right, int bottom, int width, int height, Direction direction, int speed)
 {
-  _left = left;
-  _top = top;
-  _right = right;
-  _bottom = bottom;
-  _width = width;
-  _height = height;
-  _direction = direction;
-  _speed = speed;
+  if (_left != left ||
+      _top != top ||
+      _right != right ||
+      _bottom != bottom ||
+      _width != width ||
+      _height != height ||
+      _direction != direction ||
+      _speed != speed) {
+    _left = left;
+    _top = top;
+    _right = right;
+    _bottom = bottom;
+    _width = width;
+    _height = height;
+    _direction = direction;
+    _speed = speed;
 
-  notifyChanged();
+    notifyChanged();
+  }
 }
 void LCDFrame::notifyChanged()
 {

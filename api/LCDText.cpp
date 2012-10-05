@@ -30,16 +30,17 @@ void LCDText::notifyChanged()
 
 void LCDText::set(const string &text, int x, int y)
 {
-  _x = x;
-  _y = y;
-  _text = text;
-  notifyChanged();
+  if (_x != x || _y != y || _text != text) {
+    _x = x;
+    _y = y;
+    _text = text;
+    notifyChanged();
+  }
 }
 
 void LCDText::setText(const string &text)
 {
-  _text = text;
-  notifyChanged();
+  set(text, _x, _y);
 }
 
 const string& LCDText::getText() const

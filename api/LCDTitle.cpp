@@ -27,8 +27,10 @@ void LCDTitle::notifyChanged()
 
 void LCDTitle::set(const string& text)
 {
-  _text = text;
-  notifyChanged();
+  if (_text != text) {
+    _text = text;
+    notifyChanged();
+  }
 }
 
 const string& LCDTitle::get() const

@@ -41,20 +41,30 @@ void LCDScroller::notifyChanged()
 
 void LCDScroller::set(const string &text, int left, int top, int right, int bottom, int speed, Direction direction)
 {
-  _text = text;
-  _x = left;
-  _y = top;
-  _right = right;
-  _bottom = bottom;
-  _speed = speed;
-  _direction = direction;
-  notifyChanged();
+  if (_text != text ||
+      _x != left ||
+      _y != top ||
+      _right != right ||
+      _bottom != bottom ||
+      _speed != speed ||
+      _direction != direction) {
+    _text = text;
+    _x = left;
+    _y = top;
+    _right = right;
+    _bottom = bottom;
+    _speed = speed;
+    _direction = direction;
+    notifyChanged();
+  }
 }
 
 void LCDScroller::setText(const string &text)
 {
-  _text = text;
-  notifyChanged();
+  if (_text != text) {
+    _text = text;
+    notifyChanged();
+  }
 }
 const string& LCDScroller::getText() const
 {
@@ -62,18 +72,26 @@ const string& LCDScroller::getText() const
 }
 void LCDScroller::setWidth(int width)
 {
-  _right = _x + width - 1;
-  notifyChanged();
+  const int new_right = _x + width - 1;
+  if (_right != new_right) {
+    _right = new_right;
+    notifyChanged();
+  }
 }
 void LCDScroller::setHeight(int height)
 {
-  _bottom = _y + height - 1;
-  notifyChanged();
+  const int new_bottom = _y + height - 1;
+  if (_bottom != new_bottom) {
+    _bottom = new_bottom;
+    notifyChanged();
+  }
 }
 void LCDScroller::setSpeed(int speed)
 {
-  _speed = speed;
-  notifyChanged();
+  if (_speed != speed) {
+    _speed = speed;
+    notifyChanged();
+  }
 }
 
 void LCDScroller::valueCallback(const std::string& value)

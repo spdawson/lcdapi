@@ -35,15 +35,16 @@ void LCDBigNumber::notifyChanged()
 
 void LCDBigNumber::set(int number, int x)
 {
-  _number = number;
-  _x = x;
-  notifyChanged();
+  if (_number != number || _x != x) {
+    _number = number;
+    _x = x;
+    notifyChanged();
+  }
 }
 
 void LCDBigNumber::setNumber(int number)
 {
-  _number = number;
-  notifyChanged();
+  set(number, _x);
 }
 
 int LCDBigNumber::getNumber() const

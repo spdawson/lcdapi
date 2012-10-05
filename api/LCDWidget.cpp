@@ -13,9 +13,11 @@ LCDWidget::LCDWidget(const string &id, LCDElement *parent, const string &widgetT
 
 void LCDWidget::move(int x, int y)
 {
-  _x = x;
-  _y = y;
-  notifyChanged();
+  if (_x != x || _y != y) {
+    _x = x;
+    _y = y;
+    notifyChanged();
+  }
 }
 
 void LCDWidget::setWidgetParameters(const std::string &properties)

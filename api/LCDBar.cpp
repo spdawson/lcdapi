@@ -30,16 +30,18 @@ void LCDBar::notifyChanged()
 
 void LCDBar::set(int length, int x, int y)
 {
-  _length = length;
-  _x = x;
-  _y =y;
-  notifyChanged();
+  if (_length != length || _x != x || _y != y) {
+    _length = length;
+    _x = x;
+    _y =y;
+    notifyChanged();
+  }
 }
 
 void LCDBar::setPercentage(int value)
 {
-  _length = (value * _max) / 100;
-  notifyChanged();
+  const int new_length = (value * _max) / 100;
+  set(new_length, _x, _y);
 }
 
 int LCDBar::getPercentage() const

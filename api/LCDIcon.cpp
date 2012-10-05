@@ -16,10 +16,14 @@ LCDIcon::LCDIcon(const string &type, int x, int y, LCDElement *parent, const str
 
 void LCDIcon::set(const string &type, int x, int y)
 {
-  _type = type;
-  _x = x;
-  _y = y;
-  notifyChanged();
+  if (_type != type ||
+      _x != x ||
+      _y != y) {
+    _type = type;
+    _x = x;
+    _y = y;
+    notifyChanged();
+  }
 }
 
 void LCDIcon::valueCallback(const std::string& value)
@@ -41,8 +45,7 @@ void LCDIcon::notifyChanged()
 
 void LCDIcon::setIcon(const string &type)
 {
-  _type = type;
-  notifyChanged();
+  set(type, _x, _y);
 }
 
 const string& LCDIcon::getIcon() const
