@@ -108,7 +108,12 @@ string LCDSensor::executeCommand(const string &cmd)
 
   // N.B. The length of the string is determined by the first occurrence
   // of a null character in the character array.
-  const string result(buf);
+  string result(buf);
+
+  // Erase line termination character.
+  if (!result.empty()) {
+    result.erase(result.size() - 1, 1);
+  }
 
   return result;
 }
