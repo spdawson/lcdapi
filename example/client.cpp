@@ -60,8 +60,6 @@ int main(int argc, char **argv)
          << "  Char Width :\t" << client.getCharWidth() << endl
          << "  Char Height :\t" << client.getCharHeight() << endl;
 
-    client.setBackLight(LCD_BACKLIGHT_ON);
-
     /* First screen */
 
     LCDScreen screen1(&client);
@@ -77,6 +75,8 @@ int main(int argc, char **argv)
 
     LCDKdeMultimediaSensor myMM("No title");
     myMM.addOnChangeWidget(&scroll);
+
+    screen1.setBackLight(LCD_BACKLIGHT_ON);
 
     /* Second screen */
 
