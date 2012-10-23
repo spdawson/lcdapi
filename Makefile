@@ -46,8 +46,8 @@ all: release
 
 development release: $(LIB_TARGET)
 
-development: CXXFLAGS += -g3 -DDEBUG -O0
-release: CXXFLAGS += -g0 -DNODEBUG -Os
+development: CXXFLAGS += -g3 -DDEBUG -O0 -fPIC
+release: CXXFLAGS += -g0 -DNODEBUG -Os -fPIC
 
 clean:
 	find . -type f -name '*~' -delete
