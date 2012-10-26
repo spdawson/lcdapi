@@ -30,11 +30,11 @@
  *
  * You can get the source from the following link:
  *
- * https://github.com/spdawson/lcdapi/tarball/v0.3
+ * https://github.com/spdawson/lcdapi/tarball/v0.4
  *
  * You can then unpack them with:
  * \code
- * tar xaf lcdapi-0.3.tar.gz
+ * tar xaf lcdapi-0.4.tar.gz
  * \endcode
  * Go into the new directory and type:
  * \code
