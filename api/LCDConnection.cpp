@@ -1,5 +1,5 @@
 #include "LCDConnection.h"
-#include "LCDConstants.h"
+#include "../include/LCDConstants.h"
 #include "LCDException.h"
 #include <cstring>
 #include <cerrno>
