@@ -1,7 +1,11 @@
 0.3
 ----
 
+ * Project forked at https://github.com/spdawson/lcdapi
  * Fixes for a variety of build problems
+ * install and uninstall make targets
+ * General cleanup of code, to allow stricter compile flags
+ * Move everything into lcdapi namespace
 
 0.2
 ----
