@@ -1,7 +1,8 @@
 0.4
 ----
 
- * ...
+ * Fix a problem with the handling of CXXFLAGS passed in from the
+   environment/command line
 
 0.3
 ----
