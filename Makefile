@@ -2,7 +2,7 @@ PROJECT_ROOT = .
 
 PROJECT_VERSION = 0.4
 
-INCFLAGS = -I$(INCLUDE_DIR) $(foreach i,$(SRC_DIRS),-I$(i))
+CXXINCFLAGS = -I$(INCLUDE_DIR) $(foreach i,$(SRC_DIRS),-I$(i))
 CXXWARNFLAGS = \
 	-Wall -Wextra -Weffc++ -Wold-style-cast \
 	-Werror -Wno-error=unused-parameter -Wno-error=unused-function
@@ -46,8 +46,8 @@ all: release
 
 development release: $(LIB_TARGET)
 
-development: CXXFLAGS += -g3 -DDEBUG -O0 -fPIC
-release: CXXFLAGS += -g0 -DNODEBUG -Os -fPIC
+development: CXXDEBUGFLAGS += -g3 -DDEBUG -O0
+release: CXXDEBUGFLAGS += -g0 -DNODEBUG -Os
 
 clean:
 	find . -type f -name '*~' -delete
@@ -73,13 +73,16 @@ $(LIB_TARGET): $(LIB_DEPENDS) $(LIB_OBJS)
 		$(LIB_OBJS) $(foreach i,$(LIBS),-l$(i))
 	$(STRIP) --strip-unneeded $@
 
+FULL_CXXFLAGS = \
+	$(CXXFLAGS) $(CXXDEBUGFLAGS) -fPIC $(CXXWARNFLAGS) $(CXXINCFLAGS)
+
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(foreach i,$(COMPONENTS),$(OBJ_DIR)/$(i))
-	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -c -o $@ $<
+	$(CXX) $(FULL_CXXFLAGS) -c -o $@ $<
 
 $(DEPEND_DIR)/%.d: %.cpp
 	@mkdir -p $(foreach i,$(COMPONENTS),$(DEPEND_DIR)/$(i))
-	$(CXX) $(CXXFLAGS) $(CXXWARNFLAGS) $(INCFLAGS) -MM -MP $< | \
+	$(CXX) $(FULL_CXXFLAGS) -MM -MP $< | \
 		sed -r -e "s,^(\w+\.o:),$(OBJ_DIR)/\1," > $@
 
 install:
