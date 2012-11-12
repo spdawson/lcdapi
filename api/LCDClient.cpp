@@ -157,7 +157,7 @@ void LCDClient::setName(const string& name)
 void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
 {
   _callbacks[key] = callback;
-  sendCommand("client_add_key", LCDCallback::toString(key));
+  sendCommand("client_add_key", string("-shared ") + LCDCallback::toString(key));
 }
 
 void LCDClient::deleteKey(KeyEvent key)
