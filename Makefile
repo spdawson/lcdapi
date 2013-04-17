@@ -29,7 +29,7 @@ DELIVERED = \
 	$(DOC_DIR) \
 	$(INCLUDE_DIR) \
 	COPYING \
-	CHANGELOG \
+	ChangeLog \
 	Makefile
 
 TAR_FILE = $(DELIVERY_DIR).tar.gz
