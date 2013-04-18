@@ -1,66 +1,66 @@
 lib_LTLIBRARIES = liblcdapi.la
 liblcdapi_la_SOURCES = \
-	api/LCDBar.cpp \
-	api/LCDBigNumber.cpp \
-	api/LCDClient.cpp \
-	api/LCDConnection.cpp \
-	api/LCDElement.cpp \
-	api/LCDException.cpp \
-	api/LCDFrame.cpp \
-	api/LCDHorizontalBar.cpp \
-	api/LCDIcon.cpp \
-	api/LCDLock.cpp \
-	api/LCDMutex.cpp \
-	api/LCDScreen.cpp \
-	api/LCDScroller.cpp \
-	api/LCDText.cpp \
-	api/LCDTitle.cpp \
-	api/LCDUtils.cpp \
-	api/LCDVerticalBar.cpp \
-	api/LCDWidget.cpp \
-	sensors/LCDCpuSensor.cpp \
-	sensors/LCDKdeMultimediaSensor.cpp \
-	sensors/LCDSensor.cpp \
-	sensors/LCDSystemSensor.cpp \
-	sensors/LCDTimeSensor.cpp
+	lcdapi/api/LCDBar.cpp \
+	lcdapi/api/LCDBigNumber.cpp \
+	lcdapi/api/LCDClient.cpp \
+	lcdapi/api/LCDConnection.cpp \
+	lcdapi/api/LCDElement.cpp \
+	lcdapi/api/LCDException.cpp \
+	lcdapi/api/LCDFrame.cpp \
+	lcdapi/api/LCDHorizontalBar.cpp \
+	lcdapi/api/LCDIcon.cpp \
+	lcdapi/api/LCDLock.cpp \
+	lcdapi/api/LCDMutex.cpp \
+	lcdapi/api/LCDScreen.cpp \
+	lcdapi/api/LCDScroller.cpp \
+	lcdapi/api/LCDText.cpp \
+	lcdapi/api/LCDTitle.cpp \
+	lcdapi/api/LCDUtils.cpp \
+	lcdapi/api/LCDVerticalBar.cpp \
+	lcdapi/api/LCDWidget.cpp \
+	lcdapi/sensors/LCDCpuSensor.cpp \
+	lcdapi/sensors/LCDKdeMultimediaSensor.cpp \
+	lcdapi/sensors/LCDSensor.cpp \
+	lcdapi/sensors/LCDSystemSensor.cpp \
+	lcdapi/sensors/LCDTimeSensor.cpp
 
 lcdapiincludedir = $(includedir)/lcdapi/include
 lcdapiinclude_HEADERS = \
-	include/LCDConstants.h \
-	include/LCDHeaders.h
+	lcdapi/include/LCDConstants.h \
+	lcdapi/include/LCDHeaders.h
 lcdapiapidir = $(includedir)/lcdapi/api
 lcdapiapi_HEADERS = \
-	api/LCDBar.h \
-	api/LCDBigNumber.h \
-	api/LCDClient.h \
-	api/LCDConnection.h \
-	api/LCDElement.h \
-	api/LCDException.h \
-	api/LCDFrame.h \
-	api/LCDHorizontalBar.h \
-	api/LCDIcon.h \
-	api/LCDLock.h \
-	api/LCDMutex.h \
-	api/LCDScreen.h \
-	api/LCDScroller.h \
-	api/LCDText.h \
-	api/LCDTitle.h \
-	api/LCDUtils.h \
-	api/LCDVerticalBar.h \
-	api/LCDWidget.h
+	lcdapi/api/LCDBar.h \
+	lcdapi/api/LCDBigNumber.h \
+	lcdapi/api/LCDClient.h \
+	lcdapi/api/LCDConnection.h \
+	lcdapi/api/LCDElement.h \
+	lcdapi/api/LCDException.h \
+	lcdapi/api/LCDFrame.h \
+	lcdapi/api/LCDHorizontalBar.h \
+	lcdapi/api/LCDIcon.h \
+	lcdapi/api/LCDLock.h \
+	lcdapi/api/LCDMutex.h \
+	lcdapi/api/LCDScreen.h \
+	lcdapi/api/LCDScroller.h \
+	lcdapi/api/LCDText.h \
+	lcdapi/api/LCDTitle.h \
+	lcdapi/api/LCDUtils.h \
+	lcdapi/api/LCDVerticalBar.h \
+	lcdapi/api/LCDWidget.h
 lcdapikeysdir = $(includedir)/lcdapi/keys
 lcdapikeys_HEADERS = \
-	keys/LCDCallback.h
+	lcdapi/keys/LCDCallback.h
 lcdapimenusdir = $(includedir)/lcdapi/menus
 lcdapimenus_HEADERS = \
-	menus/LCDMenuEventHandler.h
+	lcdapi/menus/LCDMenuEventHandler.h
 lcdapisensorsdir = $(includedir)/lcdapi/sensors
 lcdapisensors_HEADERS = \
-	sensors/LCDCpuSensor.h \
-	sensors/LCDKdeMultimediaSensor.h \
-	sensors/LCDSensor.h \
-	sensors/LCDSystemSensor.h \
-	sensors/LCDTimeSensor.h
+	lcdapi/sensors/LCDCpuSensor.h \
+	lcdapi/sensors/LCDKdeMultimediaSensor.h \
+	lcdapi/sensors/LCDSensor.h \
+	lcdapi/sensors/LCDSystemSensor.h \
+	lcdapi/sensors/LCDTimeSensor.h
 
 liblcdapi_la_CXXFLAGS = \
 	-Wall -Wextra -Weffc++ -Wold-style-cast \

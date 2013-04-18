@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([lcdapi], [0.5], [spdawson@gmail.com])
-AC_CONFIG_SRCDIR([sensors/LCDSensor.h])
+AC_CONFIG_SRCDIR([lcdapi/sensors/LCDSensor.h])
 AM_INIT_AUTOMAKE
 LT_INIT
 AC_CONFIG_MACRO_DIR([m4])

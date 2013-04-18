@@ -2,9 +2,7 @@
 /depend
 /example/client
 /example/client.o
-/doc/html
-/lib
-/obj
+/docs/html
 /*.o
 /*.lo
 /*.la
@@ -35,3 +33,4 @@
 /*/Makefile
 /Makefile.in
 /*/Makefile.in
+/docs/Doxyfile
