@@ -1,4 +1,4 @@
-#include "LCDTimeSensor.h"
+#include <lcdapi/sensors/LCDTimeSensor.h>
 
 namespace lcdapi {
 

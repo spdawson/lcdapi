@@ -1,5 +1,5 @@
-#ifndef _LCD_CALLBACK_H_
-#define _LCD_CALLBACK_H_
+#ifndef _LCDAPI_KEYS_LCDCALLBACK_H_
+#define _LCDAPI_KEYS_LCDCALLBACK_H_
 
 #include <string>
 #include <map>

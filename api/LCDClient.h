@@ -1,10 +1,10 @@
-#ifndef _LCD_CLIENT_H_
-#define _LCD_CLIENT_H_
+#ifndef _LCDAPI_API_LCDCLIENT_H_
+#define _LCDAPI_API_LCDCLIENT_H_
 
-#include "LCDConnection.h"
-#include "LCDElement.h"
-#include "../keys/LCDCallback.h"
-#include "../menus/LCDMenuEventHandler.h"
+#include <lcdapi/api/LCDConnection.h>
+#include <lcdapi/api/LCDElement.h>
+#include <lcdapi/keys/LCDCallback.h>
+#include <lcdapi/menus/LCDMenuEventHandler.h>
 
 #include <pthread.h>
 #include <string>

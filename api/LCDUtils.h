@@ -1,5 +1,5 @@
-#ifndef _LCD_UTILS_H_
-#define _LCD_UTILS_H_
+#ifndef _LCDAPI_API_LCDUTILS_H_
+#define _LCDAPI_API_LCDUTILS_H_
 
 #include <string>
 

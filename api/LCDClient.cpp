@@ -1,6 +1,6 @@
-#include "LCDClient.h"
-#include "LCDLock.h"
-#include "LCDException.h"
+#include <lcdapi/api/LCDClient.h>
+#include <lcdapi/api/LCDLock.h>
+#include <lcdapi/api/LCDException.h>
 #include <sstream>
 
 namespace lcdapi {

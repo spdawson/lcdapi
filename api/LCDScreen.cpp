@@ -1,5 +1,5 @@
-#include "LCDScreen.h"
-#include "LCDUtils.h"
+#include <lcdapi/api/LCDScreen.h>
+#include <lcdapi/api/LCDUtils.h>
 
 namespace lcdapi {
 

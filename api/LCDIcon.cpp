@@ -1,4 +1,4 @@
-#include "LCDIcon.h"
+#include <lcdapi/api/LCDIcon.h>
 #include <sstream>
 
 namespace lcdapi {

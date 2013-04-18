@@ -1,8 +1,8 @@
-#ifndef _LCD_SCREEN_H_
-#define _LCD_SCREEN_H_
+#ifndef _LCDAPI_API_LCDSCREEN_H_
+#define _LCDAPI_API_LCDSCREEN_H_
 
-#include "../include/LCDConstants.h"
-#include "LCDElement.h"
+#include <lcdapi/include/LCDConstants.h>
+#include <lcdapi/api/LCDElement.h>
 
 namespace lcdapi {
 

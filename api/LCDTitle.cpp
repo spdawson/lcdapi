@@ -1,4 +1,4 @@
-#include "LCDTitle.h"
+#include <lcdapi/api/LCDTitle.h>
 #include <sstream>
 
 namespace lcdapi {

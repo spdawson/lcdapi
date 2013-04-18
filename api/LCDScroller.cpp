@@ -1,4 +1,4 @@
-#include "LCDScroller.h"
+#include <lcdapi/api/LCDScroller.h>
 #include <sstream>
 
 namespace lcdapi {

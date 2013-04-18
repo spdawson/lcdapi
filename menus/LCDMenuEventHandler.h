@@ -1,5 +1,5 @@
-#ifndef _LCD_MENUEVENTHANDLER_H_
-#define _LCD_MENUEVENTHANDLER_H_
+#ifndef _LCDAPI_MENUS_LCDMENUEVENTHANDLER_H_
+#define _LCDAPI_MENUS_LCDMENUEVENTHANDLER_H_
 
 #include <string>
 #include <map>

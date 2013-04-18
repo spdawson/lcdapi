@@ -1,7 +1,7 @@
-#ifndef _LCD_VERTICAL_BAR_H_
-#define _LCD_VERTICAL_BAR_H_
+#ifndef _LCDAPI_API_LCDVERTICALBAR_H_
+#define _LCDAPI_API_LCDVERTICALBAR_H_
 
-#include "LCDBar.h"
+#include <lcdapi/api/LCDBar.h>
 #include <string>
 
 namespace lcdapi {

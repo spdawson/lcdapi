@@ -1,5 +1,5 @@
-#ifndef _LCD_CONSTANTS_H_
-#define _LCD_CONSTANTS_H_
+#ifndef _LCDAPI_INCLUDE_LCDCONSTANTS_H_
+#define _LCDAPI_INCLUDE_LCDCONSTANTS_H_
 
 #include <string>
 

@@ -1,4 +1,4 @@
-#include "LCDWidget.h"
+#include <lcdapi/api/LCDWidget.h>
 
 #include <sstream>
 

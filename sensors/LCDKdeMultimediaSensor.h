@@ -1,7 +1,7 @@
-#ifndef _LCD_KDE_MULTIMEDIA_SENSOR_H_
-#define _LCD_KDE_MULTIMEDIA_SENSOR_H_
+#ifndef _LCDAPI_SENSORS_LCDKDEMULTIMEDIASENSOR_H_
+#define _LCDAPI_SENSORS_LCDKDEMULTIMEDIASENSOR_H_
 
-#include "LCDSensor.h"
+#include <lcdapi/sensors/LCDSensor.h>
 #include <string>
 
 namespace lcdapi {

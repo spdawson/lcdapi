@@ -1,5 +1,5 @@
-#include "LCDElement.h"
-#include "LCDLock.h"
+#include <lcdapi/api/LCDElement.h>
+#include <lcdapi/api/LCDLock.h>
 #include <unistd.h>
 #include <sstream>
 

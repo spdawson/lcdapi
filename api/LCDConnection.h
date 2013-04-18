@@ -1,5 +1,5 @@
-#ifndef _LCD_CONNECTION_H_
-#define _LCD_CONNECTION_H_
+#ifndef _LCDAPI_API_LCDCONNECTION_H_
+#define _LCDAPI_API_LCDCONNECTION_H_
 
 #include <sys/types.h>
 #include <sys/socket.h>

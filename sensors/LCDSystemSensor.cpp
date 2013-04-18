@@ -1,4 +1,4 @@
-#include "LCDSystemSensor.h"
+#include <lcdapi/sensors/LCDSystemSensor.h>
 
 #include <unistd.h>
 

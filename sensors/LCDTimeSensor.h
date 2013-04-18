@@ -1,7 +1,7 @@
-#ifndef _LCD_TIME_SENSOR_H_
-#define _LCD_TIME_SENSOR_H_
+#ifndef _LCDAPI_SENSORS_LCDTIMESENSOR_H_
+#define _LCDAPI_SENSORS_LCDTIMESENSOR_H_
 
-#include "LCDSystemSensor.h"
+#include <lcdapi/sensors/LCDSystemSensor.h>
 #include <string>
 
 namespace lcdapi {

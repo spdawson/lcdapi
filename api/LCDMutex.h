@@ -1,5 +1,5 @@
-#ifndef _LCD_MUTEX_H_
-#define _LCD_MUTEX_H_
+#ifndef _LCDAPI_API_LCDMUTEX_H_
+#define _LCDAPI_API_LCDMUTEX_H_
 
 #include <pthread.h>
 

@@ -1,7 +1,7 @@
-#ifndef _LCD_TITLE_H_
-#define _LCD_TITLE_H_
+#ifndef _LCDAPI_API_LCDTITLE_H_
+#define _LCDAPI_API_LCDTITLE_H_
 
-#include "LCDWidget.h"
+#include <lcdapi/api/LCDWidget.h>
 #include <string>
 
 namespace lcdapi {

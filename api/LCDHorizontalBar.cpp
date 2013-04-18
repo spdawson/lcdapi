@@ -1,4 +1,4 @@
-#include "LCDHorizontalBar.h"
+#include <lcdapi/api/LCDHorizontalBar.h>
 
 namespace lcdapi {
 

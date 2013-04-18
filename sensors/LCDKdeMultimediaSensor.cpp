@@ -1,4 +1,4 @@
-#include "LCDKdeMultimediaSensor.h"
+#include <lcdapi/sensors/LCDKdeMultimediaSensor.h>
 
 #include <unistd.h>
 

@@ -1,5 +1,5 @@
-#ifndef _LCD_ELEMENT_H_
-#define _LCD_ELEMENT_H_
+#ifndef _LCDAPI_API_LCDELEMENT_H_
+#define _LCDAPI_API_LCDELEMENT_H_
 
 /**
  * \defgroup main Main components
@@ -17,7 +17,7 @@
  *   set with LCDScreen::setDuration().
  */
 
-#include "LCDMutex.h"
+#include <lcdapi/api/LCDMutex.h>
 
 #include <string>
 #include <list>

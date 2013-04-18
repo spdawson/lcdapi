@@ -1,5 +1,5 @@
-#ifndef _LCD_EXCEPTION_H_
-#define _LCD_EXCEPTION_H_
+#ifndef _LCDAPI_API_LCDEXCEPTION_H_
+#define _LCDAPI_API_LCDEXCEPTION_H_
 
 #include <string>
 

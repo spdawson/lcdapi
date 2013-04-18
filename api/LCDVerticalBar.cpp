@@ -1,4 +1,4 @@
-#include "LCDVerticalBar.h"
+#include <lcdapi/api/LCDVerticalBar.h>
 
 namespace lcdapi {
 

@@ -1,5 +1,5 @@
-#ifndef _LCD_WIDGET_H_
-#define _LCD_WIDGET_H_
+#ifndef _LCDAPI_API_LCDWIDGET_H_
+#define _LCDAPI_API_LCDWIDGET_H_
 
 /**
  * \defgroup widgets Widgets
@@ -9,7 +9,7 @@
  *   methods, defined in the LCDWidget class.
  */
 
-#include "LCDElement.h"
+#include <lcdapi/api/LCDElement.h>
 #include <list>
 #include <string>
 

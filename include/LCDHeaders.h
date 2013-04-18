@@ -1,5 +1,5 @@
-#ifndef _LCD_HEADERS_H_
-#define _LCD_HEADERS_H_
+#ifndef _LCDAPI_INCLUDE_LCDHEADERS_H_
+#define _LCDAPI_INCLUDE_LCDHEADERS_H_
 
 
 /** \mainpage Documentation for the C++ LCD API.
@@ -65,34 +65,34 @@
  */
 
 
-#include "LCDConstants.h"
+#include <lcdapi/include/LCDConstants.h>
 
 /* API generals */
-#include "../api/LCDException.h"
-#include "../api/LCDClient.h"
-#include "../api/LCDScreen.h"
+#include <lcdapi/api/LCDException.h>
+#include <lcdapi/api/LCDClient.h>
+#include <lcdapi/api/LCDScreen.h>
 
 /* Widgets */
-#include "../api/LCDText.h"
-#include "../api/LCDBigNumber.h"
-#include "../api/LCDTitle.h"
-#include "../api/LCDHorizontalBar.h"
-#include "../api/LCDVerticalBar.h"
-#include "../api/LCDFrame.h"
-#include "../api/LCDIcon.h"
-#include "../api/LCDScroller.h"
+#include <lcdapi/api/LCDText.h>
+#include <lcdapi/api/LCDBigNumber.h>
+#include <lcdapi/api/LCDTitle.h>
+#include <lcdapi/api/LCDHorizontalBar.h>
+#include <lcdapi/api/LCDVerticalBar.h>
+#include <lcdapi/api/LCDFrame.h>
+#include <lcdapi/api/LCDIcon.h>
+#include <lcdapi/api/LCDScroller.h>
 
 /* Menus */
-#include "../menus/LCDMenuEventHandler.h"
+#include <lcdapi/menus/LCDMenuEventHandler.h>
 
 /* Sensors */
-#include "../sensors/LCDTimeSensor.h"
-#include "../sensors/LCDSystemSensor.h"
-#include "../sensors/LCDCpuSensor.h"
-#include "../sensors/LCDKdeMultimediaSensor.h"
+#include <lcdapi/sensors/LCDTimeSensor.h>
+#include <lcdapi/sensors/LCDSystemSensor.h>
+#include <lcdapi/sensors/LCDCpuSensor.h>
+#include <lcdapi/sensors/LCDKdeMultimediaSensor.h>
 
 /* Keys */
-#include "../keys/LCDCallback.h"
+#include <lcdapi/keys/LCDCallback.h>
 
 
 /**

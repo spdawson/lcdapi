@@ -1,6 +1,6 @@
-#include "LCDConnection.h"
-#include "../include/LCDConstants.h"
-#include "LCDException.h"
+#include <lcdapi/api/LCDConnection.h>
+#include <lcdapi/include/LCDConstants.h>
+#include <lcdapi/api/LCDException.h>
 #include <cstring>
 #include <cerrno>
 #include <fcntl.h>

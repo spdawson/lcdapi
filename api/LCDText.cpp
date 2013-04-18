@@ -1,4 +1,4 @@
-#include "LCDText.h"
+#include <lcdapi/api/LCDText.h>
 #include <sstream>
 
 namespace lcdapi {

@@ -1,5 +1,5 @@
-#ifndef _LCD_LOCK_H_
-#define _LCD_LOCK_H_
+#ifndef _LCDAPI_API_LCDLOCK_H_
+#define _LCDAPI_API_LCDLOCK_H_
 
 #include <pthread.h>
 

@@ -1,4 +1,4 @@
-#include "LCDMutex.h"
+#include <lcdapi/api/LCDMutex.h>
 
 namespace lcdapi {
 

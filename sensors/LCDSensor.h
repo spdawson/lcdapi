@@ -1,5 +1,5 @@
-#ifndef _LCD_SENSOR_H_
-#define _LCD_SENSOR_H_
+#ifndef _LCDAPI_SENSORS_LCDSENSOR_H_
+#define _LCDAPI_SENSORS_LCDSENSOR_H_
 
 /**
  * \defgroup sensors Sensors
