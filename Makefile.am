@@ -69,3 +69,14 @@ liblcdapi_la_CXXFLAGS = \
 	-g0 -DNODEBUG -Os
 
 ACLOCAL_AMFLAGS = -I m4
+
+docsdir = $(top_srcdir)/docs
+exampledir = $(top_srcdir)/example
+dist_docs_DATA = \
+	docs/Makefile.am \
+	docs/Makefile.in \
+	docs/Doxyfile.in
+dist_example_DATA = \
+	example/client.cpp \
+	example/Makefile.am \
+	example/Makefile.in
