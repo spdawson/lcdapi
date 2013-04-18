@@ -1,7 +1,8 @@
+*~
 /*.patch
 /depend
 /example/client
-/example/client.o
+/example/*.o
 /docs/html
 /*.o
 /*.lo
@@ -10,6 +11,7 @@
 /.deps
 /*/.deps
 /.libs
+/*/.libs
 /aclocal.m4
 /autom4te.cache
 /config.guess
@@ -18,13 +20,10 @@
 /config.log
 /config.status
 /config.sub
-/missing
 /stamp-h1
-/depcomp
-/install-sh
 /libtool
-/ltmain.sh
 /m4
+/config
 
 /INSTALL
 /NEWS
@@ -34,4 +33,5 @@
 /Makefile.in
 /*/Makefile.in
 /docs/Doxyfile
+/docs/doxyfile.stamp
 /lcdapi-*.tar.gz
