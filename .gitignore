@@ -4,6 +4,7 @@
 /example/client
 /example/*.o
 /docs/html
+/docs/man
 /*.o
 /*.lo
 /*.la
