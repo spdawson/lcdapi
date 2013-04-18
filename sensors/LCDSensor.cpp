@@ -1,6 +1,6 @@
-#include "LCDSensor.h"
-#include "LCDWidget.h"
-#include "LCDUtils.h"
+#include <sensors/LCDSensor.h>
+#include <api/LCDWidget.h>
+#include <api/LCDUtils.h>
 
 #include <cstdio>
 #include <cstring>
