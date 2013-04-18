@@ -16,6 +16,7 @@
 /autom4te.cache
 /config.guess
 /config.h
+/config.h.in
 /config.log
 /config.status
 /config.sub
@@ -26,3 +27,11 @@
 /libtool
 /ltmain.sh
 /m4
+
+/INSTALL
+/NEWS
+/configure
+/Makefile
+/*/Makefile
+/Makefile.in
+/*/Makefile.in
