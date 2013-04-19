@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.68])
 AC_INIT([lcdapi], [0.5], [spdawson@gmail.com])
 AC_CONFIG_SRCDIR([lcdapi/api/LCDConnection.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -34,7 +34,6 @@ AC_CHECK_LIB([pthread], [pthread_create])
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h sys/socket.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
 
 # Checks for library functions.
 AC_CHECK_FUNCS([memset socket strtol])
