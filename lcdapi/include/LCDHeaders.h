@@ -1,4 +1,4 @@
-/* Copyright 2012-2013 Simon Dawson <spdawson@gmail.com>
+/* Copyright 2012-2015 Simon Dawson <spdawson@gmail.com>
 
    This file is part of lcdapi.
 
@@ -48,17 +48,40 @@
  *
  * You can get the source from the following link:
  *
- * https://github.com/spdawson/lcdapi/tarball/v0.5
+ * https://github.com/spdawson/lcdapi/tarball/v0.6
  *
  * You can then unpack them with:
  * \code
- * tar xaf lcdapi-0.5.tar.gz
+ * tar xaf lcdapi-0.6.tar.gz
  * \endcode
- * Go into the new directory and type:
+ * Go into the new directory and execute the following commands:
  * \code
+ * libtoolize --force
+ * aclocal
+ * autoheader
+ * automake --force-missing --add-missing
+ * autoconf
+ * ./configure
  * make
+ * sudo make install
  * \endcode
- * You will then have the liblcdapi.so library in the lib directory.
+ * This will install the application to the following directories:
+ *
+ * <ul>
+ *   <li>/usr/local/lib: The shared library (liblcdapi.so).</li>
+ *   <li>/usr/local/include/lcdapi: The include (*.h) files for the library.</li>
+ *   <li>/usr/local/share/doc/lcdapi: The HTML documentation. Go to index.html for the root.</li>
+ *   <li>/usr/local/share/lcdapi/examples: The example application and Makefile.</li>
+ * </ul>
+ *
+ * Man pages can also be accessed for many classes in the application by typing: man <classname>. man main is the main main page for lcdapi.
+ *
+ * \section uninstall Uninstallation
+ *
+ * From the source folder, run:
+ * \code
+ * sudo make uninstall
+ * \endcode
  *
  * \section use Usage
  *
@@ -69,9 +92,8 @@
  *
  * To compile client.cpp for example, you should use these commands on a GNU/Linux system:
  * \code
- * export LCD_API_DIR=/where/LCD_API/is
- * export LD_LIBRARY_PATH=$LCD_API_DIR/lib:$LD_LIBRARY_PATH
- * g++ -o client client.cpp -I$LCD_API_DIR/include -L$LCD_API_DIR/lib -llcdapi -lpthread
+ * export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+ * g++ -o client client.cpp -I/usr/local/include/lcdapi -L/usr/local/lib -llcdapi -lpthread
  * \endcode
  * There may have some differences on other systems.
  *  For example you must add -lsocket on Solaris.
