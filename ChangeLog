@@ -1,3 +1,15 @@
+0.6
+----
+ * Doxygen now automatically generates html and man pages.
+ * Fixed bug where docs installing to build location was causing conflicts.
+   Now installed to /usr/local/share/doc/lcdapi per convention.
+ * Includes now install correctly to /usr/local/include/lcdapi.
+ * Man pages now install correctly to /usr/local/man/man3.
+ * Examples now install to /usr/local/share/lcdapi/examples.
+ * Omitted make and doxygen setup files from install.
+ * Doxygen now assumes that dot is in the path (instead of
+   at hard-coded location).
+
 0.5
 ----
 

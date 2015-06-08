@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 lib_LTLIBRARIES = liblcdapi.la
 liblcdapi_la_SOURCES = \
 	lcdapi/api/LCDBar.cpp \
@@ -70,13 +72,12 @@ liblcdapi_la_CXXFLAGS = \
 
 ACLOCAL_AMFLAGS = -I m4
 
-docsdir = $(top_srcdir)/docs
-exampledir = $(top_srcdir)/example
+docsdir = $(datarootdir)/doc/$(PACKAGE)
+exampledir = $(pkgdatadir)/examples
+
+htmldocs := $(shell find docs/html -mindepth 1)
+
 dist_docs_DATA = \
-	docs/Makefile.am \
-	docs/Makefile.in \
-	docs/Doxyfile.in
+	$(htmldocs)
 dist_example_DATA = \
-	example/client.cpp \
-	example/Makefile.am \
-	example/Makefile.in
+	example/client.cpp
