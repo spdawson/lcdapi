@@ -44,7 +44,7 @@ class TitleSwitcher: public LCDCallback
     : LCDCallback(), _title(title), _firstText(_title->get()), _secondText(secondText)
   {
   }
-  void operator()(KeyEvent key)
+  void operator()(KeyEvent key __attribute__((unused)))
   {
     if (_title->get() == _firstText)
     {
@@ -58,12 +58,12 @@ class TitleSwitcher: public LCDCallback
 };
 
 bool thisIsTheEnd;
-void intHandler(int sig)
+void intHandler(int sig __attribute__((unused)))
 {
   thisIsTheEnd = true;
 }
 
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
   try
   {
