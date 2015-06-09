@@ -10,12 +10,10 @@ Now at https://github.com/spdawson/lcdapi
 
 This software requires the following packages:
 
-<ul>
-  <li>pthread library</li>
-  <li>socket library</li>
-  <li>graphviz</li>
-  <li>doxygen</li>
-</ul>
+* pthread library
+* socket library
+* graphviz
+* doxygen
 
 If doxygen or graphviz are not installed, the documentation will not be generated and building may fail.
 
