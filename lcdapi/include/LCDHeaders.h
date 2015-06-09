@@ -148,7 +148,7 @@
  *
  * It also uses callback for keys.
  *
- * The one for B key is defined using LCD_CALLBACK_FUNCTION_* macros. They are useful if you only want a function without parameter to be excuted.
+ * The one for B key is defined using LCD_CALLBACK_FUNCTION_* macros. They are useful if you only want a function without parameter to be executed.
  *
  * For the A key, the callback is in a TitleSwitcher class because it needs more parameters. It will switch from English to French title for first screen.
  */
