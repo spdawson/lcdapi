@@ -48,19 +48,16 @@
  *
  * You can get the source from the following link:
  *
- * https://github.com/spdawson/lcdapi/tarball/v0.6
+ * https://github.com/spdawson/lcdapi/tarball/v0.7
  *
  * You can then unpack them with:
  * \code
- * tar xaf lcdapi-0.6.tar.gz
+ * tar xaf lcdapi-0.7.tar.gz
  * \endcode
  * Go into the new directory and execute the following commands:
  * \code
  * libtoolize --force
- * aclocal
- * autoheader
- * automake --force-missing --add-missing
- * autoconf
+ * autoreconf -i
  * ./configure
  * make
  * sudo make install
