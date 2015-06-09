@@ -3,4 +3,4 @@ client_SOURCES = client.cpp
 client_LDFLAGS = -L.. -lpthread -llcdapi
 client_CXXFLAGS = -I../include \
 	-Wall -Wextra -Weffc++ -Wold-style-cast \
-	-Werror -Wno-error=unused-parameter -Wno-error=unused-function
+	-Werror
