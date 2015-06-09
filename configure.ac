@@ -2,11 +2,11 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([lcdapi], [0.6], [spdawson@gmail.com])
+AC_INIT([lcdapi], [0.7], [spdawson@gmail.com])
 AC_CONFIG_SRCDIR([lcdapi/api/LCDConnection.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([config])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([foreign])
 LT_INIT
 AC_CONFIG_HEADERS([config.h])
 

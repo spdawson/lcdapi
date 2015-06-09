@@ -14,10 +14,7 @@ Assuming that the latest version is `X.Y`:
 tar xaf lcdapi-X.Y.tar.gz
 cd lcdapi-X.Y
 libtoolize --force
-aclocal
-autoheader
-automake --force-missing --add-missing
-autoconf
+autoreconf -i
 ./configure
 make
 sudo make install
