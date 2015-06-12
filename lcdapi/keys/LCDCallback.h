@@ -50,7 +50,7 @@ namespace lcdapi {
 #define LCD_CALLBACK_FUNCTION_BEGIN(fname) class LCDClass_fname : public LCDCallback \
 { \
 public: \
-  void operator()(KeyEvent lcdKey)
+  void keypress(KeyEvent lcdKey)
 
 /**
  * \ingroup keys
