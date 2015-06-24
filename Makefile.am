@@ -53,6 +53,7 @@ lcdapiapi_HEADERS = \
 lcdapikeysdir = $(includedir)/lcdapi/keys
 lcdapikeys_HEADERS = \
 	lcdapi/keys/LCDCallback.h
+	lcdapi/keys/LCDKeyEvent.h
 lcdapimenusdir = $(includedir)/lcdapi/menus
 lcdapimenus_HEADERS = \
 	lcdapi/menus/LCDMenuEventHandler.h

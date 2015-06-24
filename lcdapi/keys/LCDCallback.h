@@ -19,6 +19,7 @@
 #ifndef _LCDAPI_KEYS_LCDCALLBACK_H_
 #define _LCDAPI_KEYS_LCDCALLBACK_H_
 
+#include <lcdapi/keys/LCDKeyEvent.h>
 #include <string>
 #include <map>
 
@@ -62,13 +63,6 @@ public: \
 #define LCD_CALLBACK_FUNCTION_END(fname) \
 }; \
 LCDClass_##fname fname;
-
-/**
-  \ingroup keys
-  The type used to define a key event.
- */
-
-typedef char KeyEvent;
 
 /** \class LCDCallback LCDCallback.h "api/LCDCallback.h"
  *  \brief Main class to create new callback for key events.

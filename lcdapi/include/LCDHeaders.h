@@ -130,6 +130,7 @@
 
 /* Keys */
 #include <lcdapi/keys/LCDCallback.h>
+#include <lcdapi/keys/LCDKeyEvent.h>
 
 
 /**
