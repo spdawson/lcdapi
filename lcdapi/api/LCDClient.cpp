@@ -33,6 +33,10 @@ struct KeyEventInfo
 {
   KeyEvent kev;
   LCDCallback *callback;
+  KeyEventInfo() : kev(), callback(NULL) {}
+  ~KeyEventInfo() {}
+  KeyEventInfo(const KeyEventInfo &original);
+  KeyEventInfo &operator=(const KeyEventInfo &rhs);
 };
 
 class MenuEventInfo
