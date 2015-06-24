@@ -47,7 +47,7 @@ namespace lcdapi {
  * Use it with the name of the pseudo function you want to create
  *  and then you can define your function code (between braces)
  */
-#define LCD_CALLBACK_FUNCTION_BEGIN(fname) class LCDClass_fname : public LCDCallback \
+#define LCD_CALLBACK_FUNCTION_BEGIN(fname) class LCDClass_##fname : public LCDCallback \
 { \
 public: \
   void operator()(KeyEvent lcdKey)
@@ -61,7 +61,7 @@ public: \
  */
 #define LCD_CALLBACK_FUNCTION_END(fname) \
 }; \
-LCDClass_fname fname;
+LCDClass_##fname fname;
 
 /**
   \ingroup keys
