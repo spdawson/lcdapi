@@ -73,8 +73,8 @@ typedef char KeyEvent;
 /** \class LCDCallback LCDCallback.h "api/LCDCallback.h"
  *  \brief Main class to create new callback for key events.
  *  \ingroup keys
- *  To create a new key handler, one should create a derivated class
- *  from this one and implement operator ().
+ *  To create a new key handler, one should subclass LCDCallback,
+ *  and implement operator().
  */
 
 class LCDCallback
