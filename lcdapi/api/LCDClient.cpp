@@ -235,7 +235,7 @@ void LCDClient::mainLoop()
     {
       if (0 == reply.find("key"))
       {
-        const KeyEvent key = reply[4];
+        const KeyEvent key(reply.substr(4, string::npos));
         if (_callbacks.end() != _callbacks.find(key))
         {
           KeyEventInfo *kevI = new KeyEventInfo;
