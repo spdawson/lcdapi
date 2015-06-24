@@ -3,6 +3,11 @@
  * Removed the AUTHORS and NEWS files. No longer necessary.
  * Fixed an issue with autoconf missing AUTHORS, NEWS, and README files.
  * Simplified the build and installation process.
+ * Documentation fixes
+ * Eliminate compiler warnings, compile with -Werror
+ * Coloured output from gcc
+ * Fix LCD_CALLBACK_FUNCTION_BEGIN and LCD_CALLBACK_FUNCTION_END macros
+ * Support the use of std::string instead of char for key names
 
 0.6
 ----
