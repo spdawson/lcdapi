@@ -168,7 +168,7 @@ class LCDClient : public LCDElement
    * @param callback The function to call. It has to be a class inherited from LCDCallback defining the operator(). You can also use the LCD_CALLBACK_FUNCTION_BEGIN and LCD_CALLBACK_FUNCTION_END macros to define only a function.
    * \see LCDClient::deleteKey
    */
-  void assignKey(KeyEvent key, LCDCallback *callback);
+  void assignKey(const KeyEvent &key, LCDCallback *callback);
 
   /**
    * \brief Delete the callback for a key.
@@ -178,7 +178,7 @@ class LCDClient : public LCDElement
    * @param key The key for which to unregister the callback function.
    * \see LCDClient::assignKey
    */
-  void deleteKey(KeyEvent key);
+  void deleteKey(const KeyEvent &key);
 
   /**
    * \brief Register a handler for a specific event type on a specific menu.

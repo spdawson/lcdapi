@@ -176,13 +176,13 @@ void LCDClient::setName(const string& name)
   setClientOption("name", name);
 }
 
-void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
+void LCDClient::assignKey(const KeyEvent &key, LCDCallback *callback)
 {
   _callbacks[key] = callback;
   sendCommand("client_add_key", string("-shared ") + LCDCallback::toString(key));
 }
 
-void LCDClient::deleteKey(KeyEvent key)
+void LCDClient::deleteKey(const KeyEvent &key)
 {
   _callbacks.erase(key);
   sendCommand("client_del_key", LCDCallback::toString(key));
