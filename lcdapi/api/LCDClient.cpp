@@ -179,13 +179,13 @@ void LCDClient::setName(const string& name)
 void LCDClient::assignKey(const KeyEvent &key, LCDCallback *callback)
 {
   _callbacks[key] = callback;
-  sendCommand("client_add_key", string("-shared ") + LCDCallback::toString(key));
+  sendCommand("client_add_key", string("-shared ") + key.get_key());
 }
 
 void LCDClient::deleteKey(const KeyEvent &key)
 {
   _callbacks.erase(key);
-  sendCommand("client_del_key", LCDCallback::toString(key));
+  sendCommand("client_del_key", key.get_key());
 }
 
 void LCDClient::registerMenuEventHandler(const std::string& menu_id, const std::string& menu_event, LCDMenuEventHandler* handler)

@@ -90,11 +90,6 @@ class LCDCallback
   */
 
   virtual void operator()(KeyEvent lcdKey) = 0;
-
-  static std::string toString(KeyEvent t)
-  {
-    return std::string(1, static_cast<char>(t));
-  }
 };
 
 typedef std::map<KeyEvent, LCDCallback *> CallbackMap;
