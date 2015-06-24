@@ -18,6 +18,7 @@
 
 #include <lcdapi/api/LCDElement.h>
 #include <lcdapi/api/LCDLock.h>
+#include <lcdapi/api/LCDMenuItem.h>
 #include <unistd.h>
 #include <sstream>
 
@@ -43,17 +44,31 @@ LCDElement::LCDElement(const string &id, const string &addCommand, const string 
   {
     const LCDLock l(&LCDElement::_elementMutex);
     ostringstream idBuffer;
-    idBuffer << "LCDAPI_"
-             << getpid()
-             << "_"
-             << LCDElement::_elementCounter;
+    if (dynamic_cast<const LCDMenuItem*>(this))
+    {
+      idBuffer << "\"\"";
+    }
+    else
+    {
+      idBuffer << "LCDAPI_"
+               << getpid()
+               << "_"
+               << LCDElement::_elementCounter;
+    }
 
     LCDElement::_elementCounter++;
     _id = idBuffer.str();
   }
   else
   {
-    _id = id;
+    if (dynamic_cast<const LCDMenuItem*>(this))
+    {
+      _id = "\"" + id + "\"";
+    }
+    else
+    {
+      _id = id;
+    }
   }
   if (_parent)
   {
