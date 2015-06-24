@@ -33,7 +33,11 @@ struct KeyEventInfo
 {
   KeyEvent kev;
   LCDCallback *callback;
+  KeyEventInfo() : kev(""), callback(NULL) {};
+  KeyEventInfo (const KeyEventInfo& rhs);
+  const KeyEventInfo& operator=(const KeyEventInfo& rhs);
 };
+
 
 class MenuEventInfo
 {
@@ -175,13 +179,13 @@ void LCDClient::setName(const string& name)
 void LCDClient::assignKey(KeyEvent key, LCDCallback *callback)
 {
   _callbacks[key] = callback;
-  sendCommand("client_add_key", string("-shared ") + LCDCallback::toString(key));
+  sendCommand("client_add_key", string("-shared ") + key);
 }
 
 void LCDClient::deleteKey(KeyEvent key)
 {
   _callbacks.erase(key);
-  sendCommand("client_del_key", LCDCallback::toString(key));
+  sendCommand("client_del_key", key);
 }
 
 void LCDClient::registerMenuEventHandler(const std::string& menu_id, const std::string& menu_event, LCDMenuEventHandler* handler)
@@ -231,7 +235,7 @@ void LCDClient::mainLoop()
     {
       if (0 == reply.find("key"))
       {
-        const KeyEvent key = reply[4];
+        const KeyEvent key = reply.substr(4, string::npos);
         if (_callbacks.end() != _callbacks.find(key))
         {
           KeyEventInfo *kevI = new KeyEventInfo;

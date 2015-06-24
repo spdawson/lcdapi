@@ -50,7 +50,7 @@ namespace lcdapi {
 #define LCD_CALLBACK_FUNCTION_BEGIN(fname) class LCDClass_##fname : public LCDCallback \
 { \
 public: \
-  void operator()(KeyEvent lcdKey)
+  void keypress(KeyEvent lcdKey)
 
 /**
  * \ingroup keys
@@ -68,7 +68,7 @@ LCDClass_##fname fname;
   The type used to define a key event.
  */
 
-typedef char KeyEvent;
+typedef std::string KeyEvent;
 
 /** \class LCDCallback LCDCallback.h "api/LCDCallback.h"
  *  \brief Main class to create new callback for key events.
@@ -96,11 +96,6 @@ class LCDCallback
   */
 
   virtual void operator()(KeyEvent lcdKey) = 0;
-
-  static std::string toString(KeyEvent t)
-  {
-    return std::string(1, static_cast<char>(t));
-  }
 };
 
 typedef std::map<KeyEvent, LCDCallback *> CallbackMap;
