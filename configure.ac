@@ -35,6 +35,8 @@ AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h sys/socket.h unistd.h
 
 # Checks for typedefs, structures, and compiler characteristics.
 
+AX_CHECK_COMPILE_FLAG([-fdiagnostics-color=always],[CXXFLAGS="$CXXFLAGS -fdiagnostics-color=always"])
+
 # Checks for library functions.
 AC_CHECK_FUNCS([memset socket strtol])
 

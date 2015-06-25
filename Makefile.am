@@ -68,7 +68,6 @@ lcdapisensors_HEADERS = \
 liblcdapi_la_CXXFLAGS = \
 	-Wall -Wextra -Weffc++ -Wold-style-cast \
 	-Werror \
-	-fdiagnostics-color=always \
 	-fPIC \
 	-g0 -DNODEBUG -Os
 
