@@ -2,17 +2,15 @@
 /*.patch
 /depend
 /example/client
-/example/*.o
 /docs/html
 /docs/man
-/*.o
-/*.lo
-/*.la
+*.o
+*.lo
+*.la
 
-/.deps
-/*/.deps
-/.libs
-/*/.libs
+.deps
+.libs
+.dirstamp
 /aclocal.m4
 /autom4te.cache
 /config.guess

@@ -1,3 +1,5 @@
+AUTOMAKE_OPTIONS = subdir-objects
+
 bin_PROGRAMS = client
 client_SOURCES = client.cpp
 client_LDFLAGS = -L.. -lpthread -llcdapi

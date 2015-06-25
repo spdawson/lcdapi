@@ -1,3 +1,5 @@
+AUTOMAKE_OPTIONS = subdir-objects
+
 SUBDIRS = docs
 
 lib_LTLIBRARIES = liblcdapi.la
