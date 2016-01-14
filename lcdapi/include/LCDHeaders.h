@@ -1,4 +1,4 @@
-/* Copyright 2012-2015 Simon Dawson <spdawson@gmail.com>
+/* Copyright 2012-2016 Simon Dawson <spdawson@gmail.com>
 
    This file is part of lcdapi.
 
