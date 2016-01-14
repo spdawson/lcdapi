@@ -1,3 +1,8 @@
+0.9
+----
+ * Eliminate some autotools warnings
+ * Extend the Direction enum with a Marquee state
+
 0.8
 ----
  * Coloured output from gcc only if gcc version supports this
