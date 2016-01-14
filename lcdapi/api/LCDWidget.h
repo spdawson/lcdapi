@@ -1,4 +1,4 @@
-/* Copyright 2012-2013 Simon Dawson <spdawson@gmail.com>
+/* Copyright 2012-2016 Simon Dawson <spdawson@gmail.com>
 
    This file is part of lcdapi.
 
@@ -52,7 +52,8 @@ class LCDWidget : public LCDElement
   enum Direction
   {
     Horizontal = 'h',
-    Vertical = 'v'
+    Vertical = 'v',
+    Marquee = 'm'
   };
   /**
    * \brief A list of parameters for set method.

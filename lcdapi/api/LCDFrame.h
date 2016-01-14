@@ -1,4 +1,4 @@
-/* Copyright 2012-2013 Simon Dawson <spdawson@gmail.com>
+/* Copyright 2012-2016 Simon Dawson <spdawson@gmail.com>
 
    This file is part of lcdapi.
 
@@ -63,7 +63,7 @@ class LCDFrame : public LCDWidget
    * @param width Integer containing width for this widget (in characters).
    * @param height Integer containing height for this widget (in characters).
    * @param speed Number of movements per rendering stroke (8 times/second).
-   * @param direction Can be 'h' for Horizontal or 'v' for Vertical.
+   * @param direction Can be 'h' for Horizontal, 'v' for Vertical or 'm' for Marquee.
    */
   void set(int left, int top, int right, int bottom, int width, int height, Direction direction, int speed);
 };

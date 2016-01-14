@@ -1,4 +1,4 @@
-/* Copyright 2012-2013 Simon Dawson <spdawson@gmail.com>
+/* Copyright 2012-2016 Simon Dawson <spdawson@gmail.com>
 
    This file is part of lcdapi.
 
@@ -59,7 +59,7 @@ class LCDScroller : public LCDWidget
    * @param right Integer containing 1-based right position of the widget.
    * @param bottom Integer containing 1-based bottom position of the widget.
    * @param speed Number of movements per rendering stroke (8 times/second).
-   * @param direction Can be 'h' for Horizontal or 'v' for Vertical.
+   * @param direction Can be 'h' for Horizontal, 'v' for Vertical or 'm' for Marquee.
    */
   void set(const std::string &text, int left = 1, int top = 1, int right = 10, int bottom = 1, int speed = 8, Direction direction = Horizontal);
 
