@@ -1,3 +1,7 @@
+0.10
+----
+ * Fix missing LCDKeyEvent.h header in make install
+
 0.9
 ----
  * Eliminate some autotools warnings
