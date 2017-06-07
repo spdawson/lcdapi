@@ -86,7 +86,7 @@ void LCDFrame::sendCommand(const std::string &cmd, const std::string &parameters
     {
       if (parameters == "frame")
       {
-        realParams =  _id + " " + parameters; 
+        realParams =  _id + " " + parameters;
       }
       else
       {

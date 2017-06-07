@@ -32,7 +32,7 @@ namespace lcdapi {
  *
  *  The operator() should then be overriden to do actions. It will
  *   be called when the menu event occurs.
- *  
+ *
  *  To define only a single function, there are some useful macros (see below).
  *
  *  Then the handler is associated to a specific menu and event type

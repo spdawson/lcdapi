@@ -39,7 +39,7 @@ class LCDCpuSensor : public LCDSensor
   long _niceTicks;
   long _idleTicks;
   int _load;
-  
+
   void getTicks(long &u,long &s,long &n,long &i) const;
 
  public:

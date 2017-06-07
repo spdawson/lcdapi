@@ -39,9 +39,9 @@
  *
  * The class that must be used for all programms is LCDClient as it contains everything
  * to connect to the server.
- * 
+ *
  * You'll probably also need LCDScreen to create a new screen to be displayed.
- * 
+ *
  * To learn more about all the classes, consult the <a href="modules.html">Modules section</a>.
  *
  * \section install Installation

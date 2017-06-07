@@ -33,7 +33,7 @@ class LCDBar : public LCDWidget
 {
  protected:
   int _length;
-  int _max;  
+  int _max;
  public:
   LCDBar(const std::string &widgetType, const std::string &id, LCDElement *parent);
   LCDBar(const std::string &widgetType, int length, int x, int y, const std::string &id, LCDElement *parent);

@@ -57,7 +57,7 @@ class LCDScreen : public LCDElement
   /**
    * \brief Change the name of the screen.
    *
-   * Sets the screen's name as visible to a user. 
+   * Sets the screen's name as visible to a user.
    * @param name A string containing the new name.
    */
   void setName(const std::string& name);

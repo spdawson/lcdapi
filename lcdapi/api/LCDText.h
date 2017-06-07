@@ -32,9 +32,9 @@ namespace lcdapi {
 class LCDText : public LCDWidget
 {
  private:
-  std::string _text;  
+  std::string _text;
  public:
-  
+
   /**
    * \brief Default Constructor.
    *

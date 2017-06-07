@@ -155,7 +155,7 @@ class LCDClient : public LCDElement
   /**
    * \brief Change the name of the client.
    *
-   * Sets the client's name as visible to a user. 
+   * Sets the client's name as visible to a user.
    * @param name A string containing the new name.
    */
   void setName(const std::string& name);

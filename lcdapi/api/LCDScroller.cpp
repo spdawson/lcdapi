@@ -54,7 +54,7 @@ void LCDScroller::notifyChanged()
          << _text
          << '"';
 
-  setWidgetParameters(params.str());  
+  setWidgetParameters(params.str());
 }
 
 void LCDScroller::set(const string &text, int left, int top, int right, int bottom, int speed, Direction direction)

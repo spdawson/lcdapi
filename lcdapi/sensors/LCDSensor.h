@@ -22,7 +22,7 @@
 /**
  * \defgroup sensors Sensors
  *  Sensors are components that can automatically
- *  update a widget with values from external world 
+ *  update a widget with values from external world
  *  (including OS, hardware,...)
  *
  *  Some are predefined there. To create a new one,
@@ -81,7 +81,7 @@ class LCDWidgetTimeOut
  *  \ingroup sensors
  *  All the sensors in this API have LCDSensor as their base class.
  *   It should not be used directly but to create new sensors in the API or in the user application.
- *   
+ *
  *  A sensor should implement \ref waitForChange and \ref getCurrentValue.
  *  It can use some methods defined here for convenience.
  */

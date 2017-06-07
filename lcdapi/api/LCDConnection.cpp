@@ -52,13 +52,13 @@ void LCDConnection::initialize()
 
   if (!isValid())
   {
-    throw LCDException(LCD_SOCKET_CREATION_ERROR);   
+    throw LCDException(LCD_SOCKET_CREATION_ERROR);
   }
 
   const int on = 1;
   if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&on), sizeof (on)) == -1)
   {
-    throw LCDException(LCD_SOCKET_CREATION_ERROR);   
+    throw LCDException(LCD_SOCKET_CREATION_ERROR);
   }
 }
 

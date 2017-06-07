@@ -33,7 +33,7 @@ namespace lcdapi {
  *
  *  The operator() should then be overriden to do actions. It will
  *   be called when the key event occurs.
- *  
+ *
  *  To define only a single function, there are some useful macros (see below).
  *
  *  Then the callback is associated to the event

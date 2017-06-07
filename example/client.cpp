@@ -134,7 +134,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
     LCDText cpuText;
     cpuText.move(16,4);
     LCDText percent("%", 19, 4);
- 
+
     myCpu.addOnChangeWidget(&bar);
     myCpu.addOnChangeWidget(&cpuText);
 
@@ -158,7 +158,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
     {
       sleep(10);
     }
-    
+
     cout << "Ending" << endl;
 
   }

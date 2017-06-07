@@ -80,7 +80,7 @@ void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i) const
         file >> item;
       }
       file >> u >> s >> n >> i;
-      
+
       file.close();
     }
     else

@@ -22,7 +22,7 @@
 /**
  * \defgroup widgets Widgets
  *  The widgets are the graphical components that can be displayed
- *   on the LCD. Each of them correspond to a different element, 
+ *   on the LCD. Each of them correspond to a different element,
  *   so they have different properties that can be set. They share some
  *   methods, defined in the LCDWidget class.
  */

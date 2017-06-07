@@ -42,7 +42,7 @@ class LCDLock
   ::pthread_mutex_t *_posixMutex;
   bool _useLCD;
 
- public:    
+ public:
   /**
    * \brief Constructor locking an LCD mutex.
    *
