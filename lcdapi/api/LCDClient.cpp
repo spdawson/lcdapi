@@ -176,6 +176,11 @@ void LCDClient::setName(const string& name)
   setClientOption("name", name);
 }
 
+void LCDClient::setBackLight(const std::string& backlight)
+{
+  sendCommand("backlight", backlight);
+}
+
 void LCDClient::assignKey(const KeyEvent &key, LCDCallback *callback)
 {
   _callbacks[key] = callback;

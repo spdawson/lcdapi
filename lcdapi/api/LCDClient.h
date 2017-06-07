@@ -161,6 +161,14 @@ class LCDClient : public LCDElement
   void setName(const std::string& name);
 
   /**
+   * \brief Sets the client's backlight state.
+   *
+   * Sets the client's backlight state.
+   * @param backlight A string with the value to set. Constants \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN, \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and \ref LCD_BACKLIGHT_FLASH can be used.
+   */
+  void setBackLight(const std::string& backlight);
+
+  /**
    * \brief Assign a callback to a key.
    *
    * Used to call a user function when a key is pressed.
