@@ -29,12 +29,10 @@ namespace lcdapi {
  *  \ingroup main
  *
  *  With this class, you can create a new screen. It will contain some widgets.
- *  You can create as many screen as you want. The server will rotate them on the display.
+ *  You can create as many screen as you want. The server will rotate them on
+ * the display.
  */
-
-
-class LCDScreen : public LCDElement
-{
+class LCDScreen : public LCDElement {
  protected:
 
   template <typename T> void setScreenOption(const std::string& optName, T value);
@@ -48,9 +46,11 @@ class LCDScreen : public LCDElement
    *
    * This constructor can be used without parameter in most cases.
    * But the screen will have to be added to a client.
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
    * @param name A string containing the name for this screen.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDScreen(LCDElement *parent = 0, const std::string& name = "", const std::string& id = "");
 
@@ -65,32 +65,43 @@ class LCDScreen : public LCDElement
   /**
    * \brief Change the width of the screen.
    *
-   * Sets the width of the screen in characters. If unset, the full display size is assumed.
-   * @param width An integer containing the new number of characters to be used as width.
+   * Sets the width of the screen in characters. If unset, the full display
+   * size is assumed.
+   * @param width An integer containing the new number of characters to be
+   * used as width.
    */
   void setWidth(int width);
 
   /**
    * \brief Change the height of the screen.
    *
-   * Sets the height of the screen in characters. If unset, the full display size is assumed.
-   * @param height An integer containing the new number of characters to be used as height.
+   * Sets the height of the screen in characters. If unset, the full display
+   * size is assumed.
+   * @param height An integer containing the new number of characters to be
+   * used as height.
    */
   void setHeight(int height);
 
   /**
    * \brief Change the priority of the screen.
    *
-   * Sets priority of the screen. Only screens with highest priority at a moment will be shown.
-   * @param priority A string containing the priority class. These constants can be used: \ref LCD_PRIORITY_HIDDEN, \ref LCD_PRIORITY_BACKGROUND, \ref LCD_PRIORITY_INFO, \ref LCD_PRIORITY_FOREGROUND, \ref LCD_PRIORITY_ALERT, \ref LCD_PRIORITY_INPUT.
+   * Sets priority of the screen. Only screens with highest priority at a
+   * moment will be shown.
+   * @param priority A string containing the priority class. These constants
+   * can be used: \ref LCD_PRIORITY_HIDDEN, \ref LCD_PRIORITY_BACKGROUND,
+   * \ref LCD_PRIORITY_INFO, \ref LCD_PRIORITY_FOREGROUND,
+   * \ref LCD_PRIORITY_ALERT, \ref LCD_PRIORITY_INPUT.
    */
   void setPriority(const std::string& priority);
 
   /**
    * \brief Enable or disable heart beat.
    *
-   * Enable or disable the heart beat used by LCDproc to show data transmission.
-   * @param heartbeat A string with the value to set. Constants \ref LCD_HEARTBEAT_ON, \ref LCD_HEARTBEAT_OFF and \ref LCD_HEARTBEAT_OPEN can be used.
+   * Enable or disable the heart beat used by LCDproc to show data
+   * transmission.
+   * @param heartbeat A string with the value to set. Constants
+   * \ref LCD_HEARTBEAT_ON, \ref LCD_HEARTBEAT_OFF and
+   * \ref LCD_HEARTBEAT_OPEN can be used.
    */
   void setHeartBeat(const std::string& heartbeat);
 
@@ -98,7 +109,10 @@ class LCDScreen : public LCDElement
    * \brief Enable or disable screen backlight.
    *
    * Enable or disable the backlight for the current screen.
-   * @param backlight A string with the value to set. Constants \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN, \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and \ref LCD_BACKLIGHT_FLASH can be used.
+   * @param backlight A string with the value to set. Constants
+   * \ref LCD_BACKLIGHT_ON, \ref LCD_BACKLIGHT_OFF, \ref LCD_BACKLIGHT_OPEN,
+   * \ref LCD_BACKLIGHT_TOGGLE, \ref LCD_BACKLIGHT_BLINK and
+   * \ref LCD_BACKLIGHT_FLASH can be used.
    */
   void setBackLight(const std::string& backlight);
 
@@ -113,7 +127,8 @@ class LCDScreen : public LCDElement
   /**
    * \brief Set the time to live of the screen.
    *
-   * Change the time to live of the screen. After the screen has been visible for a total of this amount of time, it will be deleted
+   * Change the time to live of the screen. After the screen has been visible
+   * for a total of this amount of time, it will be deleted
    * @param secondEights The time in eights of a second for the time to live.
    */
   void setTimeOut(int secondEights);
@@ -122,18 +137,22 @@ class LCDScreen : public LCDElement
    * \brief Set the cursor state.
    *
    * Change the way the cursor is displayed.
-   * @param cursor A string with the value to set. Constants \ref LCD_CURSOR_ON, \ref LCD_CURSOR_OFF,\ref  LCD_CURSOR_UNDER and \ref LCD_CURSOR_BLOCK can be used.
+   * @param cursor A string with the value to set. Constants
+   * \ref LCD_CURSOR_ON, \ref LCD_CURSOR_OFF,\ref  LCD_CURSOR_UNDER and
+   * \ref LCD_CURSOR_BLOCK can be used.
    */
   void setCursor(const std::string& cursor);
 
   /**
    * \brief Set the cursor position on screen.
    *
-   * Move the cursor to a point specified with its coordinates. They are always 1-based, wich means that top-left is (1,1).
+   * Move the cursor to a point specified with its coordinates. They are
+   * always 1-based, wich means that top-left is (1,1).
    * @param x Integer containing 1-based value for column number.
    * @param y Integer containing 1-based value for row number.
    */
   void setCursorPosition(int x, int y);
+
   /**
    * \brief Set the x coordinate of the cursor.
    *
@@ -141,6 +160,7 @@ class LCDScreen : public LCDElement
    * \see setCursorPosition
    */
   void setCursorX(int x);
+
   /**
    * \brief Set the y coordinate of the cursor.
    *

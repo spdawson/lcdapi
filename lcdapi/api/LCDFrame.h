@@ -30,9 +30,7 @@ namespace lcdapi {
  * This widget is a container for other widgets.
  * They can be added in it as they are in a screen.
  */
-
-class LCDFrame : public LCDWidget
-{
+class LCDFrame : public LCDWidget {
  private:
     int _left, _top, _right, _bottom, _width, _height, _speed;
     Direction _direction;
@@ -42,8 +40,10 @@ class LCDFrame : public LCDWidget
    *
    * This constructor can be used without parameter in most cases.
    * But the widget will have to be added to a parent (screen or frame).
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDFrame(LCDElement *parent = 0, const std::string &id = "");
 
@@ -63,9 +63,12 @@ class LCDFrame : public LCDWidget
    * @param width Integer containing width for this widget (in characters).
    * @param height Integer containing height for this widget (in characters).
    * @param speed Number of movements per rendering stroke (8 times/second).
-   * @param direction Can be 'h' for Horizontal, 'v' for Vertical or 'm' for Marquee.
+   * @param direction Can be 'h' for Horizontal, 'v' for Vertical or 'm' for
+   * Marquee.
    */
-  void set(int left, int top, int right, int bottom, int width, int height, Direction direction, int speed);
+  void set(int left, int top, int right, int bottom,
+           int width, int height,
+           Direction direction, int speed);
 };
 
 } // end of lcdapi namespace

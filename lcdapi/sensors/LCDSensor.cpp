@@ -42,57 +42,43 @@ LCDSensor::LCDSensor()
 {
 }
 
-LCDSensor::~LCDSensor()
-{
+LCDSensor::~LCDSensor() {
   _exist = false;
-  if (_onChangeThreadStarted)
-  {
-    if (::pthread_cancel(_onChangeThread) == 0)
-    {
+  if (_onChangeThreadStarted) {
+    if (::pthread_cancel(_onChangeThread) == 0) {
       ::pthread_join(_onChangeThread, 0);
     }
     _onChangeThreadStarted = false;
   }
 
   for (WidgetTimeOutList::const_iterator it = _onTimeOutList.begin();
-       it != _onTimeOutList.end(); ++it)
-  {
-    if (::pthread_cancel(it->second._thread) == 0)
-    {
+       it != _onTimeOutList.end(); ++it) {
+    if (::pthread_cancel(it->second._thread) == 0) {
       ::pthread_join(it->second._thread, 0);
     }
   }
 }
 
-bool LCDSensor::exists()
-{
+bool LCDSensor::exists() {
   return _exist;
 }
 
-void LCDSensor::fireChanged()
-{
+void LCDSensor::fireChanged() {
   string value = getCurrentValue();
   for (WidgetList::const_iterator it = _onChangeList.begin();
-       it != _onChangeList.end(); ++it)
-  {
-    if (LCDElement::exists(it->first))
-    {
+       it != _onChangeList.end(); ++it) {
+    if (LCDElement::exists(it->first)) {
       it->second->valueCallback(value);
-    }
-    else
-    {
+    } else {
       removeOnChangeWidget(it->first);
     }
   }
 }
 
-const LCDWidgetTimeOut &LCDSensor::getThreadWidgetInfo(const ::pthread_t &thread)
-{
+const LCDWidgetTimeOut &LCDSensor::getThreadWidgetInfo(const ::pthread_t &thread) {
   for (WidgetTimeOutList::const_iterator it = _onTimeOutList.begin();
-       it != _onTimeOutList.end(); ++it)
-  {
-    if (::pthread_equal(thread, it->second._thread))
-    {
+       it != _onTimeOutList.end(); ++it) {
+    if (::pthread_equal(thread, it->second._thread)) {
       return it->second;
     }
   }
@@ -104,20 +90,17 @@ const LCDWidgetTimeOut &LCDSensor::getThreadWidgetInfo(const ::pthread_t &thread
   return dummy;
 }
 
-string LCDSensor::intToString(int value)
-{
+string LCDSensor::intToString(int value) {
   return LCDUtils::toString(value);
 }
 
-string LCDSensor::executeCommand(const string &cmd)
-{
+string LCDSensor::executeCommand(const string &cmd) {
   const string silentCmd = cmd + " 2>/dev/null";
   char buf[MAX_CMD_RESULT_LINE_SIZE + 1];
   buf[0] = '\0';
   FILE *ptr = NULL;
 
-  if ((ptr = popen(silentCmd.c_str(), "r")) != NULL)
-  {
+  if ((ptr = popen(silentCmd.c_str(), "r")) != NULL) {
     if (NULL == fgets(buf, MAX_CMD_RESULT_LINE_SIZE, ptr)) {
       /// \todo Handle error or EOF
     }
@@ -136,10 +119,8 @@ string LCDSensor::executeCommand(const string &cmd)
   return result;
 }
 
-void LCDSensor::addOnChangeWidget(LCDWidget *widget)
-{
-  if (!_onChangeThreadStarted)
-  {
+void LCDSensor::addOnChangeWidget(LCDWidget *widget) {
+  if (!_onChangeThreadStarted) {
     ::pthread_create(&_onChangeThread, 0, &updateWhenChanged, this);
     _onChangeThreadStarted = true;
   }
@@ -147,26 +128,21 @@ void LCDSensor::addOnChangeWidget(LCDWidget *widget)
   _onChangeList[widget->getId()] = widget;
 }
 
-void LCDSensor::removeOnChangeWidget(LCDWidget *widget)
-{
+void LCDSensor::removeOnChangeWidget(LCDWidget *widget) {
   removeOnChangeWidget(widget->getId());
 }
 
-void LCDSensor::removeOnChangeWidget(const string& id)
-{
+void LCDSensor::removeOnChangeWidget(const string& id) {
   _onChangeList.erase(id);
-  if (_onChangeList.empty() && _onChangeThreadStarted)
-  {
-    if (::pthread_cancel(_onChangeThread) == 0)
-    {
+  if (_onChangeList.empty() && _onChangeThreadStarted) {
+    if (::pthread_cancel(_onChangeThread) == 0) {
       ::pthread_join(_onChangeThread, 0);
     }
     _onChangeThreadStarted = false;
   }
 }
 
-void LCDSensor::addOnTimeOutWidget(LCDWidget *widget, int timeout)
-{
+void LCDSensor::addOnTimeOutWidget(LCDWidget *widget, int timeout) {
   LCDWidgetTimeOut tmpWidget;
 
   tmpWidget._timeOut = timeout;
@@ -178,28 +154,23 @@ void LCDSensor::addOnTimeOutWidget(LCDWidget *widget, int timeout)
   ::pthread_create(&(_onTimeOutList[widget->getId()]._thread), 0, &updateEach, this);
 }
 
-void LCDSensor::removeOnTimeOutWidget(LCDWidget *widget)
-{
+void LCDSensor::removeOnTimeOutWidget(LCDWidget *widget) {
   removeOnTimeOutWidget(widget->getId());
 }
 
-void LCDSensor::removeOnTimeOutWidget(const string& id)
-{
-  if (::pthread_cancel(_onTimeOutList[id]._thread) == 0)
-  {
+void LCDSensor::removeOnTimeOutWidget(const string& id) {
+  if (::pthread_cancel(_onTimeOutList[id]._thread) == 0) {
     ::pthread_join(_onTimeOutList[id]._thread, 0);
   }
   _onTimeOutList.erase(id);
 }
 
-void *updateWhenChanged(void *param)
-{
+void *updateWhenChanged(void *param) {
   ::pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, 0);
 
   LCDSensor *daddy = static_cast<LCDSensor*>(param);
 
-  while (daddy->exists())
-  {
+  while (daddy->exists()) {
     daddy->waitForChange();
     daddy->fireChanged();
   }
@@ -207,30 +178,24 @@ void *updateWhenChanged(void *param)
   return NULL;
 }
 
-void *updateEach(void *param)
-{
+void *updateEach(void *param) {
   ::pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, 0);
 
   LCDSensor *daddy = static_cast<LCDSensor*>(param);
 
   LCDWidgetTimeOut widgetInfo;
 
-  while (!widgetInfo.isValid())
-  {
+  while (!widgetInfo.isValid()) {
     widgetInfo = daddy->getThreadWidgetInfo(::pthread_self());
     usleep(10);
   }
 
-  while (daddy->exists())
-  {
-    if (LCDElement::exists(widgetInfo._widgetId))
-    {
+  while (daddy->exists()) {
+    if (LCDElement::exists(widgetInfo._widgetId)) {
       widgetInfo._widget->valueCallback(daddy->getCurrentValue());
       usleep(widgetInfo._timeOut * 100000);
       ::pthread_testcancel();
-    }
-    else
-    {
+    } else {
       daddy->removeOnTimeOutWidget(widgetInfo._widgetId);
     }
   }

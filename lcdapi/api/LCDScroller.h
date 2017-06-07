@@ -29,8 +29,7 @@ namespace lcdapi {
  *  \ingroup widgets
  * This widget is used to display some text that will scroll on the screen.
  */
-class LCDScroller : public LCDWidget
-{
+class LCDScroller : public LCDWidget {
  private:
   std::string _text;
   int _right, _bottom, _speed;
@@ -41,8 +40,10 @@ class LCDScroller : public LCDWidget
    *
    * This constructor can be used without parameter in most cases.
    * But the widget will have to be added to a parent (screen or frame).
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDScroller(LCDElement *parent = 0, const std::string &id = "");
 
@@ -61,7 +62,9 @@ class LCDScroller : public LCDWidget
    * @param speed Number of movements per rendering stroke (8 times/second).
    * @param direction Can be 'h' for Horizontal, 'v' for Vertical or 'm' for Marquee.
    */
-  void set(const std::string &text, int left = 1, int top = 1, int right = 10, int bottom = 1, int speed = 8, Direction direction = Horizontal);
+  void set(const std::string &text,
+           int left = 1, int top = 1, int right = 10, int bottom = 1,
+           int speed = 8, Direction direction = Horizontal);
 
   /**
    * \brief Set the displayed text.
@@ -99,10 +102,10 @@ class LCDScroller : public LCDWidget
    * \brief Set the speed of the scroller.
    *
    * Set or change the speed of the scrolling.
-   * @param speed The new speed to be used . Is is a number of movements per rendering stroke (8 times/second).
+   * @param speed The new speed to be used . Is is a number of movements per
+   * rendering stroke (8 times/second).
    */
   void setSpeed(int speed);
-
 };
 
 } // end of lcdapi namespace

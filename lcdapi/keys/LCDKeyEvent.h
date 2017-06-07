@@ -30,55 +30,42 @@ namespace lcdapi {
  *  To create a new key handler, one should create a derivated class
  *  from this one and implement operator ().
  */
-
 class KeyEvent {
 public:
   /** Default constructor */
-  KeyEvent()
-    : m_key()
-  {
+  KeyEvent() : m_key() {
   }
 
   /** Constructor */
-  KeyEvent(char key)
-    : m_key(1, key)
-  {
+  KeyEvent(char key) : m_key(1, key) {
   }
 
   /** Constructor */
-  KeyEvent(const std::string &key)
-    : m_key(key)
-  {
+  KeyEvent(const std::string &key) : m_key(key) {
   }
 
   /** Destructor */
-  ~KeyEvent()
-  {
+  ~KeyEvent() {
   }
 
   /** Copy constructor */
-  KeyEvent(const KeyEvent &original)
-    : m_key(original.get_key())
-  {
+  KeyEvent(const KeyEvent &original) : m_key(original.get_key()) {
   }
 
   /** Copy assignment operator */
-  KeyEvent &operator=(const KeyEvent &rhs)
-  {
+  KeyEvent &operator=(const KeyEvent &rhs) {
     m_key = rhs.get_key();
     return *this;
   }
 
   /** Get the underlying key string */
-  const std::string &get_key() const
-  {
+  const std::string &get_key() const {
     return m_key;
   }
 
   /** Cast to char, with loss of information if underlying
    * key string has length greater than one */
-  operator char() const
-  {
+  operator char() const {
     return m_key[0];
   }
 

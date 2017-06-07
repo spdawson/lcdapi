@@ -44,23 +44,24 @@ namespace lcdapi {
 
 class LCDWidget;
 
-class LCDWidgetTimeOut
-{
+class LCDWidgetTimeOut {
  public:
   std::string _widgetId;
   int _timeOut;
   LCDWidget *_widget;
   ::pthread_t _thread;
-  LCDWidgetTimeOut()
-    : _widgetId(), _timeOut(0), _widget(NULL), _thread(static_cast<pthread_t>(-1))
+
+ LCDWidgetTimeOut()
+    : _widgetId(), _timeOut(0), _widget(NULL),
+    _thread(static_cast<pthread_t>(-1))
   {
   }
-  bool isValid()
-  {
+
+  bool isValid() {
     return (_thread != static_cast<pthread_t>(-1));
   }
-  const LCDWidgetTimeOut& operator=(const LCDWidgetTimeOut& rhs)
-  {
+
+  const LCDWidgetTimeOut& operator=(const LCDWidgetTimeOut& rhs) {
     if (&rhs != this) {
       _widgetId = rhs._widgetId;
       _timeOut = rhs._timeOut;
@@ -70,8 +71,10 @@ class LCDWidgetTimeOut
 
     return *this;
   }
-  LCDWidgetTimeOut(const LCDWidgetTimeOut& original)
-    : _widgetId(original._widgetId), _timeOut(original._timeOut), _widget(original._widget), _thread(original._thread)
+
+ LCDWidgetTimeOut(const LCDWidgetTimeOut& original)
+   : _widgetId(original._widgetId), _timeOut(original._timeOut),
+    _widget(original._widget), _thread(original._thread)
   {
   }
 };
@@ -80,13 +83,13 @@ class LCDWidgetTimeOut
  *  \brief Main class for all sensors of the API.
  *  \ingroup sensors
  *  All the sensors in this API have LCDSensor as their base class.
- *   It should not be used directly but to create new sensors in the API or in the user application.
+ *   It should not be used directly but to create new sensors in the API or
+ *   in the user application.
  *
  *  A sensor should implement \ref waitForChange and \ref getCurrentValue.
  *  It can use some methods defined here for convenience.
  */
-class LCDSensor
-{
+class LCDSensor {
  private:
   bool _exist;
   bool _onChangeThreadStarted;
@@ -105,7 +108,9 @@ class LCDSensor
   LCDSensor();
   virtual ~LCDSensor();
   bool exists();
+
   const LCDWidgetTimeOut &getThreadWidgetInfo(const ::pthread_t &thread);
+
   /**
    * \brief Returns when a change occured on the measured value.
    *
@@ -113,6 +118,7 @@ class LCDSensor
    * It should wait for the value to change and then just return.
    */
   virtual void waitForChange() = 0;
+
   /**
    * \brief Get the current value measured by the sensor.
    *
@@ -120,12 +126,13 @@ class LCDSensor
    * It should return the current value as a string.
    * @return Current value of the sensor.
    */
-
   virtual std::string getCurrentValue() = 0;
+
   /**
    * \brief Convert an integer to a string.
    *
-   * Utility function to convert an integer to a string so it can be returned by \ref getCurrentValue.
+   * Utility function to convert an integer to a string so it can be returned
+   * by \ref getCurrentValue.
    * It should return the current value as a string.
    * @param value The integer value to convert.
    * @return String version of the value.
@@ -141,15 +148,19 @@ class LCDSensor
    * @return A string containing the first line of the command output.
    */
   std::string executeCommand(const std::string &cmd);
+
   void fireChanged();
+
   /**
    * \brief Add a new widget that must be set when the sensor value changes.
    *
    * This method is used to associate a wiget to a sensor.
-   * When the sensor value change, the widget value will be changed accordingly.
+   * When the sensor value change, the widget value will be changed
+   * accordingly.
    * @param widget The widget to associate with this sensor.
    */
   void addOnChangeWidget(LCDWidget *widget);
+
   /**
    * \brief Add a new widget that must be changed regularly.
    *
@@ -159,32 +170,42 @@ class LCDSensor
    * @param timeOut The time to wait between each update (second tenths).
    */
   void addOnTimeOutWidget(LCDWidget *widget, int timeOut);
+
   /**
    * \brief Remove a widget that was added with \ref addOnChangeWidget.
    *
-   * This method is used to delete the association between a wiget and a sensor.
+   * This method is used to delete the association between a wiget and a
+   * sensor.
    * @param widget The widget to remove from sensor configuration.
    */
   void removeOnChangeWidget(LCDWidget *widget);
+
   /**
    * \brief Remove a widget that was added with \ref addOnChangeWidget.
    *
-   * This method is used to delete the association between a wiget and a sensor.
-   * @param id The identifier of the widget to remove from sensor configuration.
+   * This method is used to delete the association between a wiget and a
+   * sensor.
+   * @param id The identifier of the widget to remove from sensor
+   * configuration.
    */
   void removeOnChangeWidget(const std::string& id);
+
   /**
    * \brief Remove a widget that was added with \ref addOnTimeOutWidget.
    *
-   * This method is used to delete the association between a wiget and a sensor.
+   * This method is used to delete the association between a wiget and a
+   * sensor.
    * @param widget The widget to remove from sensor configuration.
    */
   void removeOnTimeOutWidget(LCDWidget *widget);
+
   /**
    * \brief Remove a widget that was added with \ref addOnTimeOutWidget.
    *
-   * This method is used to delete the association between a wiget and a sensor.
-   * @param id The identifier of the widget to remove from sensor configuration.
+   * This method is used to delete the association between a wiget and a
+   * sensor.
+   * @param id The identifier of the widget to remove from sensor
+   * configuration.
    */
   void removeOnTimeOutWidget(const std::string& id);
 };

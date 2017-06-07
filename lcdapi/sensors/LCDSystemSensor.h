@@ -27,10 +27,10 @@ namespace lcdapi {
 /** \class LCDSystemSensor LCDSystemSensor.h "api/LCDSystemSensor.h"
  *  \brief A sensor that executes a shell command.
  *  \ingroup sensors
- *  This sensor takes a shell command (that can call external programs) and returns first line of its output.
+ *  This sensor takes a shell command (that can call external programs) and
+ *  returns first line of its output.
  */
-class LCDSystemSensor : public LCDSensor
-{
+class LCDSystemSensor : public LCDSensor {
  private:
     std::string _command;
 

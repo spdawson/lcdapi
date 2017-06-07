@@ -70,15 +70,14 @@ LCDClass_##fname fname;
  *  To create a new key handler, one should subclass LCDCallback,
  *  and implement operator().
  */
-
-class LCDCallback
-{
+class LCDCallback {
  public:
-  LCDCallback()
-  {
+  /** Default constructor */
+  LCDCallback() {
   }
-  virtual ~LCDCallback()
-  {
+
+  /** Destructor */
+  virtual ~LCDCallback() {
   }
 
   /**
@@ -87,8 +86,7 @@ class LCDCallback
    * This method should be overrided by classes used to handle key event.
    *  It will be called when the key is pressed.
    * @param lcdKey The key that was pressed.
-  */
-
+   */
   virtual void operator()(KeyEvent lcdKey) = 0;
 };
 

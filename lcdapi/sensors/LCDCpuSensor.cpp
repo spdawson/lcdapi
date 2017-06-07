@@ -36,25 +36,22 @@ LCDCpuSensor::LCDCpuSensor(const string& cpuName)
 {
 }
 
-LCDCpuSensor::~LCDCpuSensor()
-{
+LCDCpuSensor::~LCDCpuSensor() {
 }
 
-void LCDCpuSensor::waitForChange()
-{
+void LCDCpuSensor::waitForChange() {
   sleep(1);
 }
 
-string LCDCpuSensor::getCurrentValue()
-{
+string LCDCpuSensor::getCurrentValue() {
   long uTicks, sTicks, nTicks, iTicks;
 
   getTicks(uTicks, sTicks, nTicks, iTicks);
 
-  const long totalTicks = ((uTicks - _userTicks) +
+  const long totalTicks = (uTicks - _userTicks) +
                            (sTicks - _sysTicks) +
                            (nTicks - _niceTicks) +
-                           (iTicks - _idleTicks));
+                           (iTicks - _idleTicks);
 
   const int load  = (totalTicks == 0) ? 0 : int( 100.0 * ( (uTicks+sTicks+nTicks) - (_userTicks+_sysTicks+_niceTicks))/( totalTicks+0.001) + 0.5 );
 
@@ -66,31 +63,25 @@ string LCDCpuSensor::getCurrentValue()
   return intToString(load);
 }
 
-void LCDCpuSensor::getTicks (long &u,long &s,long &n,long &i) const
-{
+void LCDCpuSensor::getTicks(long &u, long &s, long &n, long &i) const {
     fstream file;
     string item;
 
     file.open("/proc/stat", ios::in);
 
-    if (file.is_open())
-    {
-      while (item != _cpuName)
-      {
+    if (file.is_open()) {
+      while (item != _cpuName) {
         file >> item;
       }
       file >> u >> s >> n >> i;
 
       file.close();
-    }
-    else
-    {
+    } else {
         u = 0;
         s = 0;
         n = 0;
         i = 0;
     }
-
 }
 
 } // end of lcdapi namespace

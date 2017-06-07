@@ -19,7 +19,6 @@
 #ifndef _LCDAPI_INCLUDE_LCDHEADERS_H_
 #define _LCDAPI_INCLUDE_LCDHEADERS_H_
 
-
 /** \mainpage Documentation for the C++ LCD API.
  *
  * <ul>
@@ -37,12 +36,13 @@
  *
  * \section classes Classes
  *
- * The class that must be used for all programms is LCDClient as it contains everything
- * to connect to the server.
+ * The class that must be used for all programms is LCDClient as it contains
+ * everything to connect to the server.
  *
  * You'll probably also need LCDScreen to create a new screen to be displayed.
  *
- * To learn more about all the classes, consult the <a href="modules.html">Modules section</a>.
+ * To learn more about all the classes, consult the
+ * <a href="modules.html">Modules section</a>.
  *
  * \section install Installation
  *
@@ -66,12 +66,16 @@
  *
  * <ul>
  *   <li>/usr/local/lib: The shared library (liblcdapi.so).</li>
- *   <li>/usr/local/include/lcdapi: The include (*.h) files for the library.</li>
- *   <li>/usr/local/share/doc/lcdapi: The HTML documentation. Go to index.html for the root.</li>
- *   <li>/usr/local/share/lcdapi/examples: The example application and Makefile.</li>
+ *   <li>/usr/local/include/lcdapi: The include (*.h) files for the
+ *     library.</li>
+ *   <li>/usr/local/share/doc/lcdapi: The HTML documentation. Go to
+ *     index.html for the root.</li>
+ *   <li>/usr/local/share/lcdapi/examples: The example application and
+ *     Makefile.</li>
  * </ul>
  *
- * Man pages can also be accessed for many classes in the application by typing: man <classname>. man main is the main main page for lcdapi.
+ * Man pages can also be accessed for many classes in the application by
+ * typing: man <classname>. man main is the main main page for lcdapi.
  *
  * \section uninstall Uninstallation
  *
@@ -87,7 +91,8 @@
  *
  * Your program must be linked with the socket and the pthread libraries.
  *
- * To compile client.cpp for example, you should use these commands on a GNU/Linux system:
+ * To compile client.cpp for example, you should use these commands on a
+ * GNU/Linux system:
  * \code
  * export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
  * g++ -o client client.cpp -I/usr/local/include/lcdapi -L/usr/local/lib -llcdapi -lpthread
@@ -97,10 +102,9 @@
  *
  * \section example Example
  *
- * You can find in the <a href="examples.html">examples page</a> some example of programms using the API.
- *
+ * You can find in the <a href="examples.html">examples page</a> some example
+ * of programs using the API.
  */
-
 
 #include <lcdapi/include/LCDConstants.h>
 
@@ -132,24 +136,28 @@
 #include <lcdapi/keys/LCDCallback.h>
 #include <lcdapi/keys/LCDKeyEvent.h>
 
-
 /**
  * \example client.cpp
  * A small example of what can be done.
  *
  * It creates 3 screens, each one being displayed 2 seconds.
  * <ul>
- *  <li> First screen contains a title and the name of the current playing song with notun or kscd.</li>
- *  <li> Second screen contains time of the day displayed with big numbers.</li>
- *  <li> Third screen contains a title, a bar representing CPU usage and the textual value.</li>
+ *  <li> First screen contains a title and the name of the current playing
+ *    song with notun or kscd.</li>
+ *  <li> Second screen contains time of the day displayed with big
+ *    numbers.</li>
+ *  <li> Third screen contains a title, a bar representing CPU usage and the
+ *    textual value.</li>
  * </ul>
  *
  * It also uses callback for keys.
  *
- * The one for B key is defined using LCD_CALLBACK_FUNCTION_* macros. They are useful if you only want a function without parameter to be executed.
+ * The one for B key is defined using LCD_CALLBACK_FUNCTION_* macros. They
+ * are useful if you only want a function without parameter to be executed.
  *
- * For the A key, the callback is in a TitleSwitcher class because it needs more parameters. It will switch from English to French title for first screen.
+ * For the A key, the callback is in a TitleSwitcher class because it needs
+ * more parameters. It will switch from English to French title for first
+ * screen.
  */
-
 
 #endif

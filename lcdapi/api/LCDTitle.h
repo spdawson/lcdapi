@@ -29,8 +29,7 @@ namespace lcdapi {
  *  \ingroup widgets
  * This widget is used to display a title on first line of the LCD.
  */
-class LCDTitle : public LCDWidget
-{
+class LCDTitle : public LCDWidget {
  private:
   std::string _text;
  public:
@@ -39,17 +38,22 @@ class LCDTitle : public LCDWidget
    *
    * This constructor can be used without parameter in most cases.
    * But the widget will have to be added to a parent (screen or frame).
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDTitle(LCDElement *parent = 0, const std::string &id = "");
   /**
    * \brief Constructor with widget values specified.
    *
-   * This construct can be used to specify the values for the widget while building it.
+   * This construct can be used to specify the values for the widget while
+   * building it.
    * @param text A string containing the text that will be displayed.
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDTitle(const std::string &text, LCDElement *parent = 0, const std::string &id = "");
 

@@ -33,13 +33,11 @@ LCDSystemSensor::~LCDSystemSensor()
 {
 }
 
-void LCDSystemSensor::waitForChange()
-{
+void LCDSystemSensor::waitForChange() {
   sleep(1);
 }
 
-string LCDSystemSensor::getCurrentValue()
-{
+string LCDSystemSensor::getCurrentValue() {
   return executeCommand(_command);
 }
 

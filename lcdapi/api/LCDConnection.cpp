@@ -41,37 +41,30 @@ LCDConnection::LCDConnection(const string &host, const int port)
   connect(host, port);
 }
 
-LCDConnection::~LCDConnection()
-{
+LCDConnection::~LCDConnection() {
   disconnect();
 }
 
-void LCDConnection::initialize()
-{
+void LCDConnection::initialize() {
   memset(&_addr, 0, sizeof (_addr));
 
-  if (!isValid())
-  {
+  if (!isValid()) {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);
   }
 
   const int on = 1;
-  if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&on), sizeof (on)) == -1)
-  {
+  if (setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&on), sizeof (on)) == -1) {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);
   }
 }
 
-bool LCDConnection::isValid() const
-{
+bool LCDConnection::isValid() const {
   return _sock != -1;
 }
 
 #pragma GCC diagnostic ignored "-Wold-style-cast"
-void LCDConnection::connect(const string &host, const int port)
-{
-  if (!isValid())
-  {
+void LCDConnection::connect(const string &host, const int port) {
+  if (!isValid()) {
     throw LCDException(LCD_SOCKET_CREATION_ERROR);
   }
 
@@ -80,15 +73,13 @@ void LCDConnection::connect(const string &host, const int port)
 
   int status = inet_pton(AF_INET, host.c_str(), &_addr.sin_addr);
 
-  if (errno == EAFNOSUPPORT)
-  {
+  if (errno == EAFNOSUPPORT) {
     throw LCDException(LCD_SOCKET_NOT_SUPPORTED);
   }
 
   status = ::connect(_sock, reinterpret_cast<struct sockaddr*>(&_addr), sizeof(_addr) );
 
-  if (status != 0)
-  {
+  if (status != 0) {
     throw LCDException(LCD_SOCKET_CONNECTION_ERROR);
   }
 
@@ -96,63 +87,50 @@ void LCDConnection::connect(const string &host, const int port)
 }
 #pragma GCC diagnostic error "-Wold-style-cast"
 
-void LCDConnection::disconnect()
-{
-  if (isValid())
-  {
+void LCDConnection::disconnect() {
+  if (isValid()) {
     ::close(_sock);
   }
 }
 
-void LCDConnection::send(const string &toSend)
-{
+void LCDConnection::send(const string &toSend) {
   const string s = toSend + "\r\n";
 
 #ifdef DEBUG
   cerr << "Sending : " << s << endl;
 #endif // DEBUG
 
-  if (!_isConnected)
-  {
+  if (!_isConnected) {
     throw LCDException(LCD_SOCKET_NOT_CONNECTED);
   }
 
   const int total = s.size();
   int offset = 0;
 
-  while (offset != total)
-  {
+  while (offset != total) {
     const int sent = ::send(_sock, s.c_str() + offset, total - offset, 0);
-    if ( ((sent == -1) && (errno != EAGAIN)) || (sent == 0) )
-    {
+    if ( ((sent == -1) && (errno != EAGAIN)) || (sent == 0) ) {
       throw LCDException(LCD_SOCKET_SEND_ERROR);
-    }
-    else
-    {
+    } else {
       offset += sent;
     }
   }
 }
 
-string LCDConnection::recv()
-{
-  if (!_isConnected)
-  {
+string LCDConnection::recv() {
+  if (!_isConnected) {
     throw LCDException(LCD_SOCKET_NOT_CONNECTED);
   }
 
   char buf[LCD_MAXRECV + 1];
   memset(buf, 0, LCD_MAXRECV + 1);
 
-  for (char* current = buf; current < (buf + LCD_MAXRECV); ++current)
-  {
+  for (char* current = buf; current < (buf + LCD_MAXRECV); ++current) {
     const int status = ::recv(_sock, current, 1, 0);
-    if (-1 == status)
-    {
+    if (-1 == status) {
       throw LCDException(LCD_SOCKET_RECV_ERROR);
     }
-    if (('\0' == *current) || ('\r' == *current) || ('\n' == *current))
-    {
+    if (('\0' == *current) || ('\r' == *current) || ('\n' == *current)) {
       *current = '\0'; // N.B. Delete line termination character
       break;
     }
@@ -167,14 +145,12 @@ string LCDConnection::recv()
   return result;
 }
 
-const LCDConnection& LCDConnection::operator << (const string &s)
-{
+const LCDConnection& LCDConnection::operator <<(const string &s) {
   send(s);
   return *this;
 }
 
-const LCDConnection& LCDConnection::operator >> (string &s)
-{
+const LCDConnection& LCDConnection::operator >>(string &s) {
   s = recv();
   return *this;
 }

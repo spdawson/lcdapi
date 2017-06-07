@@ -23,17 +23,18 @@ namespace lcdapi {
 
 using namespace std;
 
-LCDText::LCDText(LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text()
+LCDText::LCDText(LCDElement *parent, const string &id)
+  : LCDWidget(id, parent, "string"), _text()
 {
 }
 
-LCDText::LCDText(const string &text, int x, int y, LCDElement *parent, const string &id) : LCDWidget(id, parent, "string"), _text(text)
+LCDText::LCDText(const string &text, int x, int y, LCDElement *parent, const string &id)
+  : LCDWidget(id, parent, "string"), _text(text)
 {
   set(text, x, y);
 }
 
-void LCDText::notifyChanged()
-{
+void LCDText::notifyChanged() {
   ostringstream params;
 
   params << _x
@@ -46,8 +47,7 @@ void LCDText::notifyChanged()
   setWidgetParameters(params.str());
 }
 
-void LCDText::set(const string &text, int x, int y)
-{
+void LCDText::set(const string &text, int x, int y) {
   if (_x != x || _y != y || _text != text) {
     _x = x;
     _y = y;
@@ -56,18 +56,15 @@ void LCDText::set(const string &text, int x, int y)
   }
 }
 
-void LCDText::setText(const string &text)
-{
+void LCDText::setText(const string &text) {
   set(text, _x, _y);
 }
 
-const string& LCDText::getText() const
-{
+const string& LCDText::getText() const {
   return _text;
 }
 
-void LCDText::valueCallback(const string& value)
-{
+void LCDText::valueCallback(const string& value) {
   setText(value);
 }
 

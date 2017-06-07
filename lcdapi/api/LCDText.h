@@ -40,23 +40,30 @@ class LCDText : public LCDWidget
    *
    * This constructor can be used without parameter in most cases.
    * But the widget will have to be added to a parent (screen or frame).
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDText(LCDElement *parent = 0, const std::string &id = "");
+
   /**
    * \brief Constructor with widget values specified.
    *
-   * This construct can be used to specify the values for the widget while building it.
+   * This construct can be used to specify the values for the widget while
+   * building it.
    * @param text A string containing the text that will be displayed.
    * @param x Integer containing 1-based value for column number.
    * @param y Integer containing 1-based value for row number.
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDText(const std::string &text, int x=1, int y=1, LCDElement *parent = 0, const std::string &id = "");
 
   virtual void notifyChanged();
+
   /**
    * \brief Set the values for the widget.
    *

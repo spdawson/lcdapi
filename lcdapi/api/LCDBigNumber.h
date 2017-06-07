@@ -27,11 +27,10 @@ namespace lcdapi {
 /** \class LCDBigNumber LCDBigNumber.h "api/LCDBigNumber.h"
  *  \brief A widget to display a big number.
  *  \ingroup widgets
- * This widget is used to display a big number (size is 3*4 characters) somewhere on screen.
+ * This widget is used to display a big number (size is 3*4 characters)
+ * somewhere on screen.
  */
-
-class LCDBigNumber : public LCDWidget
-{
+class LCDBigNumber : public LCDWidget {
  private:
   int _number, _position;
  public:
@@ -41,19 +40,24 @@ class LCDBigNumber : public LCDWidget
    * Can be used as a value for this widget. It will then display a big colon character wich size is 1*4.
    */
   static const int LCD_COLON;
+
   /**
    * \brief Default Constructor.
    *
    * This constructor can be used without parameter in most cases.
    * But the widget will have to be added to a parent (screen or frame).
-   * @param parent A pointer to parent of this screen. It should be a LCDClient object.
-   * @param id A string with the identifier for the screen. If not provided, a unique one will be generated automatically.
+   * @param parent A pointer to parent of this screen. It should be a
+   * LCDClient object.
+   * @param id A string with the identifier for the screen. If not provided,
+   * a unique one will be generated automatically.
    */
   explicit LCDBigNumber(LCDElement *parent = 0, const std::string &id = "");
+
   /**
    * \brief Constructor with widget values specified.
    *
-   * This construct can be used to specify the values for the widget while building it.
+   * This construct can be used to specify the values for the widget while
+   * building it.
    * @param number An integer containing the number to be displayed. You can use special value \ref LCD_COLON to display a colon.
    * @param x Integer containing 1-based value for column number.
    * @param parent A pointer to parent of this screen. It should be a LCDClient object.

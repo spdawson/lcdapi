@@ -31,41 +31,32 @@ LCDKdeMultimediaSensor::LCDKdeMultimediaSensor(const std::string& defaultValue)
 {
 }
 
-LCDKdeMultimediaSensor::~LCDKdeMultimediaSensor()
-{
+LCDKdeMultimediaSensor::~LCDKdeMultimediaSensor() {
 }
 
-void LCDKdeMultimediaSensor::waitForChange()
-{
-  while (_previousValue == getCurrentValue())
-  {
+void LCDKdeMultimediaSensor::waitForChange() {
+  while (_previousValue == getCurrentValue()) {
     sleep(1);
   }
   _previousValue = getCurrentValue();
 }
 
-string LCDKdeMultimediaSensor::getCurrentValue()
-{
+string LCDKdeMultimediaSensor::getCurrentValue() {
   string value;
 
   const string noatunId = executeCommand("dcop | grep noatun");
 
-  if (!noatunId.empty())
-  {
+  if (!noatunId.empty()) {
     value = executeCommand("dcop " + noatunId + " Noatun title");
-  }
-  else
-  {
+  } else {
     const string kscdTitle =
       executeCommand("dcop kscd CDPlayer currentTrackTitle");
-    if (!kscdTitle.empty())
-    {
+    if (!kscdTitle.empty()) {
       value = kscdTitle;
     }
   }
 
-  if (value.empty())
-  {
+  if (value.empty()) {
     value = _defaultValue;
   }
 

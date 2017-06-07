@@ -28,8 +28,7 @@ namespace lcdapi {
  *  \ingroup main
  * This class is for the exceptions thrown by the API if a problem occurs.
  */
-class LCDException
-{
+class LCDException {
  private:
   std::string _desc;
 
@@ -45,7 +44,8 @@ class LCDException
   /**
    * \brief Get a textual description of the problem that occured.
    *
-   * When an exception is caught, this method can be called to have a description of the problem.
+   * When an exception is caught, this method can be called to have a
+   * description of the problem.
    * \return A string containing the error description.
    */
   std::string what() const;

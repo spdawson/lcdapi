@@ -36,14 +36,10 @@ LCDLock::LCDLock(::pthread_mutex_t *mutex)
   ::pthread_mutex_lock(_posixMutex);
 }
 
-LCDLock::~LCDLock()
-{
-  if (_useLCD)
-  {
+LCDLock::~LCDLock() {
+  if (_useLCD) {
     _lcdMutex->unlock();
-  }
-  else
-  {
+  } else {
     ::pthread_mutex_unlock(_posixMutex);
   }
   ::pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, 0);

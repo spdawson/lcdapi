@@ -31,8 +31,7 @@ class LCDMutex;
  *  This class is used to lock some mutexes and be sure that they will
  *   be unlocked, even if an exception occurs.
  */
-class LCDLock
-{
+class LCDLock {
  private:
   const LCDLock& operator=(const LCDLock& rhs);
   LCDLock(const LCDLock& original);
@@ -47,21 +46,21 @@ class LCDLock
    * \brief Constructor locking an LCD mutex.
    *
    * This constructor locks the LCD mutex and stores it.
-  */
+   */
   explicit LCDLock(LCDMutex *mutex);
 
   /**
    * \brief Constructor locking a Posix mutex.
    *
    * This constructor locks the Posix mutex and stores it.
-  */
+   */
   explicit LCDLock(::pthread_mutex_t *mutex);
 
   /**
    * \brief Destructor unlocking the mutex.
    *
    * This destructor unlocks the mutex.
-  */
+   */
   ~LCDLock();
 };
 

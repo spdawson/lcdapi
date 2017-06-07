@@ -43,6 +43,7 @@ const int LCD_MAXRECV = 200;
  *  Used with LCDScreen::setHeartBeat to enable the heart beat.
  */
 const std::string LCD_HEARTBEAT_ON = "on";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setHeartBeat.
@@ -50,11 +51,13 @@ const std::string LCD_HEARTBEAT_ON = "on";
  *  Used with LCDScreen::setHeartBeat to disable the heart beat.
  */
 const std::string LCD_HEARTBEAT_OFF = "off";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setHeartBeat.
  *
- *  Used with LCDScreen::setHeartBeat to let other elements decide of the heart state.
+ *  Used with LCDScreen::setHeartBeat to let other elements decide of the
+ *  heart state.
  */
 const std::string LCD_HEARTBEAT_OPEN = "open";
 
@@ -62,42 +65,53 @@ const std::string LCD_HEARTBEAT_OPEN = "open";
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to enable the LCD backlight.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to enable
+ *  the LCD backlight.
  */
 const std::string LCD_BACKLIGHT_ON = "on";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to disable the LCD backlight.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to disable
+ *  the LCD backlight.
  */
 const std::string LCD_BACKLIGHT_OFF = "off";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to let the other elements control the LCD backlight.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to let the
+ *  other elements control the LCD backlight.
  */
 const std::string LCD_BACKLIGHT_OPEN = "open";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to toggle the LCD backlight.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to toggle
+ *  the LCD backlight.
  */
 const std::string LCD_BACKLIGHT_TOGGLE = "toggle";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to make the LCD backlight blink slowly.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to make the
+ *  LCD backlight blink slowly.
  */
 const std::string LCD_BACKLIGHT_BLINK = "blink";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setBackLight and LCDClient::setBackLight.
  *
- *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to make the LCD backlight blink quickly.
+ *  Used with LCDScreen::setBackLight and LCDClient::setBackLight to make the
+ *  LCD backlight blink quickly.
  */
 const std::string LCD_BACKLIGHT_FLASH = "flash";
 
@@ -105,42 +119,53 @@ const std::string LCD_BACKLIGHT_FLASH = "flash";
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "hidden" priority of this screen. It will then never be shown.
+ *  Used with LCDScreen::setPriority to set to "hidden" priority of this
+ *  screen. It will then never be shown.
  */
 const std::string LCD_PRIORITY_HIDDEN = "hidden";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "background" priority of this screen. It will only be shown if no normal screen exist.
+ *  Used with LCDScreen::setPriority to set to "background" priority of this
+ *  screen. It will only be shown if no normal screen exist.
  */
 const std::string LCD_PRIORITY_BACKGROUND = "background";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "info" priority of this screen. It is the default priority.
+ *  Used with LCDScreen::setPriority to set to "info" priority of this
+ *  screen. It is the default priority.
  */
 const std::string LCD_PRIORITY_INFO = "info";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "foreground" priority of this screen. The screen is considered as the active one.
+ *  Used with LCDScreen::setPriority to set to "foreground" priority of this
+ *  screen. The screen is considered as the active one.
  */
 const std::string LCD_PRIORITY_FOREGROUND = "foreground";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "alert" priority of this screen. Used to display important messages.
+ *  Used with LCDScreen::setPriority to set to "alert" priority of this
+ *  screen. Used to display important messages.
  */
 const std::string LCD_PRIORITY_ALERT = "alert";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setPriority.
  *
- *  Used with LCDScreen::setPriority to set to "input" priority of this screen. For screens waiting for user input.
+ *  Used with LCDScreen::setPriority to set to "input" priority of this
+ *  screen. For screens waiting for user input.
  */
 const std::string LCD_PRIORITY_INPUT = "input";
 
@@ -151,6 +176,7 @@ const std::string LCD_PRIORITY_INPUT = "input";
  *  Used with LCDScreen::setCursor to make the cursor visible.
  */
 const std::string LCD_CURSOR_ON = "on";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setCursor.
@@ -158,18 +184,22 @@ const std::string LCD_CURSOR_ON = "on";
  *  Used with LCDScreen::setCursor to make the cursor invisible.
  */
 const std::string LCD_CURSOR_OFF = "off";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setCursor.
  *
- *  Used with LCDScreen::setCursor to make the cursor look as an underline character (if available on hardware).
+ *  Used with LCDScreen::setCursor to make the cursor look as an underline
+ *  character (if available on hardware).
  */
 const std::string LCD_CURSOR_UNDER = "under";
+
 /**
  *  \ingroup screen_constants
  *  \brief For LCDScreen::setCursor.
  *
- *  Used with LCDScreen::setCursor to make the cursor look as a block character (if available on hardware).
+ *  Used with LCDScreen::setCursor to make the cursor look as a block
+ *  character (if available on hardware).
  */
 const std::string LCD_CURSOR_BLOCK = "block";
 
@@ -186,6 +216,7 @@ const std::string LCD_CURSOR_BLOCK = "block";
  *  Select menu event, on an action menu item.
  */
 const std::string LCD_MENU_EVENT_SELECT = "select";
+
 /**
  *  \ingroup menu_constants
  *  \brief Update menu event.
@@ -193,6 +224,7 @@ const std::string LCD_MENU_EVENT_SELECT = "select";
  *  Update menu event, on a checkbox, ring, numeric or alpha menu item.
  */
 const std::string LCD_MENU_EVENT_UPDATE = "update";
+
 /**
  *  \ingroup menu_constants
  *  \brief Plus menu event.
@@ -200,6 +232,7 @@ const std::string LCD_MENU_EVENT_UPDATE = "update";
  *  Plus menu event, on a slider menu item.
  */
 const std::string LCD_MENU_EVENT_PLUS = "plus";
+
 /**
  *  \ingroup menu_constants
  *  \brief Minus menu event.
@@ -207,6 +240,7 @@ const std::string LCD_MENU_EVENT_PLUS = "plus";
  *  Minus menu event, on a slider menu item.
  */
 const std::string LCD_MENU_EVENT_MINUS = "minus";
+
 /**
  *  \ingroup menu_constants
  *  \brief Enter menu event.
@@ -214,6 +248,7 @@ const std::string LCD_MENU_EVENT_MINUS = "minus";
  *  Enter menu event, on a menu item.
  */
 const std::string LCD_MENU_EVENT_ENTER = "enter";
+
 /**
  *  \ingroup menu_constants
  *  \brief Leave menu event.
@@ -222,8 +257,7 @@ const std::string LCD_MENU_EVENT_ENTER = "enter";
  */
 const std::string LCD_MENU_EVENT_LEAVE = "leave";
 
-/* Icons values */
-
+/* Icons */
 const std::string LCD_ICON_BLOCK_FILLED = "BLOCK_FILLED";
 const std::string LCD_ICON_HEART_OPEN = "HEART_OPEN";
 const std::string LCD_ICON_HEART_FILLED = "HEART_FILLED";
@@ -246,19 +280,16 @@ const std::string LCD_ICON_NEXT = "NEXT";
 const std::string LCD_ICON_PREV = "PREV";
 const std::string LCD_ICON_REC = "REC";
 
-
 /* Error messages */
-
 const std::string LCD_SOCKET_CREATION_ERROR = "Error during socket creation";
 const std::string LCD_SOCKET_NOT_SUPPORTED = "Network type not supported";
-const std::string LCD_SOCKET_CONNECTION_ERROR = "Error during socket connection";
+const std::string LCD_SOCKET_CONNECTION_ERROR =
+  "Error during socket connection";
 const std::string LCD_SOCKET_SEND_ERROR = "Error sending data";
 const std::string LCD_SOCKET_RECV_ERROR = "Error receiving data";
 const std::string LCD_SOCKET_NOT_CONNECTED = "Socket not connected";
 
-
 const int LCD_BIG_NUMBER_SEPARATOR = 10;
-
 } // end of lcdapi namespace
 
 #endif

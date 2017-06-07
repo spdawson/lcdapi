@@ -29,9 +29,7 @@ namespace lcdapi {
  *  \ingroup sensors
  *  This sensor will return the current CPU usage.
  */
-
-class LCDCpuSensor : public LCDSensor
-{
+class LCDCpuSensor : public LCDSensor {
  private:
   std::string _cpuName;
   long _userTicks;
@@ -40,7 +38,7 @@ class LCDCpuSensor : public LCDSensor
   long _idleTicks;
   int _load;
 
-  void getTicks(long &u,long &s,long &n,long &i) const;
+  void getTicks(long &u, long &s, long &n, long &i) const;
 
  public:
   virtual void waitForChange();
@@ -50,7 +48,9 @@ class LCDCpuSensor : public LCDSensor
    * \brief Default constructor.
    *
    * Used to build such a sensor.
-   * @param cpuName The CPU this sensor should monitor. Use "cpu" for total CPU usage. "cpu0" for first CPU on an SMP machine, "cpu1" for second one,...
+   * @param cpuName The CPU this sensor should monitor. Use "cpu" for total
+   * CPU usage. "cpu0" for first CPU on an SMP machine, "cpu1" for second
+   * one, ...
    */
   explicit LCDCpuSensor(const std::string& cpuName = "cpu");
   virtual ~LCDCpuSensor();

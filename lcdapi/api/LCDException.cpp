@@ -25,8 +25,7 @@ LCDException::LCDException(const std::string& desc)
 {
 }
 
-LCDException::~LCDException()
-{
+LCDException::~LCDException() {
 }
 
 LCDException::LCDException(const LCDException& original)
@@ -34,8 +33,7 @@ LCDException::LCDException(const LCDException& original)
 {
 }
 
-const LCDException& LCDException::operator=(const LCDException& rhs)
-{
+const LCDException& LCDException::operator=(const LCDException& rhs) {
   if (&rhs != this) {
     _desc = rhs._desc;
   }
@@ -43,8 +41,7 @@ const LCDException& LCDException::operator=(const LCDException& rhs)
   return *this;
 }
 
-std::string LCDException::what() const
-{
+std::string LCDException::what() const {
   return std::string("LCD Error : ") + _desc;
 }
 

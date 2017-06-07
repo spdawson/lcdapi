@@ -33,15 +33,16 @@ const std::string LCD_TIME_HOUR_MINUTE_SECOND = "+%H:%M:%S";
  *  This sensor will return the current time in specified format.
  *  The format is the one used by date(1)
  */
-class LCDTimeSensor : public LCDSystemSensor
-{
+class LCDTimeSensor : public LCDSystemSensor {
  public:
 
   /**
    * \brief Default constructor.
    *
    * Used to build such a sensor.
-   * @param format A string containing the format to use, as defined by date(1). The default value makes this sensor return current hour and minute seperated by a colon.
+   * @param format A string containing the format to use, as defined by
+   * date(1). The default value makes this sensor return current hour and
+   * minute seperated by a colon.
    */
   explicit LCDTimeSensor(const std::string &format = LCD_TIME_HOUR_MINUTE);
   virtual ~LCDTimeSensor();

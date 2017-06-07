@@ -27,8 +27,7 @@ LCDTimeSensor::LCDTimeSensor(const string &format)
 {
 }
 
-LCDTimeSensor::~LCDTimeSensor()
-{
+LCDTimeSensor::~LCDTimeSensor() {
 }
 
 } // end of lcdapi namespace

@@ -25,8 +25,7 @@ namespace lcdapi {
 using namespace std;
 
 namespace LCDUtils {
-  string toString(int value)
-  {
+  string toString(int value) {
     ostringstream ss;
     ss << value;
     return ss.str();
